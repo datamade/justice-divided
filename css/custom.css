@@ -1,0 +1,9 @@
+.frame {
+	min-height: 105vh;
+	margin-bottom: -20px;
+	padding-top: 10vmax;
+}
+
+div.hannah > div.text {
+	width: 20%;
+}
