@@ -113,10 +113,9 @@
         </div>
         <div class="collapse navbar-collapse" id="collapsed-nav">
           <ul class="nav navbar-nav pull-right">
-            <li id="decision-1-nav"><a href="#">frame-1</a></li>
-            <li id="decision-2-nav"><a href="#">frame-2</a></li>
-            <li id="decision-3-nav"><a href="#">frame-3</a></li>
-            <li id="decision-4-nav"><a href="#">frame-4</a></li>
+            <li id="read"><a href="/">read the story</a></li>
+            <li id="learn"><a href="/learn-more">learn more</a></li>
+            <li id="speak"><a href="/speak-up">speak up</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
@@ -137,4 +136,7 @@
   <script src="/js/bootstrap.min.js"></script>
   <script src="/js/jquery.waypoints.min.js"></script>
   <script src="/js/injustice-system.js"></script>
+  <script type="text/javascript">
+    $('ul.navbar-nav > li#{{ page.title }}').addClass('active');
+  </script>
 </html>

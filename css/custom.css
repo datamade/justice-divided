@@ -18,8 +18,6 @@ nav.navbar-default {
 	margin-top: 13.25vh;
 }
 
-/* NAV MENU STYLES */
-
 .navbar-brand {
 	margin-top: 5vh;
 	font-size: 4em;
@@ -28,11 +26,10 @@ nav.navbar-default {
 /* CONTEXT MENU STYLES */
 
 div#context {
-	padding-top: 10vmax;
+	padding-top: 7.5vmax;
 	position: fixed;
 	min-height: 100vh;
 	background-color: #333;
-	color: #E7E7EE;
 }
 
 div#context > div[id*=decision] {
@@ -40,6 +37,15 @@ div#context > div[id*=decision] {
 	position: absolute;
 	left: 0;
 	opacity: 0;
+	color: #E7E7EE;
+}
+
+div#context > div li {
+	margin-left: -2vw;
+}
+
+div#context > div h3 {
+	color: #E7E7EE;
 }
 
 

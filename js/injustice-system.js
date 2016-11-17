@@ -8,13 +8,13 @@ $('div.frame#decision-1').waypoint(function(direction) {
 	if (direction == 'down') {
 		context.animate({left: "-=" + contextOffset}, 1000)
 		$('.navbar-nav').delay(250).animate({opacity: 1}, 1000)
-		$('.navbar-default').animate({top: "-=100"}, 1000)
+		$('.navbar-default').animate({top: "-=14vh"}, 1000)
 		$('.navbar-brand').animate({'font-size': '1.5em',
 									'margin-top': '+=55px'}, 1000)
 	} else {
 		context.animate({left: "+=" + contextOffset}, 1000)
 		$('.navbar-nav').animate({opacity: 0}, 250)
-		$('.navbar-default').animate({top: "+=100"}, 500)
+		$('.navbar-default').animate({top: "+=14vh"}, 500)
 		$('.navbar-brand').animate({'font-size': '4em',
 									'margin-top': '-=55px'}, 500)
 	}
@@ -53,10 +53,6 @@ $('div.frame').not('#intro').waypoint(function(direction) {
 $('div.frame').not('#intro').waypoint(function(direction) {
 	var decisionFrame = $(this.element)
 	var outcomeContext = $('div#context > div[id*="' + decisionFrame.attr('id') + '"]')
-	var outcomeNav = $('ul.nav > li[id*="' + decisionFrame.attr('id') + '"]')
-
-	outcomeNav.toggleClass('active')
-	outcomeNav.prev().toggleClass('active')
 
 	if (direction == 'down') {
 		outcomeContext.prev().animate({opacity: 0}, 1000) // fade out context of previous outcome
