@@ -1,6 +1,49 @@
+/* BOOTSTRAP OVERRIDES */
+
 .container-fluid {
 	padding: 0px;
 }
+
+.fa {
+	padding: 10px;
+}
+
+nav.navbar-default {
+	height: 20vh;
+	border-bottom: 0;
+}
+
+.navbar-nav {
+	opacity: 0;
+	margin-top: 13.25vh;
+}
+
+/* NAV MENU STYLES */
+
+.navbar-brand {
+	margin-top: 5vh;
+	font-size: 4em;
+}
+
+/* CONTEXT MENU STYLES */
+
+div#context {
+	padding-top: 10vmax;
+	position: fixed;
+	min-height: 100vh;
+	background-color: #333;
+	color: #E7E7EE;
+}
+
+div#context > div[id*=decision] {
+	padding: 0 3vw;
+	position: absolute;
+	left: 0;
+	opacity: 0;
+}
+
+
+/* DECISION POINT STYLES */ 
 
 div.frame {
 	min-height: 105vh;
@@ -8,23 +51,27 @@ div.frame {
 	padding-top: 10vmax;
 }
 
-div#context {
-	padding-top: 10vmax;
-	position: fixed;
-	min-height: 100vh;
-	background-color: yellow;
-	-webkit-transition: transform 2s ease 0s; /* For Safari 3.1 to 6.0 */
-    transition: transform 2s ease 0s;
+div.frame#intro{
+	padding-top: 15vmax;
+}
+
+div.decision-label {
+	text-align: center;
+	padding-bottom: 5vh;
 }
 
 div.decision-option {
-	background-color: #fff;
-	min-height: 20vh;
-	text-align: center;
+	padding: 0px;
+	min-height: 25vh;
+	text-transform: uppercase;
+	font-size:1.5em;
 }
 
-div#context > div[id*=decision] {
-	position: absolute;
-	left: 0;
+div.decision-option img {
+	max-width:100%;
+}
+
+div.outcome-narrative {
+	padding: 10px 50px;
 	opacity: 0;
 }
