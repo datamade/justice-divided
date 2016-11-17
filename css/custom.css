@@ -1,9 +1,30 @@
-.frame {
+.container-fluid {
+	padding: 0px;
+}
+
+div.frame {
 	min-height: 105vh;
-	margin-bottom: -20px;
+	margin-bottom: 0;
 	padding-top: 10vmax;
 }
 
-div.hannah > div.text {
-	width: 20%;
+div#context {
+	padding-top: 10vmax;
+	position: fixed;
+	min-height: 100vh;
+	background-color: yellow;
+	-webkit-transition: transform 2s ease 0s; /* For Safari 3.1 to 6.0 */
+    transition: transform 2s ease 0s;
+}
+
+div.decision-option {
+	background-color: #fff;
+	min-height: 20vh;
+	text-align: center;
+}
+
+div#context > div[id*=decision] {
+	position: absolute;
+	left: 0;
+	opacity: 0;
 }
