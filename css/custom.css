@@ -25,34 +25,31 @@ nav.navbar-default {
 
 /* CONTEXT MENU STYLES */
 
-div#context {
-	padding-top: 7.5vmax;
-	position: fixed;
-	min-height: 100vh;
+div[id*=context] {
+	padding: 20vmax 3vw 0 3vw;
+	min-height: 105vh;
 	background-color: #333;
+	color: #E7E7EE
 }
 
-div#context > div[id*=decision] {
-	padding: 0 3vw;
-	position: absolute;
-	left: 0;
-	opacity: 0;
-	color: #E7E7EE;
-}
-
-div#context > div li {
+div[id*=context] > div li {
 	margin-left: -2vw;
 }
 
-div#context > div h3 {
+div[id*=context] > div h3 {
 	color: #E7E7EE;
 }
 
+div[id*=context] > div.text {
+	padding-top: 10vh;
+	opacity: 0;
+}
 
 /* DECISION POINT STYLES */ 
 
 div.frame {
 	min-height: 105vh;
+	height: 100%;
 	margin-bottom: 0;
 	padding-top: 10vmax;
 }
@@ -81,3 +78,5 @@ div.outcome-narrative {
 	padding: 10px 50px;
 	opacity: 0;
 }
+
+/* change min/max height/width for context div + imgs on mobile */

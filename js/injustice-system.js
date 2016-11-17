@@ -30,7 +30,7 @@ $('div.frame').not('#intro').waypoint(function(direction) {
 	var outcome = options.filter('.outcome')
 	var nonOutcome = options.not('.outcome')
 	var outcomeNarrative = decisionFrame.children('div').children('div.outcome-narrative')
-	var outcomeContext = $('div#context > div[id*="' + decisionFrame.attr('id') + '"]')
+	var outcomeContext = $('div[id*="' + decisionFrame.attr('id') + '-context"] > div.text')
 
 	if (direction == 'down') {
 		outcome.animate({left: "+=" + outcome.width()/1.5}, 1000) // bring outcome to center
