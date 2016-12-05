@@ -1,0 +1,9 @@
+offense_type,no_probation_num,no_probation_pct,no_probation_avg_los,probation_num,probation_pct,probation_avg_los,total_num,total_pct,total_avg_los
+Court Hold ,9,10,21,9,10,21,9,10,21
+Person ,5,56,13,5,56,13,5,56,13
+Weapons ,3,33,25,3,33,25,3,33,25
+Property ,1,11,49,1,11,49,1,11,49
+Drug - Controlled Substance ,0,0,0,0,0,0,0,0,0
+Drug – Cannabis ,0,0,0,0,0,0,0,0,0
+Sex Crimes ,0,0,0,0,0,0,0,0,0
+Other ,0,0,0,0,0,0,0,0,0

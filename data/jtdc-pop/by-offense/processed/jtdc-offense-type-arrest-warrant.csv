@@ -1,0 +1,9 @@
+offense_type,no_probation_num,no_probation_pct,no_probation_avg_los,probation_num,probation_pct,probation_avg_los,total_num,total_pct,total_avg_los
+Juvenile Arrest Warrant ,23,25,53,23,25,53,23,25,53
+Person ,9,39,26,9,39,26,9,39,26
+Weapons ,8,35,42,8,35,42,8,35,42
+Property ,2,9,230,2,9,230,2,9,230
+Drug - Controlled Substance ,3,13,58,3,13,58,3,13,58
+Drug – Cannabis ,0,0,0,0,0,0,0,0,0
+Sex Crimes ,0,0,0,0,0,0,0,0,0
+Other ,1,4,11,1,4,11,1,4,11

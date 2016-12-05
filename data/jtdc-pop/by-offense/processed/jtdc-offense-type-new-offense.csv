@@ -1,0 +1,9 @@
+offense_type,no_probation_num,no_probation_pct,no_probation_avg_los,probation_num,probation_pct,probation_avg_los,total_num,total_pct,total_avg_los
+New Offense ,61,66,69,61,66,69,61,66,69
+Person ,29,48,103,29,48,103,29,48,103
+Weapons ,28,46,21,28,46,21,28,46,21
+Property ,1,2,20,1,2,20,1,2,20
+Drug - Controlled Substance ,0,0,0,0,0,0,0,0,0
+Drug – Cannabis ,0,0,0,0,0,0,0,0,0
+Sex Crimes ,2,3,243,2,3,243,2,3,243
+Other ,1,2,95,1,2,95,1,2,95
