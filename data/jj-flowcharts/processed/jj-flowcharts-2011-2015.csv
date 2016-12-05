@@ -1,0 +1,36 @@
+action,parent,2011,2012,2013,2014,2015,pct_chg
+arrest,,25961,27105.0,22288.0,,19278.0,-25.74245984361157
+diversion by police,arrest,7932,10938.0,6766.0,,6967.0,-12.165910237014623
+prosecute,arrest,17925,16167.0,15522.0,,12761.0,-28.80892608089261
+transfer to adult court,arrest,104,,,,,
+recommend detention,prosecute,5917,5596.0,5551.0,,5888.0,-0.4901132330572926
+don't detain,prosecute,12008,10571.0,10571.0,,6873.0,-42.76315789473684
+detention screening,recommend detention,5917,5596.0,5551.0,,5888.0,-0.4901132330572926
+detain,detention screening,3401,3227.0,2910.0,,2935.0,-13.701852396354013
+don't detain,detention screening,1214,1096.0,1099.0,,1528.0,25.86490939044481
+place in shelter,detention screening,113,1273.0,1542.0,,1425.0,1161.0619469026549
+24-hour non-secure custody,detention screening,1189,,,,,
+case screening,childen of detention screening,17925,16167.0,15522.0,,12761.0,-28.80892608089261
+transfer to adult court,case screening,0,0.0,0.0,,0.0,
+case filed,case screening,6463,6115.0,6036.0,,4905.0,-24.106452112022282
+diversion by state's attorney,case screening,3145,2540.0,2290.0,,1876.0,-40.349761526232115
+case not filed,case screening,8317,7512.0,7196.0,,5980.0,-28.09907418540339
+probable cause hearing,case filed,6463,6115.0,6036.0,,4905.0,-24.106452112022282
+probable cause found,probable cause hearing,6419,6054.0,5962.0,,4796.0,-25.284312198161707
+probable cause not found,probable cause hearing,44,61.0,74.0,,109.0,147.72727272727272
+detain,probable cause found,725,1080.0,1266.0,,1080.0,48.96551724137931
+don't detain,probable cause found,3326,2359.0,3413.0,,2359.0,-29.07396271797956
+dentention alternative,probable cause found,2368,1357.0,1283.0,,1357.0,-42.69425675675676
+trial,childen of probable cause found,298,301.0,413.0,,719.0,141.2751677852349
+noelle prosequi,childen of probable cause found,3124,2791.0,2450.0,,2293.0,-26.600512163892446
+supervision,childen of probable cause found,1792,1610.0,1458.0,,1075.0,-40.011160714285715
+plea,childen of probable cause found,3242,2988.0,3640.0,,4068.0,25.478099938309683
+guilty,trial,198,203.0,139.0,,334.0,68.68686868686868
+guilty,plea,3242,2988.0,2495.0,,3400.0,4.873534855027761
+???,plea,0,0.0,1145.0,,668.0,
+not guilty,trial,100,98.0,274.0,,385.0,285.0
+dept. of juvenile justice,guilty,486,443.0,420.0,,421.0,-13.37448559670782
+dcfs guardianship,guilty,35,73.0,38.0,,75.0,114.28571428571428
+jtdc,guilty,462,370.0,387.0,,278.0,-39.82683982683983
+residential placement,guilty,17,5.0,1.0,,1.0,-94.11764705882352
+probation,guilty,3967,3804.0,3461.0,,2959.0,-25.40962944290396
