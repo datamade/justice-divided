@@ -37,4 +37,4 @@ detention-graph : detention-ratios
 
 .PHONY : release-total
 release-total : 
-	csvgrep -r '^RELEASED' -c 2 output/disp-by-dist-14.csv | csvstat -c Total --sum
+	csvgrep -r '^RELEASED' -c 3 output/disp-by-dist-14.csv | csvstat -c total --sum
