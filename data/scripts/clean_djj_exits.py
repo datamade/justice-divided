@@ -1,26 +1,17 @@
+import csv
 import sys
-import re
 
-z = None
-lines = []
+reader = csv.reader(sys.stdin)
+writer = csv.writer(sys.stdout)
 
-lines.append(
-	'zip,demo,2015,2014,2013,2012,2011,2010,2009,total\n'
-)
+parent_zip = None
 
-for line in sys.stdin:
-	if re.match(r'\d{5}', line.split(',')[0]):
-		line = line.split(',')
-		z = line.pop(0)
-		line = ',%s' % ','.join(line)
-	if any(x in line for x in ['Total', ',,,']):
+for row in reader:
+	z, demo, *years, total = row
+	if z:
+		parent_zip = z
+	z = parent_zip 
+	demo = demo.replace('Asain', 'Asian')
+	if ('Total' in demo or not demo):
 		continue
-	line = re.sub('Asain', 'Asian', line)
-	line = re.sub(r'[a-z],,', 'e,', line)
-	line = '%s%s' % (z, line)
-	lines.append(line)
-
-lines.append(lines.pop(-1).rstrip('\n'))
-
-with sys.stdout as f:
-	f.write(''.join([line for line in lines]))
+	writer.writerow([z, demo, *years[1:], total])
