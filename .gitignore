@@ -91,5 +91,5 @@ ENV/
 # Rope project settings
 .ropeproject
 
-# local secrets
-local/
+# keys
+data/scripts/config.py
