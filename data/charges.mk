@@ -5,30 +5,23 @@ charges.clean.csv : raw/arrests_by_charge_14.csv
 	tail -n +6 | head -n 595 | \
 	perl -p -e 's/\s?,\s?/,/g; s/ {2,}/ /g') > $@
 
-output/arrests_by_charge_14.csv : charges.clean.csv raw/cpd-dist-names.csv
-	csvjoin -c "dist_num,dist_num" $^ | csvcut -c 1,7,2,3,4,5,6 > $@
+charges_2014 : charges.clean.csv
+	csvsql --db postgresql:///$(PG_DB) --insert --table $@ $<
 
-.PHONY : charge-totals
-charge-totals : output/arrests_by_charge_14.csv
-	csvsql --query 'select offense, round(cast(sum(misdemeanor) as float)/sum(felony),2) as mf_ratio, \
-	sum(other) as num_unclassified, sum(total) as total from $(notdir $(basename $<)) group by offense' $<
+.PHONY : charge_subtables
+charge_subtables : charge_totals class_totals_by_district top_charge_by_district mf_ratio_by_district
 
-.PHONY : class-totals
-class-totals : output/arrests_by_charge_14.csv
-	csvsql --query 'select sum(misdemeanor) as num_misdemeanor, sum(felony) as num_felony, \
-	sum(other) as num_unclassified from $(notdir $(basename $<))' $<
+charge_totals :
+	psql -d $(PG_DB) -c "select offense, sum(misdemeanor) as misdemeanor, sum(felony) as felony, \
+	sum(other) as other, sum(total) as total into $@ from charges_2014 group by offense"
 
-.PHONY : class-totals-by-district
-class-totals-by-district : output/arrests_by_charge_14.csv
-	csvsql --query 'select dist_num, dist_name, sum(misdemeanor) as num_misdemeanor, sum(felony) as num_felony, \
-	sum(other) as num_unclassified from $(notdir $(basename $<)) group by dist_num' $<
+class_totals_by_district :
+	psql -d $(PG_DB) -c "select dist_num, sum(misdemeanor) as num_misdemeanor, sum(felony) as num_felony, \
+	sum(other) as num_other, sum(total) as total into $@ from charges_2014 group by dist_num"
 
-.PHONY : top-charge-by-district
-top-charge-by-district : output/arrests_by_charge_14.csv
-	csvsql --query 'select dist_num, dist_name, offense, misdemeanor, felony, other, \
-	max(total) as total from $(notdir $(basename $<)) group by dist_num' $<
+top_charge_by_district :
+	psql -d $(PG_DB) -c "select * into $@ from (select dist_num, offense, total, max(total) \
+	over (partition by dist_num) as max_arrests from charges_2014) t where total = max_arrests"
 
-.PHONY : mf-ratios-by-district
-mf-ratios-by-district : 
-	make class-totals-by-district -s | csvsql --query 'select dist_num, dist_name, \
-	round(cast(num_misdemeanor as float)/num_felony,2) as mf_ratio from stdin'
+mf_ratio_by_district :
+	psql -d $(PG_DB) -c "select dist_num, round(num_misdemeanor/num_felony,2) as mf_ratio into $@ from class_totals_by_district"

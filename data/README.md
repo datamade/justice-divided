@@ -1,4 +1,4 @@
-recipes for generating clean versions of district demographic, arrest, disposition and djj exit data (`make all`), plus phony targets for the following analysis:
+recipes for generating clean versions of district demographic, arrest, charge, disposition and djj exit data (`make all`), plus phony targets for the following analysis:
 
 ## arrests
 * **district-totals**: total arrests per police district
