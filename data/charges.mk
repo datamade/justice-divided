@@ -19,7 +19,7 @@ charge_totals :
 		  SUM(felony) AS num_felony, \
 		  SUM(other) AS num_other, \
 		  ROUND(\
-		    SUM(misdemeanor)::numeric / NULLIF(\
+		    SUM(misdemeanor)::numeric / NULLIF( \
 		    SUM(felony), 0), 2) AS mf_ratio, \
 		  SUM(total) AS total \
 		INTO $@ \
@@ -54,7 +54,7 @@ mf_ratio_by_district :
 	psql -d $(PG_DB) -c " \
 		SELECT \
 		  dist_num, \
-		  ROUND(\
+		  ROUND( \
 		    num_misdemeanor::numeric / num_felony, 2) AS mf_ratio \
 		INTO $@ \
 		FROM class_totals_by_district \

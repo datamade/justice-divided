@@ -1,9 +1,9 @@
 # Justice Divided - Analysis
-Justice Divided is an in-depth look at the juvenile justice system that shows punishment doesn't end when a juvenile offender goes free.
+Justice Divided is an in-depth look at the Cook County juvenile justice system that shows punishment doesn't end when a juvenile offender goes free.
 
 This directory contains everything you need to build the database for the underlying analysis.
 
-##Getting Started
+## Getting Started
 
 ### Requirements
 
@@ -13,7 +13,7 @@ This directory contains everything you need to build the database for the underl
 * psycopg2
 * virtualenv / virtualenvwrapper ([Setup](http://docs.python-guide.org/en/latest/dev/virtualenvs/))
 
-### Getting started
+### Makin' the data
 
 Create your virtual environment and install the dependencies, then run:
 
@@ -37,10 +37,10 @@ Making the database will result in tables for the source data as well as a serie
 * **arrests_2014** – Juvenile arrests made by Chicago police in 2014
 * **charges_2014** – Charges for which juvenile arrests were made in 2014
 * **dispositions_2014** – Post-arrest outcomes for juveniles in 2014
-* **djj_exits_2009_thru_2015** – Dept. of Juvenile Justice exits (juveniles released from custody) from 2009 to 2015
+* **djj_exits_2009_thru_2015** – Illinois Dept. of Juvenile Justice exits (juveniles released from custody) from 2009 to 2015
 
 ### Composite table
-* **district_profiles** – A convenience table listing the following for each district:
+* **district_profiles** – A convenience table listing the following for each police district:
   * district number
   * district name
   * district population
