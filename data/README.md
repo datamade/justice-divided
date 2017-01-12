@@ -66,7 +66,7 @@ Making the database will result in tables for the source data as well as a serie
 * **charge_totals** – Total arrests per charge
 * **top_charge_by_district** – Charge for which the most juveniles were arrested, per district
 * **class_totals_by_district** – Count of misdemeanor, felony and unclassified charges, per district
-* **mf_ratio_by_district** – Number of misdemeanors divided by number of felonies, per district, where mf_ratio = 0 denotes all arrests were felonies, 0 < mf_ratio < 1 denotes more arrests were felonies than misdemeanors, and mf_ratio > 1 denotes more arrests were misdemeanors than felonies.
+* **mf_ratio_by_district** – Number of misdemeanors divided by number of felonies, per district, where mf_ratio = 0 denotes all arrests were felonies, 0 < mf_ratio < 1 denotes more arrests were felonies than misdemeanors, and mf_ratio > 1 denotes more arrests were misdemeanors than felonies, and a null value denotes no felonies were recorded.
 
 ### Disposition subtables
 * **detention_by_district** – Count and proportion of arrestees sent to JTDC, per district

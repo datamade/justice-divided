@@ -20,6 +20,7 @@ output/police_district_demographics.csv : raw/police_district_boundaries.geojson
 
 $(METADATA) : raw/cpd-dist-names.csv output/police_district_demographics.csv
 	csvjoin -c "dist_num,dist_num" $^ | \
+	csvsort -c "dist_num" | \
 	csvsql --db postgresql:///$(PG_DB) --insert --table $@
 
 include arrests.mk charges.mk dispositions.mk djj_exits.mk
