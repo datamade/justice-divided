@@ -1,0 +1,48 @@
+<%
+import pweave
+pweave.rcParams["chunk"]["defaultoptions"].update({'wrap' : False, 'results' : 'raw', 'fig' : False})
+%>
+
+# testing pweave
+_pweaver, I believe you can get me through the night_
+
+In order to run straight SQL commands (on a local database, of course) without doing some weird printing gymnastics with psycopg output, a little helper method is helpful. 
+
+<<>>=
+import subprocess
+
+def exec_sql(query):
+    command = 'psql -d jdiv -c "%s"' % query
+    result = subprocess.check_output(command, shell=True)
+    decoded_result = result.decode('ascii')
+    processed_result = '\n'.join([line for line in decoded_result.split('\n') if line])
+    print('~~~~')
+    print(processed_result)
+    print('~~~~~~~~~~~~~')
+@
+
+Then we're free to query the day away.
+
+<<>>=
+exec_sql("""
+    SELECT
+      dist_num,
+      dist_name,
+      pct_arrests_black,
+      pct_pop_black,
+      pct_arrests_black::numeric - pct_pop_black AS pop_arrest_diff
+    FROM district_profiles
+    ORDER BY pop_arrest_diff DESC""")
+@
+
+<<>>=
+exec_sql("""
+    SELECT
+      charge, 
+      admit_num, 
+      alos 
+    FROM jtdc_charges 
+    WHERE charge LIKE '%Pcan%' 
+    OR charge LIKE '%PCS%' 
+    ORDER BY admit_num DESC""")
+@
