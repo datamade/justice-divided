@@ -12,16 +12,46 @@ charges_2014 : charges.clean.csv
 charge_subtables : charge_totals class_totals_by_district top_charge_by_district mf_ratio_by_district
 
 charge_totals :
-	psql -d $(PG_DB) -c "select offense, sum(misdemeanor) as misdemeanor, sum(felony) as felony, \
-	sum(other) as other, sum(total) as total into $@ from charges_2014 group by offense"
+	psql -d $(PG_DB) -c " \
+		SELECT \
+		  offense, \
+		  SUM(misdemeanor) AS num_misdemeanor, \
+		  SUM(felony) AS num_felony, \
+		  SUM(other) AS num_other, \
+		  SUM(total) AS total \
+		INTO $@ \
+		FROM charges_2014 \
+		GROUP BY offense \
+		ORDER BY total DESC"
 
 class_totals_by_district :
-	psql -d $(PG_DB) -c "select dist_num, sum(misdemeanor) as num_misdemeanor, sum(felony) as num_felony, \
-	sum(other) as num_other, sum(total) as total into $@ from charges_2014 group by dist_num"
+	psql -d $(PG_DB) -c " \
+		SELECT \
+		  dist_num, \
+		  SUM(misdemeanor) AS num_misdemeanor, \
+		  SUM(felony) AS num_felony, \
+		  SUM(other) AS num_other, \
+		  SUM(total) AS total \
+		INTO $@ \
+		FROM charges_2014 \
+		GROUP BY dist_num \
+		ORDER BY dist_num"
 
 top_charge_by_district :
-	psql -d $(PG_DB) -c "select * into $@ from (select dist_num, offense, total, max(total) \
-	over (partition by dist_num) as max_arrests from charges_2014) t where total = max_arrests"
+	psql -d $(PG_DB) -c " \
+		SELECT DISTINCT ON (dist_num) \
+		  dist_num, \
+		  offense, \
+		  total \
+		INTO $@ \
+		FROM charges_2014 \
+		ORDER BY dist_num, total DESC"
 
 mf_ratio_by_district :
-	psql -d $(PG_DB) -c "select dist_num, round(num_misdemeanor/num_felony,2) as mf_ratio into $@ from class_totals_by_district"
+	psql -d $(PG_DB) -c " \
+		SELECT \
+		  dist_num, \
+		  ROUND(num_misdemeanor::numeric / num_felony, 2) AS mf_ratio \
+		INTO $@ \
+		FROM class_totals_by_district \
+		ORDER BY dist_num"

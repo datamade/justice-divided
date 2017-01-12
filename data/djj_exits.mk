@@ -7,4 +7,11 @@ djj_exits_2009_thru_2015 : djj.clean.csv
 	csvsql --db postgresql:///$(PG_DB) --insert --table $@ $<
 
 djj_exits_by_race :
-	psql -d $(PG_DB) -c "select demo, sum(exits_15) as total_15 into $@ from djj_exits_2009_thru_2015 group by demo"
+	psql -d $(PG_DB) -c " \
+		SELECT \
+		  demo, \
+		  SUM(exits_15) AS total_exits_2015 \
+		INTO $@ \
+		FROM djj_exits_2009_thru_2015 \
+		GROUP BY demo \
+		ORDER BY total_exits_2015 DESC"

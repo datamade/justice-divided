@@ -6,7 +6,7 @@ RAW_TABLES = arrests_2014 charges_2014 dispositions_2014 djj_exits_2009_thru_201
 SUBTABLES = arrest_subtables charge_subtables disposition_subtables djj_exits_by_race
 
 .PHONY : database
-database : $(PG_DB) $(METADATA) $(RAW_TABLES) $(SUBTABLES) composite
+database : $(PG_DB) $(METADATA) $(RAW_TABLES) $(SUBTABLES) district_profiles
 
 $(PG_DB) :
 	createdb $@
@@ -24,16 +24,35 @@ $(METADATA) : raw/cpd-dist-names.csv output/police_district_demographics.csv
 
 include arrests.mk charges.mk dispositions.mk djj_exits.mk
 
-composite : 
-	psql -d $(PG_DB) -c "\
-		select mf.dist_num, dist_name, total_pop, pct_black, offense as top_offense, \
-		mf_ratio, num_arrests, pct_arrests_black, detention_ratio, adjustment_ratio into $@ from police_district_metadata \
-		join arrests_by_district as arr on dist_num = district\
-		join ratio_arrests_black as blk on arr.district::int = blk.district::int\
-		join adjustment_ratios as adj on adj.district::int = arr.district::int\
-		join detention_ratios as det on adj.district::int = det.district::int\
-		join top_charge_by_district as tc on adj.district::int = tc.dist_num::int\
-		join mf_ratio_by_district as mf on adj.district::int = mf.dist_num::int"
+district_profiles : 
+	psql -d $(PG_DB) -c " \
+		SELECT \
+		  met.dist_num, \
+		  dist_name, \
+		  total_pop, \
+		  pct_black AS pct_pop_black, \
+		  offense AS top_offense, \
+		  mf_ratio, \
+		  arr.num_arrests, \
+		  pct_arrests_black, \
+		  num_adjustments, \
+		  adjustment_ratio, \
+		  num_detentions, \
+		  detention_ratio \
+		INTO $@ \
+		FROM police_district_metadata AS met \
+		JOIN arrests_by_district AS arr \
+		  ON arr.dist_num = met.dist_num \
+		JOIN ratio_arrests_black_by_district AS blk \
+		  ON arr.dist_num = blk.dist_num \
+		JOIN adjustment_by_district AS adj \
+		  ON arr.dist_num = adj.dist_num::int \
+		JOIN detention_by_district AS det \
+		  ON arr.dist_num = det.dist_num::int \
+		JOIN top_charge_by_district AS tc \
+		  ON arr.dist_num = tc.dist_num \
+		JOIN mf_ratio_by_district AS mf \
+		  ON arr.dist_num = mf.dist_num"
 
 .PHONY : clean
 clean :
