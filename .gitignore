@@ -95,6 +95,5 @@ ENV/
 data/scripts/config.py
 
 # misc
-data/eda/
 data/raw/src/
 data/raw/zip*

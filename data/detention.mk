@@ -11,7 +11,7 @@ jtdc.clean.csv : raw/jtdc_charges.csv
 djj_exits_2009_thru_2015 : djj.clean.csv
 	csvsql --db postgresql:///$(PG_DB) --insert --table $@ $<
 
-jtdc_charges : jtdc.clean.csv
+jtdc_charges_2015 : jtdc.clean.csv
 	csvsql --db postgresql:///$(PG_DB) --insert --table $@ $<
 
 djj_exits_by_race :

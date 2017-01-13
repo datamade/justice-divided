@@ -10,7 +10,7 @@ dispositions_2014 : disp.pivot.csv
 	csvsql --db postgresql:///$(PG_DB) --insert --table $@ --no-inference $<
 
 .PHONY : disposition_subtables
-disposition_subtables : detention_by_district detention_by_district adjustment_by_district
+disposition_subtables : detention_by_district adjustment_by_district
 
 detention_by_district : 
 	psql -d $(PG_DB) -c " \

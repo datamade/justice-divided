@@ -2,7 +2,7 @@ SHELL := bash
 
 PG_DB = jdiv
 METADATA = police_district_metadata
-RAW_TABLES = arrests_2014 charges_2014 dispositions_2014 djj_exits_2009_thru_2015 jtdc_charges
+RAW_TABLES = arrests_2014 charges_2014 dispositions_2014 djj_exits_2009_thru_2015 jtdc_charges_2015
 SUBTABLES = arrest_subtables charge_subtables disposition_subtables djj_exits_by_race
 
 .PHONY : database

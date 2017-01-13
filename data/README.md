@@ -37,6 +37,7 @@ Making the database will result in tables for the source data as well as a serie
 * **arrests_2014** – Juvenile arrests made by Chicago police in 2014
 * **charges_2014** – Charges for which juvenile arrests were made in 2014
 * **dispositions_2014** – Post-arrest outcomes for juveniles in 2014
+* **jtdc_charges_2015** – Cook County Juvenile Temporary Detention Center starting population, admissions, exits, and ending population broken down by charge for 2015
 * **djj_exits_2009_thru_2015** – Illinois Dept. of Juvenile Justice exits (juveniles released from custody) from 2009 to 2015
 
 ### Composite table
@@ -72,5 +73,5 @@ Making the database will result in tables for the source data as well as a serie
 * **detention_by_district** – Count and proportion of arrestees sent to JTDC, per district
 * **adjustment_by_district** – Count and proportion of arrestees granted a [station adjustment](http://www.ilga.gov/legislation/ilcs/fulltext.asp?DocName=070504050K5-301), per district
 
-### DJJ subtables
+### Detention subtables
 * **djj_exits_by_race** – 2015 DJJ exits by race
