@@ -1,12 +1,12 @@
 SHELL := bash
 
 PG_DB = jdiv
-METADATA = police_district_metadata
+CONTEXT = police_district_metadata graffiti
 RAW_TABLES = arrests_2014 charges_2014 dispositions_2014 djj_exits_2009_thru_2015 jtdc_charges_2015
 SUBTABLES = arrest_subtables charge_subtables disposition_subtables djj_exits_by_race
 
 .PHONY : database
-database : $(PG_DB) $(METADATA) $(RAW_TABLES) $(SUBTABLES) district_profiles
+database : $(PG_DB) $(CONTEXT) $(RAW_TABLES) $(SUBTABLES) district_profiles
 
 $(PG_DB) :
 	createdb $@
@@ -23,7 +23,7 @@ $(METADATA) : raw/cpd-dist-names.csv output/police_district_demographics.csv
 	csvsort -c "dist_num" | \
 	csvsql --db postgresql:///$(PG_DB) --insert --table $@
 
-include arrests.mk charges.mk dispositions.mk detention.mk
+include arrests.mk charges.mk dispositions.mk detention.mk crime_context.mk
 
 district_profiles : 
 	psql -d $(PG_DB) -c " \

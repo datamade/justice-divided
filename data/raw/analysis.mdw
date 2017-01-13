@@ -1,12 +1,12 @@
 <%
 import pweave
-pweave.rcParams["chunk"]["defaultoptions"].update({'wrap' : False, 'results' : 'raw', 'fig' : False})
+pweave.rcParams["chunk"]["defaultoptions"].update({'wrap' : False, 'results' : 'raw'})
 %>
 
-# testing pweave
-_pweaver, I believe you can get me through the night_
+# Further analysis
+(builds on Google doc with contextual data)
 
-In order to run straight SQL commands (on a local database, of course) without doing some weird printing gymnastics with psycopg output, a little helper method is helpful. 
+Helper function to run `psql` commands from the Python shell:
 
 <<>>=
 import subprocess
@@ -21,7 +21,9 @@ def exec_sql(query):
     print('~~~~~~~~~~~~~')
 @
 
-Then we're free to query the day away.
+## Arrests
+
+There is a marked disparity in many districts between racial makeup of the population and racial makeup of juveniles arrested.
 
 <<>>=
 exec_sql("""
@@ -35,13 +37,40 @@ exec_sql("""
     ORDER BY pop_arrest_diff DESC""")
 @
 
+There is also an incongruency between where graffiti occurs and where juveniles are arrested for vandalism, in particular in North Side district **14 - Shakespeare**, which has had the third-highest number of graffiti removal calls since 2011 compared to a relatively low number of arrests for vandalism.
+
+<<>>=
+exec_sql("""
+    SELECT 
+      met.dist_num, 
+      dist_name, 
+      pct_black, 
+      total AS vandalism_arrests, 
+      count AS graffiti_reports, 
+      RANK() OVER (ORDER BY count DESC) 
+    FROM (
+      SELECT 
+        * 
+      FROM charges_2014 
+      WHERE offense = 'VANDALISM') AS ch 
+    JOIN police_district_metadata AS met 
+      ON ch.dist_num = met.dist_num 
+    JOIN graffiti_removal_by_district AS graf 
+      ON ch.dist_num = graf.dist_num 
+    ORDER BY vandalism_arrests DESC""")
+@
+
+## Detention
+
+Drug charges are the top reason for juvenile arrests in Chicago – these are the ones for which juveniles are sent to JTDC.
+
 <<>>=
 exec_sql("""
     SELECT
       charge, 
       admit_num, 
       alos 
-    FROM jtdc_charges 
+    FROM jtdc_charges_2015 
     WHERE charge LIKE '%Pcan%' 
     OR charge LIKE '%PCS%' 
     ORDER BY admit_num DESC""")
