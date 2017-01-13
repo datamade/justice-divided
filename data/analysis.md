@@ -3,42 +3,56 @@
 # Further analysis
 (builds on Google doc with contextual data)
 
-Helper function to run `psql` commands from the Python shell:
-
-
-~~~~{.python}
-import subprocess
-
-def exec_sql(query):
-    command = 'psql -d jdiv -c "%s"' % query
-    result = subprocess.check_output(command, shell=True)
-    decoded_result = result.decode('ascii')
-    processed_result = '\n'.join([line for line in decoded_result.split('\n') if line])
-    print('~~~~')
-    print(processed_result)
-    print('~~~~~~~~~~~~~')
-~~~~~~~~~~~~~
 
 
 
 ## Arrests
 
+### The hidden disparity between misdemeanor and felony arrests
+
+Overall, it appears that about an equal number of drug charges are misdemeanors and felonies. 
+
+
+```
+ felonies | misdemeanors 
+----------+--------------
+     1065 |         1884
+(1 row)
+```
+
+
+However, an extraordinarily high number of felony drug arrests in one district – 629 in Harrison (11), six times the next highest total of 96 in Austin (15) – accounts for more than half of all felony drug arrests of juveniles in 2014. If we exclude that district, we see there are far more misdemeanor drug arrests in the remaining districts.
+
+
+```
+ felonies | misdemeanors 
+----------+--------------
+      413 |         1734
+(1 row)
+```
+
+
+The only drug offense that can be a misdemeanor in Chicago is possession of less than 30g of marijuana, sale of less than 10g, or growing fewer than five plants.
+
+We can intuit then that the count of misdemeanor drug arrests is the count of arrests for low-level marijuana offenses. Everywhere but in the 11th district, many more juveniles are being arrested on these charges than on more serious drug offenses. (Note: Working to confirm this logic.)
+
+An even starker example of this pattern is true of disorderly conduct.
+
+
+```
+ felonies | misdemeanors 
+----------+--------------
+       22 |         1720
+(1 row)
+```
+
+
+### Other notable disparities 
+
 There is a marked disparity in many districts between racial makeup of the population and racial makeup of juveniles arrested.
 
 
-~~~~{.python}
-exec_sql("""
-    SELECT
-      dist_num,
-      dist_name,
-      pct_arrests_black,
-      pct_pop_black,
-      pct_arrests_black::numeric - pct_pop_black AS pop_arrest_diff
-    FROM district_profiles
-    ORDER BY pop_arrest_diff DESC""")
-~~~~~~~~~~~~~
-
-~~~~
+```
  dist_num |   dist_name    | pct_arrests_black | pct_pop_black | pop_arrest_diff  
 ----------+----------------+-------------------+---------------+------------------
        18 | Near North     |             89.30 |          8.16 |            81.14
@@ -64,34 +78,13 @@ exec_sql("""
         7 | Englewood      |             98.80 |         94.89 |             3.91
         6 | Gresham        |             98.73 |         97.05 | 1.68000000000001
 (22 rows)
-~~~~~~~~~~~~~
+```
 
 
-There is also an incongruency between where graffiti occurs and where juveniles are arrested for vandalism, in particular in North Side district **14 - Shakespeare**, which has had the third-highest number of graffiti removal calls since 2011 compared to a relatively low number of arrests for vandalism.
+There is also an incongruency between where graffiti occurs and where juveniles are arrested for vandalism, in particular in North Side district **Shakespeare (14)**, which has had the third-highest number of graffiti removal calls since 2011 compared to a relatively low number of arrests for vandalism.
 
 
-~~~~{.python}
-exec_sql("""
-    SELECT 
-      met.dist_num, 
-      dist_name, 
-      pct_black, 
-      total AS vandalism_arrests, 
-      count AS graffiti_reports, 
-      RANK() OVER (ORDER BY count DESC) 
-    FROM (
-      SELECT 
-        * 
-      FROM charges_2014 
-      WHERE offense = 'VANDALISM') AS ch 
-    JOIN police_district_metadata AS met 
-      ON ch.dist_num = met.dist_num 
-    JOIN graffiti_removal_by_district AS graf 
-      ON ch.dist_num = graf.dist_num 
-    ORDER BY vandalism_arrests DESC""")
-~~~~~~~~~~~~~
-
-~~~~
+```
  dist_num |   dist_name    | pct_black | vandalism_arrests | graffiti_reports | rank 
 ----------+----------------+-----------+-------------------+------------------+------
         8 | Chicago Lawn   |     20.68 |               118 |           115555 |    1
@@ -117,27 +110,17 @@ exec_sql("""
        22 | Morgan Park    |     60.48 |                 9 |             2297 |   21
        18 | Near North     |      8.16 |                 6 |            19830 |   13
 (22 rows)
-~~~~~~~~~~~~~
+```
 
+
+What happens to the kids who are arrested? About half are referred to court. Another third are granted station adjustments. The remaining fifth are detained.
 
 ## Detention
 
 Drug charges are the top reason for juvenile arrests in Chicago – these are the ones for which juveniles are sent to JTDC.
 
 
-~~~~{.python}
-exec_sql("""
-    SELECT
-      charge, 
-      admit_num, 
-      alos 
-    FROM jtdc_charges_2015 
-    WHERE charge LIKE '%Pcan%' 
-    OR charge LIKE '%PCS%' 
-    ORDER BY admit_num DESC""")
-~~~~~~~~~~~~~
-
-~~~~
+```
                               charge                              | admit_num | alos  
 ------------------------------------------------------------------+-----------+-------
  PCS - any amount of controlled substance not covered in subs     |       163 | 20.35
@@ -151,5 +134,5 @@ exec_sql("""
  Pcan deliver or intent to deliver - more than 2.5 but not m      |         8 |    17
  DCS/PCS with intent - 15 or more but less than 100 grams         |         3 |    10
 (10 rows)
-~~~~~~~~~~~~~
+```
 
