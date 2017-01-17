@@ -140,6 +140,168 @@ exec_psql("""
 ```
 
 
+## 1. c. Youth from majority-black neighborhoods fare worse in the juvenile justice system.
+
+### i. Of the 10 districts with the smallest proportion of black residents, seven are among the ten districts with the highest proportion of station adjustments granted. 
+
+Only one majority-black neighborhood is among the ten districts with the highest proportion of station adjustments granted.
+
+
+~~~~{.python}
+exec_psql("""
+    SELECT
+      met.dist_num, 
+      dist_name, 
+      pct_black, 
+      num_adjustments, 
+      num_arrests, 
+      adjustment_ratio, 
+      RANK() OVER (ORDER BY adjustment_ratio DESC) AS adjustment_rank 
+    FROM adjustment_by_district AS adj 
+    JOIN police_district_metadata AS met 
+      ON adj.dist_num::numeric = met.dist_num 
+    ORDER BY pct_black""")
+~~~~~~~~~~~~~
+
+```
+ dist_num |   dist_name    | pct_black | num_adjustments | num_arrests | adjustment_ratio | adjustment_rank 
+----------+----------------+-----------+-----------------+-------------+------------------+-----------------
+       16 | Jefferson Park |      1.29 |             134 |         349 |            38.40 |               7
+       17 | Albany Park    |      3.44 |             177 |         451 |            39.25 |               5
+       19 | Town Hall      |      6.14 |             144 |         316 |            45.57 |               1
+       14 | Shakespeare    |      8.07 |             116 |         287 |            40.42 |               3
+       18 | Near North     |      8.16 |              97 |         418 |            23.21 |              15
+       20 | Lincoln        |     11.56 |              78 |         196 |            39.80 |               4
+        9 | Deering        |     13.79 |             331 |         910 |            36.37 |               8
+       25 | Grand Central  |      17.1 |             238 |         681 |            34.95 |              11
+       24 | Rogers Park    |     17.96 |              90 |         313 |            28.75 |              14
+       12 | Near West      |     18.65 |             171 |         489 |            34.97 |              10
+        1 | Central        |     20.64 |             126 |         410 |            30.73 |              13
+        8 | Chicago Lawn   |     20.68 |             675 |        1573 |            42.91 |               2
+       10 | Ogden          |     32.38 |             407 |        1057 |            38.51 |               6
+       22 | Morgan Park    |     60.48 |             109 |         663 |            16.44 |              21
+        4 | South Chicago  |     61.17 |             282 |        1312 |            21.49 |              19
+        2 | Wentworth      |     70.62 |             280 |         867 |            32.30 |              12
+       11 | Harrison       |     84.05 |             380 |        1715 |            22.16 |              17
+        3 | Grand Crossing |     89.81 |             161 |         977 |            16.48 |              20
+       15 | Austin         |     93.06 |             461 |        1309 |            35.22 |               9
+        5 | Calumet        |     94.35 |             228 |        1035 |            22.03 |              18
+        7 | Englewood      |     94.89 |             216 |         971 |            22.25 |              16
+        6 | Gresham        |     97.05 |             154 |         989 |            15.57 |              22
+(22 rows)
+```
+
+
+In majority-black neighborhoods, 57.9% of arrests are misdemeanors, while 22.4% of arrests end in station adjustments.
+
+
+~~~~{.python}
+exec_psql("""
+    SELECT 
+      AVG(m_rate)
+    FROM (
+      SELECT 
+        met.dist_num, 
+        dist_name, 
+        pct_black, 
+        ROUND(num_misdemeanor::numeric / total::numeric, 2) AS m_rate 
+      FROM class_totals_by_district AS cls 
+      JOIN police_district_metadata AS met 
+        ON cls.dist_num = met.dist_num 
+      WHERE pct_black >= 50) f""")
+~~~~~~~~~~~~~
+
+```
+          avg           
+------------------------
+ 0.57888888888888888889
+(1 row)
+```
+
+
+
+~~~~{.python}
+exec_psql("""
+    SELECT
+      AVG(adj_rate)
+    FROM (
+    SELECT
+      met.dist_num, 
+      dist_name, 
+      pct_black, 
+      num_adjustments, 
+      num_arrests, 
+      ROUND(num_adjustments / num_arrests, 2) as adj_rate
+    FROM adjustment_by_district AS adj 
+    JOIN police_district_metadata AS met 
+      ON adj.dist_num::numeric = met.dist_num
+    WHERE pct_black >= 50) f""")
+~~~~~~~~~~~~~
+
+```
+          avg           
+------------------------
+ 0.22444444444444444444
+(1 row)
+```
+
+
+In other neighborhoods, 67.6% of arrests are misdemeanors, while 36.5% of arrests end in station adjustments.
+
+
+~~~~{.python}
+exec_psql("""
+    SELECT 
+      AVG(m_rate)
+    FROM (
+      SELECT 
+        met.dist_num, 
+        dist_name, 
+        pct_black, 
+        ROUND(num_misdemeanor::numeric / total::numeric, 2) AS m_rate 
+      FROM class_totals_by_district AS cls 
+      JOIN police_district_metadata AS met 
+        ON cls.dist_num = met.dist_num 
+      WHERE pct_black < 50) f""")
+~~~~~~~~~~~~~
+
+```
+          avg           
+------------------------
+ 0.67615384615384615385
+(1 row)
+```
+
+
+
+~~~~{.python}
+exec_psql("""
+    SELECT
+      AVG(adj_rate)
+    FROM (
+    SELECT
+      met.dist_num, 
+      dist_name, 
+      pct_black, 
+      num_adjustments, 
+      num_arrests, 
+      ROUND(num_adjustments / num_arrests, 2) as adj_rate
+    FROM adjustment_by_district AS adj 
+    JOIN police_district_metadata AS met 
+      ON adj.dist_num::numeric = met.dist_num
+    WHERE pct_black < 50) f""")
+~~~~~~~~~~~~~
+
+```
+          avg           
+------------------------
+ 0.36461538461538461538
+(1 row)
+```
+
+
+In other words, while there are more felony arrests in majority-black neighborhoods, it does not account for the the full disparity in station adjustment rates.
+
 ## 2. a. Youth from majority-black neighborhoods are overrepresented among youth arrested for a dime bag or less of marijuana.
 
 ### i. “Drug abuse violations” was the number one charge for which juveniles were arrested in 2014.
