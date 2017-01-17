@@ -6,8 +6,7 @@ import pweave
 pweave.rcParams["chunk"]["defaultoptions"].update({'wrap' : False, 'results' : 'raw'})
 
 def exec_psql(command):
-    if 'psql' not in command.lower():
-        command = 'psql -d jdiv -c "%s"' % command
+    command = 'psql -d jdiv -c "%s"' % command
     result = subprocess.check_output(command, shell=True)
     decoded_result = result.decode('ascii')
     processed_result = '\n'.join([line for line in decoded_result.split('\n') if line])
@@ -16,7 +15,20 @@ def exec_psql(command):
     print('```')
 %>
 
-## 1. a. Youth in majority-black neighborhoods are arrested at a disproportionately high rate.
+## 1. a. Black youth account for 79% of juvenile arrents.
+
+<<>>=
+exec_psql("""
+    SELECT 
+      race, 
+      num_arrests, 
+      ROUND(
+        num_arrests / SUM(
+          num_arrests) OVER (), 2) AS pct_total 
+    FROM arrests_by_race""")
+@
+
+## 1. b. Youth in majority-black neighborhoods are arrested at a disproportionately high rate.
 
 ### i. Seven of the nine majority-black police districts are among 10 where most arrests occur. 
 
@@ -34,15 +46,36 @@ exec_psql("""
       ON met.dist_num = arr.dist_num""")
 @
 
+56.9% of juvenile arrests occur in majority-black police districts.
+
+<<>>=
+exec_psql("""
+    SELECT 
+      SUM(
+        CASE WHEN pct_black >= 50 THEN num_arrests END) / SUM(num_arrests) AS maj_black, 
+      SUM(
+        CASE WHEN pct_black < 50 THEN num_arrests END) / SUM(num_arrests) AS other
+    FROM (
+      SELECT 
+        met.dist_num,
+        pct_black,
+        num_arrests 
+      FROM police_district_metadata AS met
+      JOIN arrests_by_district AS arr
+        ON met.dist_num = arr.dist_num) f""")
+@
+
 ### ii. Arrests totals by district are widely dispersed.
 
 <<>>=
 exec_psql("""
-    psql -d jdiv -c 'COPY (SELECT num_arrests FROM arrests_by_district) TO STDOUT' | 
-    csvstat -H""")
+    SELECT 
+      AVG(num_arrests),
+      STDDEV(num_arrests)
+    FROM arrests_by_district""")
 @
 
-## 1. b. Even in districts that are not predominantly black, juveniles arrested are.
+## 1. c. Even in districts that are not predominantly black, juveniles arrested are.
 
 ### i. There are nine police districts where over half the population is black.
 
@@ -70,102 +103,6 @@ exec_psql("""
     WHERE pct_pop_black < 50
     ORDER BY pop_arrest_diff DESC""")
 @
-
-## 1. c. Youth from majority-black neighborhoods fare worse in the juvenile justice system.
-
-### i. Of the 10 districts with the smallest proportion of black residents, seven are among the ten districts with the highest proportion of station adjustments granted. 
-
-Only one majority-black neighborhood is among the ten districts with the highest proportion of station adjustments granted.
-
-<<>>=
-exec_psql("""
-    SELECT
-      met.dist_num, 
-      dist_name, 
-      pct_black, 
-      num_adjustments, 
-      num_arrests, 
-      adjustment_ratio, 
-      RANK() OVER (ORDER BY adjustment_ratio DESC) AS adjustment_rank 
-    FROM adjustment_by_district AS adj 
-    JOIN police_district_metadata AS met 
-      ON adj.dist_num::numeric = met.dist_num 
-    ORDER BY pct_black""")
-@
-
-In majority-black neighborhoods, 57.9% of arrests are misdemeanors, while 22.4% of arrests end in station adjustments.
-
-<<>>=
-exec_psql("""
-    SELECT 
-      AVG(m_rate)
-    FROM (
-      SELECT 
-        met.dist_num, 
-        dist_name, 
-        pct_black, 
-        ROUND(num_misdemeanor::numeric / total::numeric, 2) AS m_rate 
-      FROM class_totals_by_district AS cls 
-      JOIN police_district_metadata AS met 
-        ON cls.dist_num = met.dist_num 
-      WHERE pct_black >= 50) f""")
-@
-
-<<>>=
-exec_psql("""
-    SELECT
-      AVG(adj_rate)
-    FROM (
-    SELECT
-      met.dist_num, 
-      dist_name, 
-      pct_black, 
-      num_adjustments, 
-      num_arrests, 
-      ROUND(num_adjustments / num_arrests, 2) as adj_rate
-    FROM adjustment_by_district AS adj 
-    JOIN police_district_metadata AS met 
-      ON adj.dist_num::numeric = met.dist_num
-    WHERE pct_black >= 50) f""")
-@
-
-In other neighborhoods, 67.6% of arrests are misdemeanors, while 36.5% of arrests end in station adjustments.
-
-<<>>=
-exec_psql("""
-    SELECT 
-      AVG(m_rate)
-    FROM (
-      SELECT 
-        met.dist_num, 
-        dist_name, 
-        pct_black, 
-        ROUND(num_misdemeanor::numeric / total::numeric, 2) AS m_rate 
-      FROM class_totals_by_district AS cls 
-      JOIN police_district_metadata AS met 
-        ON cls.dist_num = met.dist_num 
-      WHERE pct_black < 50) f""")
-@
-
-<<>>=
-exec_psql("""
-    SELECT
-      AVG(adj_rate)
-    FROM (
-    SELECT
-      met.dist_num, 
-      dist_name, 
-      pct_black, 
-      num_adjustments, 
-      num_arrests, 
-      ROUND(num_adjustments / num_arrests, 2) as adj_rate
-    FROM adjustment_by_district AS adj 
-    JOIN police_district_metadata AS met 
-      ON adj.dist_num::numeric = met.dist_num
-    WHERE pct_black < 50) f""")
-@
-
-In other words, while there are more felony arrests in majority-black neighborhoods, it does not account for the the full disparity in station adjustment rates.
 
 ## 2. a. Youth from majority-black neighborhoods are overrepresented among youth arrested for a dime bag or less of marijuana.
 
