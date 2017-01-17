@@ -1,0 +1,158 @@
+<%
+import subprocess
+
+import pweave
+
+pweave.rcParams["chunk"]["defaultoptions"].update({'wrap' : False, 'results' : 'raw'})
+
+def exec_psql(command):
+    if 'psql' not in command.lower():
+        command = 'psql -d jdiv -c "%s"' % command
+    result = subprocess.check_output(command, shell=True)
+    decoded_result = result.decode('ascii')
+    processed_result = '\n'.join([line for line in decoded_result.split('\n') if line])
+    print('```')
+    print(processed_result)
+    print('```')
+%>
+
+## 1. a. Youth in majority-black neighborhoods are arrested at a disproportionately high rate.
+
+### i. Seven of the nine majority-black police districts are among 10 where most arrests occur. 
+
+<<>>=
+exec_psql("""
+    SELECT
+      met.dist_num, 
+      dist_name, 
+      pct_black, 
+      total_pop, 
+      num_arrests, 
+      RANK() OVER(ORDER BY num_arrests DESC) AS arrest_rank 
+    FROM police_district_metadata AS met 
+    JOIN arrests_by_district AS arr
+      ON met.dist_num = arr.dist_num""")
+@
+
+### ii. Arrests totals by district are widely dispersed.
+
+<<>>=
+exec_psql("""
+    psql -d jdiv -c 'COPY (SELECT num_arrests FROM arrests_by_district) TO STDOUT' | 
+    csvstat -H""")
+@
+
+## 1. b. Even in districts that are not predominantly black, juveniles arrested are.
+
+### i. There are nine police districts where over half the population is black.
+
+<<>>=
+exec_psql("select count(*) from police_district_metadata where pct_black >= 50")
+@
+
+There are 17 where over half of juveniles arrested are black. 
+
+<<>>=
+exec_psql("select count(*) from district_profiles where pct_arrests_black >= 50")
+@
+
+### ii. In majority non-white districts, there is a marked difference between racial makeup of the district and racial makeup of juveniles who are arrested.
+
+<<>>=
+exec_psql("""
+    SELECT
+      dist_num,
+      dist_name,
+      pct_arrests_black,
+      pct_pop_black,
+      pct_arrests_black::numeric - pct_pop_black AS pop_arrest_diff
+    FROM district_profiles
+    WHERE pct_pop_black < 50
+    ORDER BY pop_arrest_diff DESC""")
+@
+
+## 2. a. Youth from majority-black neighborhoods are overrepresented among youth arrested for a dime bag or less of marijuana.
+
+### i. “Drug abuse violations” was the number one charge for which juveniles were arrested in 2014.
+
+<<>>=
+exec_psql("""
+    SELECT 
+      offense, 
+      num_misdemeanor, 
+      num_felony, 
+      num_other, 
+      mf_ratio, 
+      total 
+    FROM charge_totals 
+    LIMIT 5""")
+@
+
+### iii. There were more misdemeanor drug arrests than felony drug arrests.
+
+<<>>=
+exec_psql("""
+    SELECT 
+      SUM(felony) AS felonies, 
+      SUM(misdemeanor) AS misdemeanors 
+    FROM charges_2014 
+    WHERE offense LIKE 'DRUG%'""")
+@
+
+### iv. Youth from majority black neighborhoods – a quarter of Chicago's population – accounted for over half of misdemeanor drug arrests.
+
+<<>>=
+exec_psql("""
+    SELECT
+      SUM(CASE WHEN pct_black >= 50 THEN misdemeanor END) AS majority_black,
+      SUM(CASE WHEN pct_black < 50 THEN misdemeanor END) AS majority_non_black
+    FROM charges_2014 AS v
+    JOIN police_district_metadata AS met
+      ON v.dist_num = met.dist_num
+    WHERE offense LIKE 'DRUG%'""")
+@
+
+## 2. b. Youth from majority-black neighborhoods are also overrepresented among youth arrested for disorderly conduct.
+
+### i. We see the same pattern when examining arrests for disorderly conduct.
+
+<<>>=
+exec_psql("""
+    SELECT
+      SUM(CASE WHEN pct_black >= 50 THEN misdemeanor END) AS majority_black,
+      SUM(CASE WHEN pct_black < 50 THEN misdemeanor END) AS majority_non_black
+    FROM charges_2014 AS v 
+    JOIN police_district_metadata AS met 
+      ON v.dist_num = met.dist_num 
+    WHERE offense LIKE 'DISORDERLY%'""")
+@
+
+## APPENDIX: Population calculations
+
+**Total population**
+
+<<>>=
+exec_psql("select sum(total_pop) from police_district_metadata")
+@
+
+**Black population**
+
+Population in majority black districts
+
+<<>>=
+exec_psql("select sum(total_pop) from police_district_metadata where pct_black >= 50")
+@
+
+Overall black population
+
+<<>>=
+exec_psql("select sum(black_pop) from police_district_metadata")
+@
+
+**Non-black population**
+
+Population in majority non-black districts
+
+<<>>=
+exec_psql("select sum(total_pop) from police_district_metadata where pct_black < 50")
+@

@@ -1,7 +1,7 @@
 SHELL := bash
 
 PG_DB = jdiv
-CONTEXT = police_district_metadata graffiti
+CONTEXT = police_district_metadata
 RAW_TABLES = arrests_2014 charges_2014 dispositions_2014 djj_exits_2009_thru_2015 jtdc_charges_2015
 SUBTABLES = arrest_subtables charge_subtables disposition_subtables djj_exits_by_race
 
@@ -23,7 +23,7 @@ $(METADATA) : raw/cpd-dist-names.csv output/police_district_demographics.csv
 	csvsort -c "dist_num" | \
 	csvsql --db postgresql:///$(PG_DB) --insert --table $@
 
-include arrests.mk charges.mk dispositions.mk detention.mk crime_context.mk
+include arrests.mk charges.mk dispositions.mk detention.mk
 
 district_profiles : 
 	psql -d $(PG_DB) -c " \
@@ -55,9 +55,9 @@ district_profiles :
 		JOIN mf_ratio_by_district AS mf \
 		  ON arr.dist_num = mf.dist_num"
 
-analysis.md : raw/analysis.mdw
+output/argument_analysis.md : raw/argument_analysis.mdw
 	pweave -o $@ $<
-	rm -r figures 
+	rm -r output/figures 
 
 .PHONY : clean
 clean :
