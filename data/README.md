@@ -6,6 +6,8 @@ here are the calculations underlying the visualization to come. to revert to the
 git reset --hard b2557b215254340b386dd630a101889665a80d38
 ```
 
+(n.b. contributors who do the above reversion **must** `git pull` to return to HEAD before making and pushing changes. tyvm.)
+
 ### requirements
 
 - [census](https://github.com/CommerceDataService/census-wrapper) (`pip install census`)
