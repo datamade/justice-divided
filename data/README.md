@@ -1,6 +1,10 @@
 ## under the hood
 
-here are the calculations underlying the visualization.
+here are the calculations underlying the visualization to come. to revert to the full analysis:
+
+```
+git reset --hard b2557b215254340b386dd630a101889665a80d38
+```
 
 ### requirements
 
