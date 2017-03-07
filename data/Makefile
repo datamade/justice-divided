@@ -1,68 +1,22 @@
 SHELL := bash
 
+GENERATED_FILES = output/arrest_rate_by_race.csv
 PG_DB = jdiv
-METADATA = police_district_metadata
-RAW_TABLES = arrests_2014 charges_2014 dispositions_2014 djj_exits_2009_thru_2015 jtdc_charges_2015
-SUBTABLES = arrest_subtables charge_subtables disposition_subtables djj_exits_by_race
 
-.PHONY : database
-database : $(PG_DB) $(METADATA) $(RAW_TABLES) $(SUBTABLES) district_profiles
+.PHONY : all clean
 
-$(PG_DB) :
+.INTERMEDIATE : misdemeanor_marijuana_arrests.filtered.csv male_youth_population.csv
+
+$(PG_DB) : 
 	createdb $@
 
-raw/cpd-dist-names.csv :
-	# hand compiled from cpd website
+male_youth_population.csv : 
+	python scripts/retrieve_youth_pop.py > $@ 
 
-output/police_district_demographics.csv : raw/police_district_boundaries.geojson
-	(echo dist_num,black_male_juvenile_pop,total_male_juvenile_pop,pct_juv_black,total_black_pop,total_pop,pct_pop_black; \
-	python scripts/retrieve_census.py) | \
-	csvsort -c 1 > $@
+include marijuana_arrests.mk
 
-$(METADATA) : raw/cpd-dist-names.csv output/police_district_demographics.csv
-	csvjoin -c "dist_num,dist_num" $^ | \
-	csvsort -c "dist_num" | \
-	csvsql --db postgresql:///$(PG_DB) --insert --table $@
-
-include arrests.mk charges.mk dispositions.mk detention.mk
-
-district_profiles : 
-	psql -d $(PG_DB) -c " \
-		SELECT \
-		  met.dist_num, \
-		  dist_name, \
-		  total_male_juvenile_pop, \
-		  pct_juv_black, \
-		  total_pop, \
-		  pct_pop_black, \
-		  offense AS top_offense, \
-		  mf_ratio, \
-		  arr.num_arrests, \
-		  pct_arrests_black, \
-		  num_adjustments, \
-		  adjustment_ratio, \
-		  num_detentions, \
-		  detention_ratio \
-		INTO $@ \
-		FROM police_district_metadata AS met \
-		JOIN arrests_by_district AS arr \
-		  ON arr.dist_num = met.dist_num \
-		JOIN ratio_arrests_black_by_district AS blk \
-		  ON arr.dist_num = blk.dist_num \
-		JOIN adjustment_by_district AS adj \
-		  ON arr.dist_num = adj.dist_num \
-		JOIN detention_by_district AS det \
-		  ON arr.dist_num = det.dist_num \
-		JOIN top_charge_by_district AS tc \
-		  ON arr.dist_num = tc.dist_num \
-		JOIN mf_ratio_by_district AS mf \
-		  ON arr.dist_num = mf.dist_num"
-
-output/argument_analysis.md : raw/argument_analysis.mdw
-	pweave -o $@ $<
-	rm -r output/figures 
-
-.PHONY : clean
-clean :
+all : $(PG_DB) $(GENERATED_FILES)
 	dropdb $(PG_DB)
-	rm output/argument_analysis.md
+
+clean :
+	rm output/*
