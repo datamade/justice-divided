@@ -1,82 +1,28 @@
 /* BOOTSTRAP OVERRIDES */
 
-.container-fluid {
-	padding: 0px;
+a, a:hover, a:focus,
+a:active, a:visited {
+    color: #355980;
 }
 
-.fa {
-	padding: 10px;
+body {
+	background-color: #000;
 }
 
-nav.navbar-default {
-	height: 20vh;
-	border-bottom: 0;
+img {
+	max-width: 100%;
 }
 
-.navbar-nav {
-	opacity: 0;
-	margin-top: 13.25vh;
+div.text-only {
+	margin-top: 40%;
 }
 
-.navbar-brand {
-	margin-top: 5vh;
-	font-size: 4em;
+strong {
+	color: #ffce00;
 }
 
-/* CONTEXT MENU STYLES */
-
-div[id*=context] {
-	padding: 20vmax 3vw 0 3vw;
-	min-height: 105vh;
-	background-color: #333;
-	color: #E7E7EE
+.footer {
+    padding: 10px;
+    background-color: #000;
 }
 
-div[id*=context] > div li {
-	margin-left: -2vw;
-}
-
-div[id*=context] > div h3 {
-	color: #E7E7EE;
-}
-
-div[id*=context] > div.text {
-	padding-top: 10vh;
-	opacity: 0;
-}
-
-/* DECISION POINT STYLES */ 
-
-div.frame {
-	min-height: 105vh;
-	height: 100%;
-	margin-bottom: 0;
-	padding-top: 10vmax;
-}
-
-div.frame#intro{
-	padding-top: 15vmax;
-}
-
-div.decision-label {
-	text-align: center;
-	padding-bottom: 5vh;
-}
-
-div.decision-option {
-	padding: 0px;
-	min-height: 25vh;
-	text-transform: uppercase;
-	font-size:1.5em;
-}
-
-div.decision-option img {
-	max-width:100%;
-}
-
-div.outcome-narrative {
-	padding: 10px 50px;
-	opacity: 0;
-}
-
-/* change min/max height/width for context div + imgs on mobile */
