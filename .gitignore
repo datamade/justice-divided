@@ -95,7 +95,7 @@ ENV/
 data/scripts/config.py
 
 # misc
-audio/
+audio/*/
 img/*.xcf
 data/cook.mk
 data/raw/*.xlsx
