@@ -33,3 +33,18 @@ strong {
 .arrest {
     color: #d7191c;
 }
+
+#base_pop_a, #base_pop_b {
+  line-height: 7.5px;
+  font-size: 0.4em;
+}
+
+#marijuana_a, #marijuana_b {
+  line-height: 15px;
+  font-size: .75em;
+}
+
+#arrests_a, #arrests_b {
+  line-height: 75px;
+  font-size: 3.75em;
+}
