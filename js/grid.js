@@ -1,5 +1,5 @@
 var makeGrid = function(id, total, num_per_row, subpop1 = 0, subpop2 = 0) { 
-  selector = 'div#' + id
+  selector = 'div.grid#' + id
   $(selector).append('<span class="arrest"></span>')
   
   if (id.split('_')[0] != 'arrests') {
