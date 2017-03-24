@@ -6,24 +6,90 @@ a:active, a:visited {
 }
 
 body {
-	background-color: #000;
-}
-
-img {
-	max-width: 100%;
-}
-
-div.text-only {
-	margin-top: 40%;
+	background-color: #191C1A;
+  font-size: 2em;
 }
 
 strong {
-	color: #ffce00;
+  font-weight: 400;
+	color: #98A89A;
+}
+
+h3 > small, small {
+  color: #3d4541;
+}
+
+h3 {
+  line-height: 1.25em;
+}
+
+p {
+  margin-bottom: 1em;
 }
 
 .footer {
     padding: 10px;
-    background-color: #000;
+    background-color: inherit;
+}
+
+.jumbotron {
+  height: 95vh;
+  padding-top: 30vh;
+  background: linear-gradient(#000, #000, #191C1A);
+}
+
+thead {
+  font-weight: 900;
+}
+
+tbody > tr {
+  border-top: 1px solid #fff;
+}
+
+td:not(:first-child) {
+  text-align: right;
+}
+
+/* SLICK OVERRIDES */
+
+.slick-slide {
+  margin-top: 5vh;
+  min-height: 50vh;
+}
+
+.slick-arrow:hover {
+  cursor: pointer;
+}
+
+.slick-arrow:active {
+  color: #3d4541;
+}
+
+.slick-dots > li {
+  display: inline-block;
+}
+
+ul.slick-dots > li > button {
+  visibility: hidden;
+}
+
+ul.slick-dots > li > button:before {
+  visibility: visible;
+  font-family: FontAwesome;
+  content: '\f111';
+  font-size: 0.5em;
+  color: #3d4541;
+  cursor: pointer;
+}
+
+ul.slick-dots > li.slick-active > button:before {
+  color: #fff;
+}
+
+/* CUSTOM STUFF */
+
+img {
+  max-width: 100%;
 }
 
 .use-mj {
@@ -34,17 +100,48 @@ strong {
     color: #d7191c;
 }
 
+/* grids */
+
 #base_pop_a, #base_pop_b {
-  line-height: 7.5px;
-  font-size: 0.4em;
+  line-height: 1.5em;
+  font-size: 0.25em;
 }
 
 #marijuana_a, #marijuana_b {
-  line-height: 15px;
-  font-size: .75em;
+  line-height: 1.5em;
+  font-size: .5em;
 }
 
 #arrests_a, #arrests_b {
-  line-height: 75px;
-  font-size: 3.75em;
+  line-height: 1.5em;
+  font-size: 3.25em;
+}
+
+#total_arrests {
+  line-height: 2em;
+  font-size: 1.75em;
+}
+
+/* animations */
+
+div#header {
+  width: 728px;
+  height: 90px;
+  background: url('../img/sprite.png') bottom center;
+  animation-fill-mode: forwards;
+}
+
+div#headscratch {
+  display: inline-block;
+  width: 1.28571429em;
+  height: 1.129801660em;
+  background: url('../img/headscratch.png') bottom center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: play 2s steps(8) infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes play {
+  50%, 100% { background-position: top center; }
 }

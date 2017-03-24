@@ -84,6 +84,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <link href="css/slick.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -94,6 +95,10 @@
   </head>
 
   <body>
+
+    <div class="jumbotron" align="center">
+      <div id="header"></div>
+    </div>
 
     <div class="container">
       {{ content }}
@@ -135,16 +140,43 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.inview.min.js"></script>
   <script src="js/grid.js"></script>
-
+  <script src="js/slick.min.js"></script>
+  
   <script>
 
+      // dynamically set height of sections
       $('.section').each(function() {
-          $(this).css({'min-height': window.innerHeight});
+          $(this).css({'min-height': window.innerHeight * 1.25});
       })
 
-      $('div#title').css({'opacity': 0}).one('inview', function() {
-        $(this).animate({'opacity': 1}, 750);
+      // animate header
+      var anim = function() {
+        $(document).one('scroll', function(event) {
+          $('div#header').css({'animation': 'play 1.5s steps(14)',
+                               'animation-fill-mode': 'forwards'});
+        }
+      )}
+
+      $('div#header').on('inview', function(event, isInView) {
+        if (isInView) { setTimeout(anim, 1000) }
+        else { $(this).css('animation', '') }
       })
+
+      var slides = $('div#stages')
+
+      // init next stages slider
+//      $('div#stages').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+//        var i = (currentSlide ? currentSlide : 0) + 1;
+//        ($('div#status')).text(i + '/' + slick.slideCount);
+//      });
+
+      $('div#stages').slick({
+        prevArrow: '<i class="fa fa-chevron-left fa-fw pull-left"></i>',
+        nextArrow: '<i class="fa fa-chevron-right fa-fw pull-right"></i>',
+        appendArrows: $('div#stages-nav'),
+        dots: true,
+        appendDots: $('div#status')
+      });
 
   </script>
 
