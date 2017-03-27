@@ -96,6 +96,8 @@
 
   <body>
 
+    <progress value="0"></progress>
+
     <div class="jumbotron" align="center">
       <div id="header"></div>
     </div>
@@ -162,20 +164,27 @@
         else { $(this).css('animation', '') }
       })
 
-      var slides = $('div#stages')
-
-      // init next stages slider
-//      $('div#stages').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
-//        var i = (currentSlide ? currentSlide : 0) + 1;
-//        ($('div#status')).text(i + '/' + slick.slideCount);
-//      });
-
+      // stats slides
       $('div#stages').slick({
         prevArrow: '<i class="fa fa-chevron-left fa-fw pull-left"></i>',
         nextArrow: '<i class="fa fa-chevron-right fa-fw pull-right"></i>',
         appendArrows: $('div#stages-nav'),
         dots: true,
         appendDots: $('div#status')
+      });
+
+      // progress bar (via https://css-tricks.com/reading-position-indicator/)
+      var winHeight = $(window).height(), 
+        docHeight = $(document).height(),
+        progressBar = $('progress'),
+        max, value;
+
+      max = docHeight - winHeight;
+      progressBar.attr('max', max);
+
+      $(document).on('scroll', function(){
+         value = $(window).scrollTop();
+         progressBar.attr('value', value);
       });
 
   </script>
