@@ -1,6 +1,6 @@
 SHELL := bash
 
-GENERATED_FILES = output/arrest_rate_by_race.csv
+GENERATED_FILES = output/arrest_rate_by_race.csv output/youth_population.csv
 PG_DB = jdiv
 
 .PHONY : all clean
@@ -10,8 +10,8 @@ PG_DB = jdiv
 $(PG_DB) : 
 	createdb $@
 
-male_youth_population.csv : 
-	python scripts/retrieve_youth_pop.py > $@ 
+output/youth_population.csv : 
+	python scripts/make_population_grid.py > $@
 
 include marijuana_arrests.mk
 
