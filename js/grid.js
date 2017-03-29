@@ -1,9 +1,9 @@
 var makeGrid = function(id, total, num_per_row, subpop1 = 0, subpop2 = 0) { 
   selector = 'div.grid#' + id
-  $(selector).append('<span class="arrest"></span>')
+  $(selector).append('<span class="red"></span>')
   
   if (id.split('_')[0] != 'arrests') {
-    $(selector).append('<span class="use-mj"></span>')
+    $(selector).append('<span class="blue"></span>')
   }
 
   for (i = 0; i < total; i++) {

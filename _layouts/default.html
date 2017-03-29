@@ -84,6 +84,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <link href="css/chartist.min.css" rel="stylesheet" >
     <link href="css/slick.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 
@@ -143,6 +144,8 @@
   <script src="js/jquery.inview.min.js"></script>
   <script src="js/grid.js"></script>
   <script src="js/slick.min.js"></script>
+  <script src="js/chartist.min.js"></script>
+  <script src="js/drop.js"></script>
   
   <script>
 
@@ -154,13 +157,13 @@
       // animate header
       var anim = function() {
         $(document).one('scroll', function(event) {
-          $('div#header').css({'animation': 'play 1.5s steps(14)',
+          $('div#header').css({'animation': 'play 1s steps(14)',
                                'animation-fill-mode': 'forwards'});
         }
       )}
 
       $('div#header').on('inview', function(event, isInView) {
-        if (isInView) { setTimeout(anim, 1000) }
+        if (isInView) { setTimeout(anim, 250) }
         else { $(this).css('animation', '') }
       })
 
@@ -186,6 +189,46 @@
          value = $(window).scrollTop();
          progressBar.attr('value', value);
       });
+
+      // charts
+      new Chartist.Pie('#youth_demographics', {
+        series: [40, 60]}, {
+          startAngle: 270,
+          total: 100,
+          showLabel: false
+        });  
+
+      new Chartist.Pie('#arrest_demographics', {
+        series: [79, 21]}, {
+          startAngle: 270,
+          total: 100,
+          showLabel: false
+      });
+
+      // dropout simulation
+      var dropout;
+      var runDropout = false;
+      var speedButtons = $('button.btn-link.btn-dropout')
+      
+      $('button.btn-dropout.btn-default').click(function() {
+          runDropout = !runDropout
+          speedButtons.toggleClass('hidden');
+          if ( runDropout ) {
+            dropout = run( $(this).attr('data') )
+            $(this).text('Stop').addClass('btn-danger');
+          } else {
+            clearInterval(dropout);
+            $(this).text('Run').removeClass('btn-danger'); 
+          }
+      });
+
+      $('button.btn-dropout.btn-link').click(function() {
+        if ( runDropout ) {
+          clearInterval(dropout);
+          dropout = run( $(this).attr('data') );
+        }
+      })
+
 
   </script>
 

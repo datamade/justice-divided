@@ -6,7 +6,7 @@ title:
     <br />
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col col-sm-10 col-sm-offset-1">
                 <h3>Here are two groups of <strong>teen boys.</strong> <small>(n = 3250)</small></h3><br />
             </div>
         </div>
@@ -23,8 +23,8 @@ title:
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
-                <h3><strong>Twenty percent</strong> of boys from each group <span class="use-mj">use marijuana.</span> <small>(n = 650)</small></h3><br />
+            <div class="col col-sm-10 col-sm-offset-1">
+                <h3><strong>Twenty percent</strong> of boys from each group <span class="blue">use marijuana.</span> <small>(n = 650)</small></h3><br />
             </div>
         </div>
         <div class="row">
@@ -40,9 +40,9 @@ title:
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col col-sm-10 col-sm-offset-1">
                 <h3>
-                    <p><strong>Fifteen boys</strong> from Group A are <span class="arrest">arrested</span> for minor marijuana offenses.</p>
+                    <p><strong>Fifteen boys</strong> from Group A are <span class="red">arrested</span> for minor marijuana offenses.</p>
 
                     <p><strong>Only one</strong> is arrested from Group B.</h3></p>
                 </h3>
@@ -61,34 +61,57 @@ title:
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col col-sm-10 col-sm-offset-1">
                 <h3>The <strong>difference?</strong> <div id="headscratch"></div></h3>
             </div>
         </div>
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col col-sm-10 col-sm-offset-1">
                 <h3>Group A is <strong>black.</strong></h3>
             </div>
         </div>
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col col-sm-10 col-sm-offset-1">
                 <h3>
-                    <p>A broad body of research indicates that <strong>most juveniles will engage in "delinquent" behavior</strong> during their adolescence.</p>
+                    <p>A broad body of research indicates that <strong>most juveniles</strong> will engage in “delinquent” behavior during their adolescence.</p>
 
-                    <p>Youth of color are more likely to have an encounter with the criminal justice system. This phenomenon is known as <strong>disproportionate minority contact.</strong></p>
+                    <p><strong>Youth of color</strong> are more likely to encounter the criminal justice system.</p> 
+
+                    <p>This phenomenon is known as “disproportionate minority contact.”</p>
                 </h3>
             </div>
         </div>
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col col-sm-10 col-sm-offset-1">
                 <h3>
-                    Black youth account account for <strong>79 percent</strong> of juvenile arrests in Chicago. As a consequence, they represent a wide majority at every subsequent stage of the justice system.
+                    <p>In Chicago, <span class="red">black youth</span> account for <strong>40 percent</strong> of the population between the ages of 10 and 17 – but <strong>79 percent</strong> of juvenile arrests.</p>
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-12 center-block">
+                <div class="col col-sm-5 col-sm-offset-1">
+                    <div class="ct-chart ct-square" id="youth_demographics"></div>
+                    <small>Population</small>
+                </div>
+                <div class="col col-sm-5 col-sm-offset-1">
+                    <div class="ct-chart ct-square" id="arrest_demographics"></div>
+                    <small>Arrests</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="row">
+            <div class="col col-sm-10 col-sm-offset-1">
+                <h3>
+                    As a consequence, they represent a wide majority at every subsequent stage of the justice system.
                 </h3>
             </div>
         </div>
@@ -106,7 +129,7 @@ title:
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="arrest">
+                                <tr class="red">
                                     <td>Black</td>
                                     <td>2,964</td>
                                     <td>80.6</td>
@@ -136,7 +159,7 @@ title:
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="arrest">
+                                <tr class="red">
                                     <td>Black</td>
                                     <td>214</td>
                                     <td>85.6</td>
@@ -166,7 +189,7 @@ title:
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="arrest">
+                                <tr class="red">
                                     <td>Black</td>
                                     <td>274</td>
                                     <td>82.5</td>
@@ -189,6 +212,48 @@ title:
                 <div id="stages-nav" class="text-center">
                     <div id="status" style="display: inline-block;"></div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="row">
+            <div class="col col-sm-10 col-sm-offset-1">
+                <h3>
+                    <p>Punishment for juvenile crimes is effectively <strong>a life sentence.</strong></p>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="row">
+            <div class="col col-sm-10 col-sm-offset-1">
+                <h3>
+                    <h3><span class="red">Youth who are arrested</span> are more likely than <span class="blue">their peers</span> to drop out of high school. <small>(each <i class="fa fa-circle fa-fw"></i> represents a student)</small></h3>
+                    <br />
+                    <button class="btn btn-xl btn-default btn-dropout" id="toggle" data="1000">Run</button>
+                    <button class="btn btn-link speed-button btn-dropout hidden" data="500">x 2</button>
+                    <button class="btn btn-link speed-button btn-dropout hidden" data="100">x 10</button>
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-10 col-sm-offset-1">
+                <div id="dropout">
+                    <div id="graduate-label">graduate</div>
+                    <div id="dropout-line"></div>
+                    <div id="dropout-label">drop out</div>
+                </div>
+                <span id="non-arrest-total" class="blue label">0</span>
+                <span id="arrest-total" class="red label">0</span>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="row">
+            <div class="col col-sm-10 col-sm-offset-1">
+                <h3>
+                    <p>Fewer still enroll in four-year colleges.</p>
+                </h3>
             </div>
         </div>
     </div>
