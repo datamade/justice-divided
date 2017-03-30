@@ -1,53 +1,53 @@
 // globals
+var totalStudents = 0;
 var arrestedDropout = 0;
 var nonArrestedDropout = 0;
 
-
 // helpers
-
-// decide whether dot drops out
-function determineOutcome(cls) {
-  if ( cls.includes('arrested') ) {
-    // p (arrested & do not graduate) = .75
-    cls = Math.random() > 0.75 ? cls + ' graduate' : cls + ' dropout' 
+function determineOutcome(baseClass, p) {
+  rand = Math.random();
+  if ( rand <= p ) {
+    outcome = baseClass + ' dropout';
   } else {
-    // p (not arrested & do not graduate) = .53
-    cls = Math.random() > 0.53 ? cls + ' graduate' : cls + ' dropout'
+    outcome = baseClass + ' graduate';
   }
-  countOutcomes(cls);
-  return cls
+  countOutcome(outcome);
+  return outcome;
 }
 
-// increment appropriate tally
-function countOutcomes(cls) {
-  if ( cls.includes('dropout') ) {
-    if ( cls.includes('arrested') ) { arrestedDropout++; }                         
-                               else { nonArrestedDropout++; }
+function countOutcome(outcome) {
+  totalStudents++; 
+  if ( outcome.includes('dropout') ) {
+    if ( outcome.includes('arrested') ) { 
+      arrestedDropout++; 
+    } else { 
+      nonArrestedDropout++; 
+    }
   }
 }
-
 
 // functionality
 function addStudents() {
-   arrestedOutcome = determineOutcome('student arrested')
-   nonArrestedOutcome = determineOutcome('student')
+   arrestedOutcome = determineOutcome('student arrested', 0.73);
+   nonArrestedOutcome = determineOutcome('student', 0.51);
    students = '<div class="' + arrestedOutcome + `"></div>
-               <div class="` + nonArrestedOutcome + '"></div>'
-   $('div#dropout').append(students)
+               <div class="` + nonArrestedOutcome + '"></div>';
+   $('div#dropout').append(students);
 } 
 
 function removeStudents() {
   $('div.student').on('animationend oAnimationEnd webkitAnimationEnd', function() { 
-      $(this).remove();
-   })
+    $(this).remove();
+  })
 }
 
 function updateCount() {
-  $('span#arrest-total').text(arrestedDropout);
-  $('span#non-arrest-total').text(nonArrestedDropout);
+  $('#arrest-count > :first-child').text(arrestedDropout);
+  $('#non-arrest-count > :first-child').text(nonArrestedDropout);
+  $('span.count').text(totalStudents / 2);
 }
 
-function run(speed) {
+function runContinuous(speed) {
   return setInterval(function() {
     addStudents();
     $.when( removeStudents() ).done( updateCount() ); 

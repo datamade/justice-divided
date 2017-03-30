@@ -11,15 +11,11 @@ a:active, a:visited,
 body {
   background-color: #191C1A;
   font-size: 2em;
-}
-
-strong {
-  font-weight: 400;
-  color: #98A89A;
+  color: #dbe2db;
 }
 
 h3 > small, small {
-  color: #3d4541;
+  color: #5a665f;
 }
 
 h3 {
@@ -105,6 +101,12 @@ img {
 
 .red {
     color: #d7191c;
+}
+
+.highlight {
+  padding: 0px 3px 2px 3px;
+  color: #191C1A;
+  background-color: #dbe2db;
 }
 
 progress {
@@ -235,7 +237,7 @@ div#graduation {
 /* animations */
 @keyframes graduate {
   from { top: 0; }
-  to { top: 40%; background-color: #fff; }
+  to { top: 20%; background-color: #fff; }
 }
 
 @keyframes dropout {
@@ -244,61 +246,80 @@ div#graduation {
 }
 
 @keyframes fade-in-and-out {
-  25% { opacity: 0.5 }
+  25% { opacity: 0.75 }
   50% { opacity: 1 }
-  75% { opacity: 0.5 }
+  75% { opacity: 0.75 }
   100% { opacity : 0 }
 }
 
 /* styles */
+#dropout-control {
+  border: none;
+  background-color: #dbe2db;
+  color: #191C1A;
+  z-index: 10;
+}
+
 #dropout {
   position: relative;
   width: 100%;
-  height: 60vh;
-  color: #3d4541;
+  height: 50vh;
+  z-index: 0;
 }
 
 #dropout-line {
   position: absolute;
-  top: 50%;
+  top: 30%;
   width: 100%;
   height: 1px;
   background-color: #3d4541;
   z-index: 0;
 }
 
-#dropout-label {
-  padding: 10px;
-  width: 100%;
+.label {
+  font-size: 1em;
   position: absolute;
-  top: 100%;
+}
+
+.label[id*="count"] {
+  color: #191C1A;
+  width: 15vw;
+  text-align: center;
 }
 
 #graduate-label {
-  position: absolute;
-  top: 40%;
+  color: #3d4541;
+  font-weight: 500;
+  top: 21%;
 }
 
-.label {
-  width: 3vw;
-  text-align: center;
-  font-size: 1.25em;
-  position: absolute;
-  top: 101%;
+#dropout-label {
+  top: 100%;
+  text-align: left;
+  font-weight: 500;
+  color: #191C1A;
+  width: 100%;
+  background-color: #dbe2db;
+  border-radius: 0;
 }
 
-.label#non-arrest-total {
-  left: 65%;
+#non-arrest-count {
+  left: 39vmax;
 }
 
-.label#arrest-total {
-  left: 32%;
+#arrest-count {
+  left: 19vmax;
+}
+
+.count {
+  color: #191C1A;
+  font-weight: 500;
 }
 
 .student {
   opacity: 0;
   position: absolute;
-  left: 66.6%;
+  left: 45vmax;
   height: 20px;
   width: 20px;
   border-radius: 20px;
@@ -307,7 +328,7 @@ div#graduation {
 }
 
 .arrested {
-  left: 33.3%;
+  left: 25vmax;
   background-color: #d7191c;
 }
 
