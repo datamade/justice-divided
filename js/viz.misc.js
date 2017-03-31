@@ -24,18 +24,3 @@ $('div#stages').slick({
   dots: true,
   appendDots: $('div#status')
 });
-
-// charts
-new Chartist.Pie('#youth_demographics', {
-  series: [40, 60]}, {
-    startAngle: 270,
-    total: 100,
-    showLabel: false
-  });  
-
-new Chartist.Pie('#arrest_demographics', {
-  series: [79, 21]}, {
-    startAngle: 270,
-    total: 100,
-    showLabel: false
-});

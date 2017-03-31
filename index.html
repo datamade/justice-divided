@@ -1,30 +1,32 @@
 ---
 layout: default
 title: The Problem
-custom_css: custom.viz
+custom_css: 
+- chartist.min
+- custom.viz
 custom_js:
 - jquery.inview.min
 - grid
 - chartist.min
-- slick.min
 - drop
 - viz.misc
+- charts
 ---
 
     <br />
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
                 <h3>Here are two groups of teen boys. <small>(n = 3250)</small></h3><br />
             </div>
         </div>
         <div class="row">
-            <div class="col col-sm-12 center-block" id="base_population">
-                <div class="col col-sm-5 col-sm-offset-1">
+            <div class="col-sm-12 center-block" id="base_population">
+                <div class="col-sm-5 col-sm-offset-1">
                     <div class="grid" id="base_pop_a"></div>
                     <small>Group A</small>
                 </div>
-                <div class="col col-sm-5 col-sm-offset-1">
+                <div class="col-sm-5 col-sm-offset-1">
                     <div class="grid" id="base_pop_b"></div>
                     <small>Group B</small>
                 </div>
@@ -33,17 +35,17 @@ custom_js:
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
                 <h3>An <span class="highlight">equal number</span> of boys from both groups use marijuana. <small>(n = 650)</small></h3><br />
             </div>
         </div>
         <div class="row">
-            <div class="col col-sm-12 center-block" id="marijuana_users">
-                <div class="col col-sm-5 col-sm-offset-1">
+            <div class="col-sm-12 center-block" id="marijuana_users">
+                <div class="col-sm-5 col-sm-offset-1">
                     <div class="grid" id="marijuana_a"></div>
                     <small>Group A</small>
                 </div>
-                <div class="col col-sm-5 col-sm-offset-1">
+                <div class="col-sm-5 col-sm-offset-1">
                     <div class="grid" id="marijuana_b"></div>
                     <small>Group B</small>
                 </div>
@@ -52,19 +54,19 @@ custom_js:
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
                 <h3>
                     <p><span class="highlight">Fifteen boys</span> from Group A are arrested on minor marijuana charges. Only <span class="highlight">one</span> is arrested from Group B.</h3></p>
                 </h3>
             </div>
         </div>
         <div class="row">
-            <div class="col col-sm-12 center-block" id="marijuana_arrests">
-                <div class="col col-sm-5 col-sm-offset-1">
+            <div class="col-sm-12 center-block" id="marijuana_arrests">
+                <div class="col-sm-5 col-sm-offset-1">
                     <div class="grid" id="arrests_a"></div>
                     <small>Group A</small>
                 </div>
-                <div class="col col-sm-5 col-sm-offset-1">
+                <div class="col-sm-5 col-sm-offset-1">
                     <div class="grid" id="arrests_b"></div>
                     <small>Group B</small>
                 </div>
@@ -73,21 +75,21 @@ custom_js:
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
                 <h3>The difference? <div id="headscratch"></div></h3>
             </div>
         </div>
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
                 <h3>Group A is <span class="highlight">black.</span></h3>
             </div>
         </div>
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
                 <h3>
                     <p>A broad body of research indicates that <span class="highlight">most juveniles engage in “delinquent” behavior</span> during their adolescence.</p>
 
@@ -100,159 +102,58 @@ custom_js:
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
                 <h3>
                     <p>In Chicago, <span class="red">black youth</span> account for <span class="highlight">40 percent of the population</span> between the ages of 10 and 17 – but <span class="highlight">79 percent of juvenile arrests.</span></p>
                 </h3>
             </div>
         </div>
         <div class="row">
-            <div class="col col-sm-12 center-block">
-                <div class="col col-sm-5 col-sm-offset-1">
-                    <div class="ct-chart ct-square" id="youth_demographics"></div>
-                    <small>Population</small>
-                </div>
-                <div class="col col-sm-5 col-sm-offset-1">
-                    <div class="ct-chart ct-square" id="arrest_demographics"></div>
-                    <small>Arrests</small>
-                </div>
+            <div class="col-sm-8 col-sm-offset-1">
+                <span class="highlight">BETTER CHART HERE</span>
             </div>
         </div>
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
                 <h3>
-                    As a consequence, black youth represent <span class="highlight">a wide majority</span> at every subsequent stage of the justice system.
+                    As a consequence of the disparity in arrests, black youth represent <span class="highlight">a wide majority</span> at every subsequent stage of the justice system.
                 </h3>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
-                <div id="stages">
-                    <div>
-                        <h3>Juvenile Temporary Detention Center Admissions, 2015</h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <td>Race</td>
-                                    <td>#</td>
-                                    <td>%</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="red">
-                                    <td>Black</td>
-                                    <td>2,964</td>
-                                    <td>80.6</td>
-                                </tr>
-                                <tr>
-                                    <td>Hispanic</td>
-                                    <td>573</td>
-                                    <td>15.6</td>
-                                </tr>
-                                <tr>
-                                    <td>White</td>
-                                    <td>128</td>
-                                    <td>3.5</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <small class="pull-right">SOURCE: JTDC Annual Population Census</small>
-                    </div>
-                    <div>
-                        <h3>Probation Sentences for Misdemeanor Drug Offenses, 2016</h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <td>Race</td>
-                                    <td>#</td>
-                                    <td>%</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="red">
-                                    <td>Black</td>
-                                    <td>214</td>
-                                    <td>85.6</td>
-                                </tr>
-                                <tr>
-                                    <td>White Latino</td>
-                                    <td>19</td>
-                                    <td>7.6</td>
-                                </tr>
-                                <tr>
-                                    <td>White</td>
-                                    <td>14</td>
-                                    <td>5.6</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <small class="pull-right">SOURCE: Cook County Probation</small>
-                    </div>
-                    <div>
-                        <h3>Department of Juvenile Justice Exits, 2015</h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <td>Race</td>
-                                    <td>#</td>
-                                    <td>%</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="red">
-                                    <td>Black</td>
-                                    <td>274</td>
-                                    <td>82.5</td>
-                                </tr>
-                                <tr>
-                                    <td>Hispanic</td>
-                                    <td>50</td>
-                                    <td>15.1</td>
-                                </tr>
-                                <tr>
-                                    <td>White</td>
-                                    <td>7</td>
-                                    <td>2.1</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <small class="pull-right">SOURCE: Illinois Department of Juvenile Justice</small>
-                    </div>
-                </div>
-                <div id="stages-nav" class="text-center">
-                    <div id="status" style="display: inline-block;"></div>
-                </div>
+                <div class="ct-chart" id="system_disparity"></div>
             </div>
         </div>
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
                 <h3>
-                    <p>Punishment for juvenile crimes can become <span class="highlight">a life sentence.</span></p>
+                    The consequences of contact with the juvenile justice system can be <span class="highlight">a life sentence.</span>
                 </h3>
             </div>
         </div>
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
                 <h3>Youth who are arrested are more likely than their peers to drop out of high school.</h3>
 
                 Each <i class="fa fa-circle fa-fw"></i> represents a student. <span class="red">Students who are arrested</span> have a 73% chance of dropping out. <span class="blue">Their peers</span> have a 51% chance of dropping out.<br /><br />
             </div>
         </div>
         <div class="row">
-            <div class="col col-sm-10 col-sm-offset-1">
+            <div class="col-sm-10 col-sm-offset-1">
                 <button class="btn btn-sm btn-default pull-right" id="dropout-control">
                     <i class="fa fa-pause fa-fw"></i> Pause
                 </button>
             </div>
         </div>
         <div class="row">
-            <div class="col col-sm-10 col-sm-offset-1">
+            <div class="col-sm-10 col-sm-offset-1">
                 <div id="dropout">
                     <div id="dropout-line"></div>
                     <div id="graduate-label" class="label">Graduate</div>
@@ -268,7 +169,16 @@ custom_js:
     </div>
     <div class="section">
         <div class="row">
-            <div class="col col-sm-8 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
+                <h3>
+                    <p>Fewer still enroll in four-year colleges.</p>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-1">
                 <h3>
                     <p>Fewer still enroll in four-year colleges.</p>
                 </h3>
