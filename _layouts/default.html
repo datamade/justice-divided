@@ -87,6 +87,11 @@
     <link href="css/chartist.min.css" rel="stylesheet" >
     <link href="css/slick.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
+    {% if page.custom_css %}
+      {% for stylesheet in page.custom_css %}
+        <link href="/css/{{ stylesheet }}.css" rel="stylesheet">
+      {% endfor %}
+    {% endif %}
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -141,40 +146,14 @@
   <script src="js/jquery-1.10.1.min.js"></script>
   <script src="js/analytics_lib.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.inview.min.js"></script>
-  <script src="js/grid.js"></script>
-  <script src="js/slick.min.js"></script>
-  <script src="js/chartist.min.js"></script>
-  <script src="js/drop.js"></script>
+
+  {% if page.custom_js %}
+    {% for js_file in page.custom_js %}
+      <script src='/js/{{ js_file }}.js' type="text/javascript"></script>
+    {% endfor %}
+  {% endif %}
   
   <script>
-
-      // dynamically set height of sections
-      $('.section').each(function() {
-          $(this).css({'min-height': window.innerHeight * 1.25});
-      })
-
-      // animate header
-      var anim = function() {
-        $(document).one('scroll', function(event) {
-          $('div#header').css({'animation': 'play 1s steps(14)',
-                               'animation-fill-mode': 'forwards'});
-        }
-      )}
-
-      $('div#header').on('inview', function(event, isInView) {
-        if (isInView) { setTimeout(anim, 250) }
-        else { $(this).css('animation', '') }
-      })
-
-      // stats slides
-      $('div#stages').slick({
-        prevArrow: '<i class="fa fa-chevron-left fa-fw pull-left"></i>',
-        nextArrow: '<i class="fa fa-chevron-right fa-fw pull-right"></i>',
-        appendArrows: $('div#stages-nav'),
-        dots: true,
-        appendDots: $('div#status')
-      });
 
       // progress bar (via https://css-tricks.com/reading-position-indicator/)
       var winHeight = $(window).height(), 
@@ -189,49 +168,6 @@
          value = $(window).scrollTop();
          progressBar.attr('value', value);
       });
-
-      // charts
-      new Chartist.Pie('#youth_demographics', {
-        series: [40, 60]}, {
-          startAngle: 270,
-          total: 100,
-          showLabel: false
-        });  
-
-      new Chartist.Pie('#arrest_demographics', {
-        series: [79, 21]}, {
-          startAngle: 270,
-          total: 100,
-          showLabel: false
-      });
-
-      // dropout simulation
-      var dropout;
-
-      function isPaused() {
-        return $('#dropout-control').text().includes('Play');
-      }
-
-      $('#dropout').on('inview', function(event, isInView) {
-        clearInterval(dropout);
-        if ( isInView ) { 
-          $('#dropout-control').html('<i class="fa fa-pause fa-fw"></i> Pause')
-          dropout = runContinuous(150); 
-        } else {
-          $('#dropout-control').html('<i class="fa fa-play fa-fw"></i> Play')
-          clearInterval(dropout);
-        }
-      })
-
-      $('#dropout-control').click(function() {
-        if ( isPaused() ) {
-          dropout = runContinuous(150);
-          $(this).html('<i class="fa fa-pause fa-fw"></i> Pause')
-        } else {
-          clearInterval(dropout);
-          $(this).html('<i class="fa fa-play fa-fw"></i> Play');
-        }       
-      })
 
   </script>
 
