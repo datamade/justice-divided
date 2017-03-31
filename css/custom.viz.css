@@ -189,32 +189,57 @@ ul.slick-dots > li.slick-active > button:before {
 
 /* CHARTIST OVERRIDES */
 
-.ct-chart {
-  max-width: 75%;
+#system_disparity {
+  margin-left: -50px;
+  padding-right: 100px;
 }
 
-.ct-series-a .ct-slice-pie,
-.ct-series-a .ct-slice-donut {
+.ct-series-a .ct-bar,
+.ct-series-b .ct-bar {
+  fill: #6c706f;
+  stroke: #6c706f;
+  stroke-width: 20px;
+}
+
+.ct-series-c .ct-bar {
   fill: #d7191c;
   stroke: #d7191c;
+  stroke-width: 20px;
 }
 
-.ct-series-b .ct-slice-pie,
-.ct-series-b .ct-slice-donut {
-  fill: #191C1A;
-  stroke: #191C1A;
+.ct-label.ct-vertical {
+  color: inherit;
+  font-size: 1em;
+  width: 100px!important;
+  margin-left: 40px;
+  text-anchor: start!important;
+  text-align: left!important;
+  justify-content: initial!important;
+  align-items: baseline!important;
+  -webkit-box-align: baseline!important;
+  -webkit-align-items: baseline!important;
+  -ms-flex-align: baseline!important;
 }
 
-g text.ct-label:first-child {
-  fill: #fff;
-  font-size: 14pt;
+.ct-label.ct-horizontal {
+  color: #3d4541;
+  font-size: 0.75em;
+  margin-left: -10px;
 }
 
-g text.ct-label:nth-child(2) {
-  fill: transparent;
+.ct-bar-label {
+  fill: #dbe2db;
+  font-size: 0.75em;
 }
 
-div#graduation {
-  height: 400px;
-  background-color: #3d4541;
+.ct-bar-label.mute {
+  fill: #6c706f;
+}
+
+.ct-chart-bar {
+  overflow: visible!important;
+}
+
+.ct-grid {
+  stroke: #3d4541;
 }
