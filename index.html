@@ -1,6 +1,6 @@
 ---
 layout: default
-title: The Problem
+title: Learn
 custom_css: 
 - chartist.min
 - custom.viz
@@ -13,7 +13,10 @@ custom_js:
 - charts
 ---
 
-    <br />
+<div class="jumbotron" align="center">
+  <div id="header"></div>
+</div>
+<div class="container">
     <div class="section">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-1">
@@ -72,6 +75,13 @@ custom_js:
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-9 col-sm-offset-1">
+                <button class="btn btn-xs btn-default pull-right" data-toggle="modal" data-target="#methodology" style="cursor: pointer;">
+                    <i class="fa fa-fw fa-info-circle"></i> Methodology
+                </button>
+            </div>
+        </div>
     </div>
     <div class="section">
         <div class="row">
@@ -91,9 +101,9 @@ custom_js:
         <div class="row">
             <div class="col-sm-8 col-sm-offset-1">
                 <h3>
-                    <p>A broad body of research indicates that <span class="highlight">most juveniles engage in “delinquent” behavior</span> during their adolescence.</p>
+                    <p>Most juveniles engage in “delinquent” behavior during their adolescence.</p>
 
-                    <p><span class="highlight">Youth of color are more likely to encounter the criminal justice system.</span></p> 
+                    <p><span class="red">Youth of color</span> are <span class="highlight">more likely</span> to become entangled in the criminal justice system.</p> 
 
                     <p>This phenomenon is known as “disproportionate minority contact.”</p>
                 </h3>
@@ -108,9 +118,38 @@ custom_js:
                 </h3>
             </div>
         </div>
+    </div>
+    <div class="section">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-1">
-                <span class="highlight">BETTER CHART HERE</span>
+                <h3>
+                    <p>Some of this disparity starts in schools.</p>
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-1">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Enrollment</td>
+                            <td>38.9% black</td>
+                        </tr>
+                        <tr>
+                            <td>Suspensions</td>
+                            <td>70.7% black</td>
+                        </tr>
+                        <tr>
+                            <td>Explusions</td>
+                            <td><span class="red">75.6% black</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-1">
+                <p>Youth who are disciplined with removal from school are nearly <span class="highlight">three times more likely</span> to make contact with the juvenile justice system.</p>
             </div>
         </div>
     </div>
@@ -180,8 +219,46 @@ custom_js:
         <div class="row">
             <div class="col-sm-8 col-sm-offset-1">
                 <h3>
-                    <p>Fewer still enroll in four-year colleges.</p>
+                    <p><span class="red">58%</span> of youth released from IDJJ <span class="highlight">return to prison</span> within three years.</p>
                 </h3>
             </div>
         </div>
     </div>
+    <div class="section">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-1">
+                <h3>
+                    <p>The public pays a premium on <span class="highlight">inequality.</span></p>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-1">
+                <h3>
+                    <p>The annual cost of locking up a teenager is more than 10 times the cost of educating them.</p>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- lead viz methodology -->
+<div class="modal fade" id="methodology" tabindex="-1" role="dialog" aria-labelledby="methodologylabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="methodologylabel">Methodology</h4>
+      </div>
+      <div class="modal-body">
+        <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec sed odio dui.</p>
+
+        <p>Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
