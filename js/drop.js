@@ -6,17 +6,6 @@ function isPaused() {
   return $('#dropout-control').text().includes('Play');
 }
 
-$('#dropout').on('inview', function(event, isInView) {
-  clearInterval(dropout);
-  if ( isInView ) { 
-    $('#dropout-control').html('<i class="fa fa-pause fa-fw"></i> Pause')
-    dropout = runContinuous(150); 
-  } else {
-    $('#dropout-control').html('<i class="fa fa-play fa-fw"></i> Play')
-    clearInterval(dropout);
-  }
-})
-
 $('#dropout-control').click(function() {
   if ( isPaused() ) {
     dropout = runContinuous(150);

@@ -47,3 +47,40 @@ disparityChart.on('draw', function(data) {
     }, baseClass).text(data.value.x + '% ' + labels[data.seriesIndex]);
   }
 });
+
+
+var makeupChart = new Chartist.Bar('#makeup_chart', {
+  labels: [
+    'Arrests',
+    'Population'
+  ],
+  series: [
+    [79, 40]
+  ]
+}, {
+  high: 100,
+  width: '100%',
+  height: '30vh',
+  horizontalBars: true,
+  axisY: {
+    showGrid: false,
+  },
+  axisX: {
+    labelInterpolationFnc: function(x) { 
+      if ( !(x % 5) ) {
+        return x + '%'; 
+      } else {
+        return '';
+      }
+    }
+  }
+});
+
+makeupChart.on('draw', function(data) {
+  if(data.type === 'bar') {
+    data.group.elem('text', {
+      x: data.x2 + 10,
+      y: data.y1 + 5,
+    }, 'ct-bar-label').text(data.value.x + '% black');
+  }
+});
