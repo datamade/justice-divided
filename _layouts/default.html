@@ -103,16 +103,21 @@
 
     <progress value="0"></progress>
 
+    <div class="jumbotron">
+      <div class="container"><h1>Justice Divided</h1></div>
+    </div>
+
     {{ content }}
 
     <div class="footer navbar-fixed-bottom">
       <div class="container">
-        <div class="col col-sm-3">
-          <small>Website by <a target="_blank" href="https://datamade.us">DataMade</a></small>
-        </div>
-        <div class="col col-sm-9 text-right pull-right" id="nav-links">
-          <small><a id="learn" href="{{ site.baseurl }}/"{% if page.title == 'Learn' %}class="active"{% endif %}>Learn</a></small>
-          <small><a id="act" href="{{ site.baseurl }}/action"{% if page.title == 'Act' %}class="active"{% endif %}>Act</a></small>
+        <div class="row">
+          <div id="nav-links" class="text-right">
+            <a id="learn" href="{{ site.baseurl }}/"{% if page.title == 'Learn' %}class="active"{% endif %}>Learn</a>
+            <a id="act" href="{{ site.baseurl }}/action"{% if page.title == 'Act' %}class="active"{% endif %}>Act</a>
+            <a id="resources" href="{{ site.baseurl }}/resources"{% if page.title == 'Resources' %}class="active"{% endif %}>Resources</a>
+            <a id="about" href="{{ site.baseurl }}/about"{% if page.title == 'About' %}class="active"{% endif %}>About</a>
+          </div>
         </div>
       </div>
     </div>
@@ -131,20 +136,6 @@
   
   <script>
 
-      // dynamically set height of sections
-      sections = $('.section')
-      numSections = sections.length
-
-      sections.each(function(i) {
-        if ( i < numSections - 1 ) { // zero-indexed
-          $(this).css('min-height', window.innerHeight * 1.25);
-        } else {
-          $(this).css('min-height', window.innerHeight * .75);
-        }
-      })
-
-      sections.first().css('margin-top', '25vh');
-
       // progress bar (via https://css-tricks.com/reading-position-indicator/)
       var winHeight = $(window).height(), 
         docHeight = $(document).height(),
@@ -157,11 +148,6 @@
       $(document).on('scroll', function(){
          value = $(window).scrollTop();
          progressBar.attr('value', value);
-         if ( value == max ) {
-          $('a#act').addClass('prompt');
-         } else {
-          $('a#act').removeClass('prompt');
-         }
       });
 
   </script>

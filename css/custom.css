@@ -1,12 +1,26 @@
 /* BOOTSTRAP OVERRIDES */
 
 body {
-  background-color: #191C1A;
+  background: #191C1A; 
+  background: -webkit-linear-gradient(#191C1A, #000); 
+  background: -o-linear-gradient(#191C1A, #000); 
+  background: -moz-linear-gradient(#191C1A, #000); 
+  background: linear-gradient(#191C1A, #000);
+  background-attachment: fixed;
   font-size: 2em;
   color: #dbe2db;
 }
 
-h3 > small, small {
+.jumbotron {
+  background-color: inherit;
+  padding: 0;
+}
+
+.jumbotron h1 {
+  font-size: 2.25em;
+}
+
+h3 * small, small {
   color: #5a665f;
 }
 
@@ -20,36 +34,18 @@ p {
 
 .footer {
   padding: 10px;
-  background-color: #191C1A;
+  background-color: #9e1408;
 }
 
-#nav-links > small > a {
+#nav-links > a {
   margin-right: 20px;
   padding: 5px;
   color: #dbe2db;
 }
 
-#nav-links > small > a {
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-#nav-links > small > a.active {
+#nav-links > a.active {
   background-color: #dbe2db;
-  color: #191C1A;
-}
-
-#nav-links > small > a.prompt {
-  color: #191C1A;
-  animation: prompt 1s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-
-@keyframes prompt {
-  to {color: #d7191c;}
+  color: #9e1408;
 }
 
 a, a:hover, a:focus,
@@ -58,12 +54,6 @@ a:active, a:visited,
 .btn-link:focus, .btn-link:active,
 .btn-link:visited {
   color: #355980;
-}
-
-.jumbotron {
-  height: 95vh;
-  padding-top: 30vh;
-  background: linear-gradient(#000, #000, #191C1A);
 }
 
 thead {
@@ -93,9 +83,14 @@ img {
 }
 
 .highlight {
-  padding: 0px 3px 2px 3px;
-  color: #191C1A;
-  background-color: #dbe2db;
+  border-bottom: 1px solid #d7191c;
+}
+
+/* SPACING */
+
+.section {
+  min-height: 110vh;
+  padding-top: 20vh;
 }
 
 /* PROGRESS BAR */

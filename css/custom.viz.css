@@ -1,14 +1,7 @@
-/* PAGE ANIMATIONS */
+/* ANIMATION */
 
-div#header {
-  width: 728px;
-  height: 90px;
-  background: url('../img/sprite.png') bottom center;
-  animation-fill-mode: forwards;
-}
-
-div#headscratch {
-  display: inline-block;
+#headscratch {
+  display: inline;
   width: 1.28571429em;
   height: 1.129801660em;
   background: url('../img/headscratch.png') bottom center;
@@ -44,7 +37,7 @@ div#headscratch {
 /* animations */
 @keyframes graduate {
   from { top: 0; }
-  to { top: 20%; background-color: #fff; }
+  to { top: 20%; }
 }
 
 @keyframes dropout {
@@ -147,61 +140,23 @@ div#headscratch {
   animation: dropout 2s, fade-in-and-out 2s;
 }
 
-/* SLICK OVERRIDES */
-
-.slick-slide {
-  margin-top: 5vh;
-  min-height: 50vh;
-}
-
-.slick-arrow {
-  margin-top: 12px;
-}
-
-.slick-arrow:hover {
-  cursor: pointer;
-}
-
-.slick-arrow:active {
-  color: #3d4541;
-}
-
-.slick-dots > li {
-  display: inline-block;
-}
-
-ul.slick-dots > li > button {
-  visibility: hidden;
-}
-
-ul.slick-dots > li > button:before {
-  visibility: visible;
-  font-family: FontAwesome;
-  content: '\f111';
-  font-size: 0.5em;
-  color: #3d4541;
-  cursor: pointer;
-}
-
-ul.slick-dots > li.slick-active > button:before {
-  color: #fff;
-}
-
 /* CHARTIST OVERRIDES */
 
-#system_disparity {
+.ct-chart {
   margin-left: -50px;
   padding-right: 100px;
 }
 
-.ct-series-a .ct-bar,
-.ct-series-b .ct-bar {
+#system_disparity .ct-series-a .ct-bar,
+#system_disparity .ct-series-b .ct-bar,
+#makeup_chart .ct-series-b .ct-bar {
   fill: #6c706f;
   stroke: #6c706f;
   stroke-width: 20px;
 }
 
-.ct-series-c .ct-bar {
+#system_disparity .ct-series-c .ct-bar,
+#makeup_chart .ct-series-a .ct-bar {
   fill: #d7191c;
   stroke: #d7191c;
   stroke-width: 20px;
