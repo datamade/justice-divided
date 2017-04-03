@@ -80,15 +80,15 @@
     {% endif %}
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/custom.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/custom.css" rel="stylesheet">
     
     {% if page.custom_css %}
       {% for stylesheet in page.custom_css %}
-        <link href="/css/{{ stylesheet }}.css" rel="stylesheet">
+        <link href="{{ site.baseurl }}/css/{{ stylesheet }}.css" rel="stylesheet">
       {% endfor %}
     {% endif %}
 
@@ -111,21 +111,21 @@
           <small>Website by <a target="_blank" href="https://datamade.us">DataMade</a></small>
         </div>
         <div class="col col-sm-9 text-right pull-right" id="nav-links">
-          <small><a id="learn" href="/"{% if page.title == 'Learn' %}class="active"{% endif %}>Learn</a></small>
-          <small><a id="act" href="/action"{% if page.title == 'Act' %}class="active"{% endif %}>Act</a></small>
+          <small><a id="learn" href="{{ site.baseurl }}/"{% if page.title == 'Learn' %}class="active"{% endif %}>Learn</a></small>
+          <small><a id="act" href="{{ site.baseurl }}/action"{% if page.title == 'Act' %}class="active"{% endif %}>Act</a></small>
         </div>
       </div>
     </div>
 
   </body>
 
-  <script src="js/jquery-1.10.1.min.js"></script>
-  <script src="js/analytics_lib.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="{{ site.baseurl }}/js/jquery-1.10.1.min.js"></script>
+  <script src="{{ site.baseurl }}/js/analytics_lib.js"></script>
+  <script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
 
   {% if page.custom_js %}
     {% for js_file in page.custom_js %}
-      <script src='/js/{{ js_file }}.js' type="text/javascript"></script>
+      <script src='{{ site.baseurl }}/js/{{ js_file }}.js' type="text/javascript"></script>
     {% endfor %}
   {% endif %}
   
