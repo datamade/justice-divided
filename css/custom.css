@@ -1,14 +1,13 @@
 /* BOOTSTRAP OVERRIDES */
 
 body {
-  background-color: #191C1A; 
-  font-size: 2em;
-  color: #dbe2db;
+  background-color: #333; 
+  color: #f3f1e5;
 }
 
 .jumbotron {
   background-color: inherit;
-  padding: 0;
+  padding: 3vh 0;
 }
 
 .jumbotron h1 {
@@ -16,16 +15,27 @@ body {
   font-weight: 700;
 }
 
-h3 * small, small {
-  color: #5a665f;
+h2 {
+  line-height: 1.25em;
+  font-weight: 700;
 }
 
 h3 {
-  line-height: 1.25em;
+  margin-bottom: 1em;
+  font-weight: 700;
 }
 
 p {
+  font-size: 1.25em;
   margin-bottom: 1em;
+}
+
+h3 > small, small {
+  color: #6f6d63;
+}
+
+small {
+  font-size: 1.15em;
 }
 
 .footer {
@@ -36,11 +46,12 @@ p {
 #nav-links > a {
   margin-right: 20px;
   padding: 5px;
-  color: #dbe2db;
+  color: #f3f1e5;
+  font-size: 1.25em;
 }
 
 #nav-links > a.active {
-  background-color: #dbe2db;
+  background-color: #f3f1e5;
   color: #9e1408;
 }
 
@@ -56,14 +67,44 @@ img {
   max-width: 100%;
 }
 
+/* HEADER */
+
+div.title {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.title .row:nth-child(2) {
+  margin-top: .25em;
+}
+
+.title:first-of-type {
+  margin-right: .25em;
+}
+
+#divided-top {
+  height: 2.8em; 
+  overflow: hidden;
+}
+
+#divided-bottom {
+  height: 1.6em; 
+  overflow: hidden;
+}
+
+#divided-bottom > h1 {
+  position: absolute; 
+  bottom: 0;
+}
+
 /* TYPOGRAPHY STYLES */
 
 .gray {
-    color: #878f8a;
+  color: #8f9392;
 }
 
 .red {
-    color: #d7191c;
+  color: #d7191c;
 }
 
 .highlight {

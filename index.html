@@ -14,30 +14,32 @@ custom_js:
 <div class="container">
     <div class="section">
         <div class="row">
-            <div class="col-sm-8">
-                <h3>
-                    <p>Most teenagers break the law. Teens of color are more likely to be punished for it. Scholars say this disparity stems from bias in police and courts.</p>
+            <div class="col-md-6">
+                <h3 class="red">Most teens break the law. Youth of color are more likely to be punished for it.</h3>
 
-                    <p>Contact with the justice system puts teens at a disadvantage that persists beyond sentencing. It matters because, in the current system, the teens affected are disproportionately black.</p>
-                </h3>
+                <p>This disparity is called <strong>disproportionate minority contact</strong>. It has been recognized for decades as a deep-rooted problem of the juvenile justice system.</p>
+
+                <p>Researchers say the divide stems from bias in police and courts. It matters because contact with the justice system puts youth at a persistent disadvantage.</p>
+
+                <p>It's <strong>#NotJusticeWhen</strong> the system unduly harms one group over another.</p>
             </div>
         </div>
     </div>
     <div class="section">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <h3>
-                    <p>By way of example, meet two groups of teen boys. Group A is black. Group B is white. <small>(n = 3250)</small></p>
+                    By way of example, consider two groups of teenaged boys in Chicago. Group A is black. Group B is white. <small>(n = 3250)</small>
                 </h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 center-block" id="base_population">
-                <div class="col-sm-5">
+            <div class="col-md-12 center-block" id="base_population">
+                <div class="col-md-6">
                     <div class="grid" id="base_pop_a"></div>
                     <small>Group A</small>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-md-6">
                     <div class="grid" id="base_pop_b"></div>
                     <small>Group B</small>
                 </div>
@@ -46,19 +48,19 @@ custom_js:
     </div>
     <div class="section">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <h3>
-                    <p>Research shows an equal number of boys from both groups, about 20%, use marijuana. <small>(n = 650)</small></p>
+                    Research shows an equal number of boys from both groups, about 20%, use marijuana. <small>(n = 650)</small>
                 </h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 center-block" id="marijuana_users">
-                <div class="col-sm-5">
+            <div class="col-md-12 center-block" id="marijuana_users">
+                <div class="col-md-6">
                     <div class="grid" id="marijuana_a"></div>
                     <small>Group A</small>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-md-6">
                     <div class="grid" id="marijuana_b"></div>
                     <small>Group B</small>
                 </div>
@@ -67,21 +69,19 @@ custom_js:
     </div>
     <div class="section">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <h3>
-                    <p>Some boys are caught with a small amount of marijuana.</p>
-
-                    <p>At the going arrest rate in Chicago, 15 black boys are arrested. Only one white boy is arrested.</p>
+                    Some boys are caught with a small amount of marijuana. At Chicago's current juvenile arrest rate, 16 boys are arrested. Only one of them is white.
                 </h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 center-block" id="marijuana_arrests">
-                <div class="col-sm-5">
+            <div class="col-md-12" id="marijuana_arrests">
+                <div class="col-md-6">
                     <div class="grid" id="arrests_a"></div>
                     <small>Group A</small>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-md-6">
                     <div class="grid" id="arrests_b"></div>
                     <small>Group B</small>
                 </div>
@@ -90,37 +90,51 @@ custom_js:
     </div>
     <div class="section">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <h3>
-                    <p>In Chicago, <span class="red">black youth are overrepresented among juvenile arrests.</p>
+                    Black and white youth account for similar proportions of the Chicago's juvenile population. Yet three times as many black youth are arrested for minor marijuana offenses.
                 </h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-10">
-                <div class="ct-chart" id="makeup_chart"></div>
+            <div class="col-md-10">
+                <div class="ct-chart" id="marijuana_arrests"></div>
             </div>
         </div>
     </div>
     <div class="section">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <h3>
-                    <p>As a consequence, they represent a wide majority at every subsequent stage of the justice system.</p>
+                    Overall, black youth account for 26 times as many juvenile arrests as white youth.
                 </h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-10">
+            <div class="col-md-10">
+                <div class="ct-chart" id="all_arrests"></div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>
+                    As a consequence, they represent a wide majority at every subsequent stage of the justice system.
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
                 <div class="ct-chart" id="system_disparity"></div>
             </div>
         </div>
     </div>
     <div class="section">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <h3>
-                    <p>Youth who are arrested are more likely than their peers to drop out of high school.</p>
+                    Youth who are arrested are more likely than their peers to drop out of high school.
                 </h3>
 
                 <p><span class="red">Students who are arrested</span> are twice as likely than their peers to drop out of high school, and half as likely to attend a four-year college.</p>
@@ -129,7 +143,7 @@ custom_js:
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-10">
+            <div class="col-md-10">
                 <div class="ct-chart" id="education_disparity"></div>
             </div>
         </div>
