@@ -14,7 +14,6 @@ body {
 .jumbotron h1 {
   font-size: 2.25em;
   font-weight: 700;
-  color: gray;
 }
 
 h3 * small, small {
@@ -22,7 +21,7 @@ h3 * small, small {
 }
 
 h3 {
-  line-height: 1.5em;
+  line-height: 1.25em;
 }
 
 p {
