@@ -150,6 +150,12 @@
          progressBar.attr('value', value);
       });
 
+      $('.section').each(function() {
+        if ( $(this).height() > $(this).css('min-height') ) {
+          $(this).next().css('padding-top', '20vh');
+        }
+      })
+
   </script>
 
 </html>

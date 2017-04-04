@@ -1,7 +1,12 @@
-// sources:
-// Juvenile Temporary Detention Center Admissions, 2015
-// Probation Sentences for Misdemeanor Drug Offenses, 2016
-// Department of Juvenile Justice Exits, 2015
+function generateLabels(x) {
+  if ( !(x % 5) ) {
+    return x + '%'; 
+  } else {
+    return '';
+  }
+}
+
+// define charts
 var disparityChart = new Chartist.Bar('#system_disparity', {
   labels: [
     'Detention', 
@@ -14,73 +19,64 @@ var disparityChart = new Chartist.Bar('#system_disparity', {
     [3.5, 5.6, 2.1]
   ]
 }, {
+  high: 100,
   width: '100%',
   height: '65vh',
+  seriesBarDistance: 30,
   horizontalBars: true,
   reverseData: true,
-  seriesBarDistance: 30,
-  scaleMinSpace: 50,
   axisY: {
     showGrid: false,
   },
   axisX: {
-    labelInterpolationFnc: function(x) { 
-      if ( !(x % 15) ) {
-        return x + '%'; 
-      } else {
-        return '';
-      }
-    }
+    labelInterpolationFnc: generateLabels
   }
 });
-
-disparityChart.on('draw', function(data) {
-  labels = ['white', 'Hispanic', 'black'];
-  baseClass = 'ct-bar-label';
-  if(data.type === 'bar') {
-    if ( data.seriesIndex < 2 ) {
-      baseClass += ' mute';
-    }
-    data.group.elem('text', {
-      x: data.x2 + 10,
-      y: data.y1 + 5,
-    }, baseClass).text(data.value.x + '% ' + labels[data.seriesIndex]);
-  }
-});
-
 
 var makeupChart = new Chartist.Bar('#makeup_chart', {
   labels: [
-    'Arrests',
-    'Population'
+    'Population',
+    'Arrests'
   ],
   series: [
-    [79, 40]
+    [39, 79],
+    [36, 3],
   ]
 }, {
   high: 100,
   width: '100%',
-  height: '30vh',
+  height: '40vh',
+  seriesBarDistance: 30,
   horizontalBars: true,
+  reverseData: true,
   axisY: {
     showGrid: false,
   },
   axisX: {
-    labelInterpolationFnc: function(x) { 
-      if ( !(x % 5) ) {
-        return x + '%'; 
-      } else {
-        return '';
-      }
-    }
+    labelInterpolationFnc: generateLabels
   }
 });
 
-makeupChart.on('draw', function(data) {
-  if(data.type === 'bar') {
-    data.group.elem('text', {
-      x: data.x2 + 10,
-      y: data.y1 + 5,
-    }, 'ct-bar-label').text(data.value.x + '% black');
-  }
-});
+var charts = [disparityChart, makeupChart];
+
+// add labels
+charts.forEach(function(chart) {
+  chart.on('draw', function(data) {
+    if ( data.type === 'bar' ) {
+      labels = ['white', 'Hispanic', 'black'];
+      if ( data.series.length == 2 ) {
+        labels.splice(1, 1); // remove Hispanic (to-do: get this population)
+      }
+      baseClass = 'ct-bar-label';
+      if ( data.seriesIndex < data.series.length - 1 ) {
+        baseClass += ' mute'; // mute non-black labels
+      } 
+      data.group.elem('text', {
+        x: data.x2 + 10,
+        y: data.y1 + 5,
+      }, baseClass).text(
+        data.value.x + '% ' + labels[data.seriesIndex]
+      );
+    }
+  });
+})

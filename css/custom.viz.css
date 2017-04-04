@@ -1,20 +1,3 @@
-/* ANIMATION */
-
-#headscratch {
-  display: inline;
-  width: 1.28571429em;
-  height: 1.129801660em;
-  background: url('../img/headscratch.png') bottom center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  animation: play 2s steps(8) infinite;
-  animation-fill-mode: forwards;
-}
-
-@keyframes play {
-  50%, 100% { background-position: top center; }
-}
-
 /* GRID VISUALIZATION */
 
 .grid[id^="base"] {
@@ -32,141 +15,28 @@
   font-size: 3.25em;
 }
 
-/* DROPOUT VISUALIZATION */
-
-/* animations */
-@keyframes graduate {
-  from { top: 0; }
-  to { top: 20%; }
-}
-
-@keyframes dropout {
-  from { top: 0; }
-  to { top: 90%; }
-}
-
-@keyframes fade-in-and-out {
-  25% { opacity: 0.75 }
-  50% { opacity: 1 }
-  75% { opacity: 0.75 }
-  100% { opacity : 0 }
-}
-
-/* styles */
-#dropout-control {
-  border: none;
-  background-color: #dbe2db;
-  color: #191C1A;
-  z-index: 10;
-}
-
-#dropout {
-  position: relative;
-  width: 100%;
-  height: 50vh;
-  z-index: 0;
-}
-
-#dropout-line {
-  position: absolute;
-  top: 30%;
-  width: 100%;
-  height: 1px;
-  background-color: #3d4541;
-  z-index: 0;
-}
-
-.label {
-  font-size: 1em;
-  position: absolute;
-}
-
-.label[id*="count"] {
-  color: #191C1A;
-  width: 15vw;
-  text-align: center;
-}
-
-#graduate-label {
-  color: #3d4541;
-  font-weight: 500;
-  top: 21%;
-}
-
-#dropout-label {
-  top: 100%;
-  text-align: left;
-  font-weight: 500;
-  color: #191C1A;
-  width: 100%;
-  background-color: #dbe2db;
-  border-radius: 0;
-}
-
-#non-arrest-count {
-  left: 39vmax;
-}
-
-#arrest-count {
-  left: 19vmax;
-}
-
-.count {
-  color: #191C1A;
-  font-weight: 500;
-}
-
-.student {
-  opacity: 0;
-  position: absolute;
-  left: 45vmax;
-  height: 20px;
-  width: 20px;
-  border-radius: 20px;
-  background-color: #2c7bb6;
-  z-index: 1;
-}
-
-.arrested {
-  left: 25vmax;
-  background-color: #d7191c;
-}
-
-.graduate {
-  animation: graduate 1s, fade-in-and-out 1s;
-}
-
-.dropout {
-  animation: dropout 2s, fade-in-and-out 2s;
-}
-
 /* CHARTIST OVERRIDES */
 
 .ct-chart {
   margin-left: -50px;
-  padding-right: 100px;
 }
 
-#system_disparity .ct-series-a .ct-bar,
-#system_disparity .ct-series-b .ct-bar,
-#makeup_chart .ct-series-b .ct-bar {
+g.ct-series > line.ct-bar {
   fill: #6c706f;
   stroke: #6c706f;
   stroke-width: 20px;
 }
 
-#system_disparity .ct-series-c .ct-bar,
-#makeup_chart .ct-series-a .ct-bar {
+g.ct-series:last-of-type > line.ct-bar {
   fill: #d7191c;
   stroke: #d7191c;
-  stroke-width: 20px;
 }
 
 .ct-label.ct-vertical {
   color: inherit;
   font-size: 1em;
   width: 100px!important;
-  margin-left: 40px;
+  margin-left: 45px;
   text-anchor: start!important;
   text-align: left!important;
   justify-content: initial!important;

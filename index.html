@@ -8,7 +8,6 @@ custom_js:
 - jquery.inview.min
 - grid
 - chartist.min
-- drop
 - charts
 ---
 
@@ -17,9 +16,9 @@ custom_js:
         <div class="row">
             <div class="col-sm-8">
                 <h3>
-                    <p>Most juveniles engage in “delinquent” behavior during their adolescence. <span class="red">Youth of color</span> are <span class="highlight">more likely</span> to become entangled in the juvenile justice system.</p> 
+                    <p>Most teenagers break the law. Teens of color are more likely to be punished for it. Scholars say this disparity stems from bias in police and courts.</p>
 
-                    <p>This phenomenon is known as “disproportionate minority contact.”</p>
+                    <p>Contact with the justice system puts teens at a disadvantage that persists beyond sentencing. It matters because, in the current system, the teens affected are disproportionately black.</p>
                 </h3>
             </div>
         </div>
@@ -28,7 +27,7 @@ custom_js:
         <div class="row">
             <div class="col-sm-8">
                 <h3>
-                    <p>By way of example, meet two groups of teen boys. <small>(n = 3250)</small></p>
+                    <p>By way of example, meet two groups of teen boys. Group A is black. Group B is white. <small>(n = 3250)</small></p>
                 </h3>
             </div>
         </div>
@@ -49,7 +48,7 @@ custom_js:
         <div class="row">
             <div class="col-sm-8">
                 <h3>
-                    <p>An <span class="highlight">equal number</span> of boys from both groups use marijuana. <small>(n = 650)</small></p>
+                    <p>Research shows an equal number of boys from both groups, about 20%, use marijuana. <small>(n = 650)</small></p>
                 </h3>
             </div>
         </div>
@@ -70,7 +69,9 @@ custom_js:
         <div class="row">
             <div class="col-sm-8">
                 <h3>
-                    <p><span class="highlight">Fifteen boys</span> from Group A are arrested on minor marijuana charges. Only <span class="highlight">one</span> is arrested from Group B.</p>
+                    <p>Some boys are caught with a small amount of marijuana.</p>
+
+                    <p>At the going arrest rate in Chicago, 15 black boys are arrested. Only one white boy is arrested.</p>
                 </h3>
             </div>
         </div>
@@ -90,22 +91,8 @@ custom_js:
     <div class="section">
         <div class="row">
             <div class="col-sm-8">
-                <h3><p style="display: inline-block;">The difference? <div id="headscratch"></div></p></h3>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <div class="row">
-            <div class="col-sm-8">
-                <h3><p>Group A is <span class="highlight">black.</span></p></h3>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <div class="row">
-            <div class="col-sm-8">
                 <h3>
-                    <p>In Chicago, <span class="red">black youth</span> are <span class="highlight">overrepresented</span> among juvenile arrests.</p>
+                    <p>In Chicago, <span class="red">black youth are overrepresented among juvenile arrests.</p>
                 </h3>
             </div>
         </div>
@@ -119,7 +106,7 @@ custom_js:
         <div class="row">
             <div class="col-sm-8">
                 <h3>
-                    <p>As a consequence, they represent <span class="highlight">a wide majority</span> at every subsequent stage of the justice system.</p>
+                    <p>As a consequence, they represent a wide majority at every subsequent stage of the justice system.</p>
                 </h3>
             </div>
         </div>
@@ -133,52 +120,17 @@ custom_js:
         <div class="row">
             <div class="col-sm-8">
                 <h3>
-                    <p>Youth who are arrested are <span class="highlight">more likely than their peers</span> to drop out of high school.</p>
+                    <p>Youth who are arrested are more likely than their peers to drop out of high school.</p>
                 </h3>
 
-                <p>Each <i class="fa fa-circle fa-fw"></i> represents a student. <span class="red">Students who are arrested</span> have a 73% chance of dropping out. <span class="blue">Their peers</span> have a 51% chance of dropping out.</p>
+                <p><span class="red">Students who are arrested</span> are twice as likely than their peers to drop out of high school, and half as likely to attend a four-year college.</p>
 
                 <br />
             </div>
         </div>
         <div class="row">
             <div class="col-sm-10">
-                <button class="btn btn-xl btn-default pull-right" id="dropout-control">
-                    <i class="fa fa-play fa-fw"></i> Play
-                </button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-10">
-                <div id="dropout">
-                    <div id="dropout-line"></div>
-                    <div id="graduate-label" class="label">Graduate</div>
-                    <div id="dropout-label" class="label">Drop out</div>
-                </div>
-                <div id="non-arrest-count" class="label"><span class="blue">0</span> / <span class="count">0</span></div>
-                <div id="arrest-count" class="label"><span class="red">0</span> / <span class="count">0</span></div>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <div class="row">
-            <div class="col-sm-8">
-                <h3>
-                    <p>Fewer still enroll in four-year colleges.</p>
-                </h3>
-
-                <p><span class="red">Youth who are arrested</span> have an 18% chance of attending a four-year college. <span class="blue">Their peers</span> have a 34% chance.</p>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <div class="row">
-            <div class="col-sm-8">
-                <h3>
-                    <p>For most incarcerated youth, the justice system becomes a vicious cycle.</p>
-                </h3>
-                
-                <p>58% of youth released from the Illinois Department of Juvenile Justice <span class="highlight">return to prison</span> within three years.</p>
+                <div class="ct-chart" id="education_disparity"></div>
             </div>
         </div>
     </div>
