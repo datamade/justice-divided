@@ -1,12 +1,7 @@
 /* BOOTSTRAP OVERRIDES */
 
 body {
-  background: #191C1A; 
-  background: -webkit-linear-gradient(#191C1A, #000); 
-  background: -o-linear-gradient(#191C1A, #000); 
-  background: -moz-linear-gradient(#191C1A, #000); 
-  background: linear-gradient(#191C1A, #000);
-  background-attachment: fixed;
+  background-color: #191C1A; 
   font-size: 2em;
   color: #dbe2db;
 }
@@ -18,6 +13,8 @@ body {
 
 .jumbotron h1 {
   font-size: 2.25em;
+  font-weight: 700;
+  color: gray;
 }
 
 h3 * small, small {
@@ -25,7 +22,7 @@ h3 * small, small {
 }
 
 h3 {
-  line-height: 1.25em;
+  line-height: 1.5em;
 }
 
 p {
@@ -56,26 +53,14 @@ a:active, a:visited,
   color: #355980;
 }
 
-thead {
-  font-weight: 900;
-}
-
-tbody > tr:not(:first-child) {
-  border-top: 1px solid #fff;
-}
-
-td:not(:first-child) {
-  text-align: right;
-}
-
 img {
   max-width: 100%;
 }
 
 /* TYPOGRAPHY STYLES */
 
-.blue {
-    color: #2c7bb6;
+.gray {
+    color: #878f8a;
 }
 
 .red {
@@ -83,14 +68,13 @@ img {
 }
 
 .highlight {
-  border-bottom: 1px solid #d7191c;
+  font-weight: 700;
 }
 
 /* SPACING */
 
 .section {
   min-height: 110vh;
-  padding-top: 20vh;
 }
 
 /* PROGRESS BAR */
