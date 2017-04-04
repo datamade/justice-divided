@@ -26,8 +26,8 @@ var makeGrid = function(id, total, num_per_row, subpop1 = 0, subpop2 = 0) {
   }
 }
 
-makeGrid('base_pop_a', 3250, 50, 15, 650);
-makeGrid('base_pop_b', 3250, 50, 1, 650);
+makeGrid('base_pop_a', 3250, 65, 15, 650);
+makeGrid('base_pop_b', 3250, 65, 1, 650);
 makeGrid('marijuana_a', 650, 25, 15);
 makeGrid('marijuana_b', 650, 25, 1);
 makeGrid('arrests_a', 15, 5);

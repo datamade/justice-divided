@@ -7,7 +7,55 @@ function generateLabels(x) {
 }
 
 // define charts
-var disparityChart = new Chartist.Bar('#system_disparity', {
+var marijuanaArrestsChart = new Chartist.Bar('.ct-chart#marijuana_arrests', {
+  labels: [
+    'Juvenile Population',
+    'Marijuana Arrests'
+  ],
+  series: [
+    [39, 71],
+    [36, 23],
+  ]
+}, {
+  high: 100,
+  width: '100%',
+  height: '40vh',
+  seriesBarDistance: 30,
+  horizontalBars: true,
+  reverseData: true,
+  axisY: {
+    showGrid: false,
+  },
+  axisX: {
+    labelInterpolationFnc: generateLabels
+  }
+});
+
+var allArrestsChart = new Chartist.Bar('#all_arrests', {
+  labels: [
+    'Juvenile Population',
+    'All Arrests'
+  ],
+  series: [
+    [39, 79],
+    [36, 3],
+  ]
+}, {
+  high: 100,
+  width: '100%',
+  height: '40vh',
+  seriesBarDistance: 30,
+  horizontalBars: true,
+  reverseData: true,
+  axisY: {
+    showGrid: false,
+  },
+  axisX: {
+    labelInterpolationFnc: generateLabels
+  }
+});
+
+var systemDisparityChart = new Chartist.Bar('#system_disparity', {
   labels: [
     'Detention', 
     'Probation', 
@@ -33,31 +81,7 @@ var disparityChart = new Chartist.Bar('#system_disparity', {
   }
 });
 
-var makeupChart = new Chartist.Bar('#makeup_chart', {
-  labels: [
-    'Population',
-    'Arrests'
-  ],
-  series: [
-    [39, 79],
-    [36, 3],
-  ]
-}, {
-  high: 100,
-  width: '100%',
-  height: '40vh',
-  seriesBarDistance: 30,
-  horizontalBars: true,
-  reverseData: true,
-  axisY: {
-    showGrid: false,
-  },
-  axisX: {
-    labelInterpolationFnc: generateLabels
-  }
-});
-
-var charts = [disparityChart, makeupChart];
+var charts = [marijuanaArrestsChart, allArrestsChart, systemDisparityChart];
 
 // add labels
 charts.forEach(function(chart) {
