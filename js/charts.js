@@ -81,10 +81,33 @@ var systemDisparityChart = new Chartist.Bar('#system_disparity', {
   }
 });
 
-var charts = [marijuanaArrestsChart, allArrestsChart, systemDisparityChart];
+var educationChart = new Chartist.Bar('#education_disparity', {
+  labels: [
+    'Attend College', 
+    'Graduate High School' 
+  ],
+  series: [
+    [27, 49],
+    [18, 34]
+  ]
+}, {
+  high: 75,
+  width: '100%',
+  height: '40vh',
+  horizontalBars: true,
+  seriesBarDistance: 30,
+  axisY: {
+    showGrid: false,
+  },
+  axisX: {
+    labelInterpolationFnc: generateLabels
+  }
+});
 
-// add labels
-charts.forEach(function(chart) {
+
+// label bars
+
+function makeRaceLabels(chart) {
   chart.on('draw', function(data) {
     if ( data.type === 'bar' ) {
       labels = ['white', 'Hispanic', 'black'];
@@ -103,4 +126,26 @@ charts.forEach(function(chart) {
       );
     }
   });
+}
+
+var raceCharts = [marijuanaArrestsChart, allArrestsChart, systemDisparityChart];
+
+raceCharts.forEach(function(chart) {
+  makeRaceLabels(chart);
 })
+
+function makeChanceLabels(chart) {
+  chart.on('draw', function(data) {
+    if ( data.type === 'bar' ) {
+      baseClass = 'ct-bar-label';
+      data.group.elem('text', {
+        x: data.x2 + 10,
+        y: data.y1 + 5,
+      }, baseClass).text(
+        data.value.x + '% chance'
+      );
+    }
+  });  
+}
+
+makeChanceLabels(educationChart);
