@@ -2,16 +2,22 @@
 layout: default
 title: Learn
 custom_css: 
+- leaflet
 - chartist.min
 - custom.viz
 custom_js:
-- jquery.inview.min
 - grid
 - chartist.min
 - charts
+- leaflet
+- leaflet-pip
+- district_map
 ---
 
 <div class="container">
+
+    {% include district_map.html %}
+
     <div class="section">
         <div class="row">
             <div class="col-md-6">
