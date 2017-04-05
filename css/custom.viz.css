@@ -1,5 +1,9 @@
 /* GRID VISUALIZATION */
 
+.col-md-6 {
+  margin-bottom: 5vh;
+}
+
 .grid[id^="base"] {
   line-height: .65vw;
   font-size: 0.4vw;
@@ -16,9 +20,6 @@
 }
 
 @media (max-width: 992px) {
-  .col-md-6 {
-    margin-bottom: 5vh;
-  }
 
   .grid[id^="base"] {
     line-height: 1.25vw;
@@ -56,7 +57,7 @@ g.ct-series:last-of-type > line.ct-bar {
 .ct-label.ct-vertical {
   color: inherit;
   font-size: 1.5em;
-  width: 200px!important;
+  width: 25vw!important;
   margin-left: 45px;
   text-anchor: start!important;
   text-align: left!important;
