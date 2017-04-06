@@ -1,19 +1,33 @@
 <div class="section">
     <div class="row">
-        <div class="col-md-6"> 
+        <div class="col-md-8">
+            <h3 class="red">It's not just a South Side problem.</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7"> 
+            <p>Enter your address to see the divide in your neighborhood.</p>
             <div class="input-group">
-                <input type="text" name="address" class="form-control" placeholder="Address">
+                <input type="text" name="address" id="address" class="form-control" placeholder="Address">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button" id="search-district">
                         <i class="fa fa-search"></i>
                     </button>
                 </span>
             </div>
-            <br />
+        </div>
+    </div>
+    <div class="row" id="my-divide">
+        <div class="col-md-7">
             <div id="district-map"></div>
         </div>
-        <div class="col-md-5 col-md-offset-1">
-            <h1>hey</h1>
+        <div class="col-md-5" id="district-stats">
+            <div id="district-found" class="hidden">
+                <!-- district stats -->
+            </div>
+            <div id="district-not-found" class="hidden">
+                <h1>No district found</h1>
+            </div>
         </div>
     </div>
 </div>

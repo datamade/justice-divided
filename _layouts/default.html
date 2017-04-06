@@ -157,7 +157,18 @@
   {% endif %}
 
   {% if page.title == 'Learn' %}
-    <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key={{ site.google_api_key }}&callback=initGeocoder'></script>
+    <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?libraries=places&key={{ site.google_api_key }}&callback=initSearch'></script>
+
+    <script id="statistics-template" type="text/EJS">
+
+        <h3 class="gray">Police District <%= result.district.num %> - <%= result.district.name %></h3>
+
+        <p>
+          In your district, <%= result.male_youth_population.black %>% of boys between the ages of 10 and 17 are black. Of the <%= result.num_arrests %> juvenile arrests made in 2014, <%= result.male_arrest_population.black %>% were black boys.</li>
+        </p>
+
+    </script> 
+
   {% endif %}
   
   <script>

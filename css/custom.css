@@ -38,6 +38,10 @@ small {
   font-size: 1.15em;
 }
 
+.input-group {
+  margin-bottom: 5vh;
+}
+
 .footer {
   padding: 10px;
   background-color: #9e1408;

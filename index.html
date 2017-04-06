@@ -12,12 +12,10 @@ custom_js:
 - lib/leaflet
 - lib/leaflet-pip
 - js/district_map
+- lib/ejs
 ---
 
 <div class="container">
-
-    {% include district_map.html %}
-
     <div class="section">
         <div class="row">
             <div class="col-md-6">
@@ -132,6 +130,7 @@ custom_js:
             </div>
         </div>
     </div>
+    {% include district_map.html %}
     <div class="section text-only">
         <div class="row">
             <div class="col-md-8">
