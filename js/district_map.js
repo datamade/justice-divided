@@ -7,9 +7,6 @@ L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/{style}/{z}/{x}/
   style: 'dark_all'
 }).addTo(districtMap);
 
-var districtLayer = L.geoJson();
-districtLayer.addTo(districtMap);
-
 $.getJSON('data/output/police_district_profiles.geojson', function(districtBoundaries) {
 
   // generate 5 buckets
@@ -32,12 +29,12 @@ $.getJSON('data/output/police_district_profiles.geojson', function(districtBound
         weight: 2,
         color: '#333',
         fillColor: getColor(feature.properties.arrest_pop_difference),
-        fillOpacity: 0.6
+        fillOpacity: 0.5
     };
   }
 
   // add districts to map
-  var districtLayer = L.geoJson(districtBoundaries, {style: getStyle}).addTo(districtMap);
+  districtLayer = L.geoJson(districtBoundaries, {style: getStyle}).addTo(districtMap);
 
 });
 
@@ -58,7 +55,6 @@ function locateAddress(geocoder, address) {
       coord = results[0].geometry.location;
       [lat, lng] = [coord.lat(), coord.lng()];
       district = getDistrict(lat, lng);
-      console.log(district)
       updateMap(district);
       updateSidebar(district);
     } else {
@@ -76,23 +72,24 @@ function updateMap(district) {
     districtNumber = district.feature.properties.dist_num;
     districtLayer.eachLayer(function(layer) {
       if ( layer.feature.properties.dist_num ==  districtNumber) {    
-        layer.setStyle({color: '#d7191c', opacity: 1, fillOpacity: 0.2}); 
+        layer.setStyle({fillOpacity: 1}); 
       } else {
-        layer.setStyle({color: 'silver', opacity: 0.2, fillOpacity: 0});
+        layer.setStyle({fillOpacity: 0.5});
       }
     })
   } else {
-    districtLayer.setStyle({color: 'silver', opacity: 0.2, fillOpacity: 0});
+    districtLayer.eachLayer(function(layer) { layer.setStyle({fillOpacity: 0.5}) })
   }
 }
 
 function updateSidebar(district) {
-  console.log(district);
   if ( district ) {
     $('#my-divide').removeClass('hidden');
     districtMap.invalidateSize();
     template = $('#statistics-template').html();
-    $('#district-found').removeClass('hidden').empty().append(ejs.render(template, {result: testResult}));
+    $('#district-found').removeClass('hidden').empty().append(
+      ejs.render(template, {result: district.feature.properties}
+    ));
     $('#district-not-found').addClass('hidden');
   } else {
     $('#district-found').addClass('hidden');
