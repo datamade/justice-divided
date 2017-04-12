@@ -1,10 +1,10 @@
 SHELL := bash
 
 PG_DB = jdiv
-TABLES = arrests_2014 police_district_names police_district_demographics
+TABLES = arrests_2014 police_district_names police_district_demographics district_profiles
 
 .PHONY : all clean arrests_2014 police_district_names arrests_subtables \
-	police_district_demographics demographic_subtables
+	police_district_demographics demographic_subtables district_profiles
 
 .INTERMEDIATE : arrests.clean.csv
 
@@ -39,12 +39,12 @@ district_profiles : arrest_subtables demographic_subtables
 		  ON demo.dist_num = arr.dist_num \
 		JOIN ratio_arrests_black_by_district AS blk \
 		  ON demo.dist_num = blk.dist_num"
-
-output/police_district_profiles.csv :
+	
+output/police_district_profiles.geojson : 
 	psql -d $(PG_DB) -c "\\copy (select * from district_profiles) \
-		to $@ with csv header"
+		to stdout with csv header" | python scripts/update_geojson.py > $@
 
-all : $(PG_DB) $(TABLES) district_profiles
+all : $(PG_DB) $(TABLES) output/police_district_profiles.geojson
 
 clean :
 	rm output/*
