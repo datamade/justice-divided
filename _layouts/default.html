@@ -140,12 +140,6 @@
 
   </body>
 
-  <script>
-
-    var API_KEY = '{{ site.google_api_key }}';
-
-  </script>
-
   <script src="{{ site.baseurl }}/lib/jquery-1.10.1.min.js"></script>
   <script src="{{ site.baseurl }}/lib/analytics_lib.js"></script>
   <script src="{{ site.baseurl }}/lib/bootstrap.min.js"></script>
@@ -161,10 +155,10 @@
 
     <script id="statistics-template" type="text/EJS">
 
-        <h3 class="gray">Police District <%= result.district.num %> - <%= result.district.name %></h3>
+        <h3 class="gray">Police District <%= result.dist_num %> - <%= result.dist_name %></h3>
 
         <p>
-          In your district, <%= result.male_youth_population.black %>% of boys between the ages of 10 and 17 are black. Of the <%= result.num_arrests %> juvenile arrests made in 2014, <%= result.male_arrest_population.black %>% were black boys.</li>
+          In your district, <%= result.pct_black %>% of youth between the ages of 10 and 17 are black. Of the <%= result.num_arrests %> juvenile arrests made in 2014, <%= result.pct_arrests_black %>% were black.</li>
         </p>
 
     </script> 
