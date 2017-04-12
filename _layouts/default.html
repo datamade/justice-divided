@@ -143,6 +143,7 @@
   <script src="{{ site.baseurl }}/lib/jquery-1.10.1.min.js"></script>
   <script src="{{ site.baseurl }}/lib/analytics_lib.js"></script>
   <script src="{{ site.baseurl }}/lib/bootstrap.min.js"></script>
+  <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?libraries=places&key={{ site.google_api_key }}'></script>
 
   {% if page.custom_js %}
     {% for js_file in page.custom_js %}
@@ -151,7 +152,6 @@
   {% endif %}
 
   {% if page.title == 'Learn' %}
-    <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?libraries=places&key={{ site.google_api_key }}&callback=initSearch'></script>
 
     <script id="statistics-template" type="text/EJS">
 
