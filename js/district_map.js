@@ -7,16 +7,38 @@ L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/{style}/{z}/{x}/
   style: 'dark_all'
 }).addTo(districtMap);
 
-var districtLayer = L.geoJson()
-districtLayer.options.filter = function(feature, layer) {
-  return feature.properties.dist_num != 31;
-}
-districtLayer.addTo(districtMap)
+var districtLayer = L.geoJson();
+districtLayer.addTo(districtMap);
 
-$.getJSON('data/raw/cpd_district_boundaries.geojson', function(districtBoundaries) {
-  $(districtBoundaries.features).each(function(key, data) {
-    districtLayer.addData(data).setStyle({color: 'silver', opacity: 0.2, fillOpacity: 0, weight: 2});
+$.getJSON('data/output/police_district_profiles.geojson', function(districtBoundaries) {
+
+  // generate 5 buckets
+  disparityValues = districtBoundaries.features.map(function(feature) { 
+    return parseFloat(feature.properties.arrest_pop_difference); 
   });
+  buckets = jenks(disparityValues, 4);
+
+  // define conditional styling
+  function getColor(d) {
+    return d > buckets[3] ? '#a50f15' :
+           d > buckets[2] ? '#de2d26' :
+           d > buckets[1] ? '#fb6a4a' :
+           d > buckets[0] ? '#fcae91' :
+                            '#fee5d9';
+  }
+
+  function getStyle(feature) {
+    return {
+        weight: 2,
+        color: '#333',
+        fillColor: getColor(feature.properties.arrest_pop_difference),
+        fillOpacity: 0.6
+    };
+  }
+
+  // add districts to map
+  var districtLayer = L.geoJson(districtBoundaries, {style: getStyle}).addTo(districtMap);
+
 });
 
 // define interactivity
@@ -64,27 +86,8 @@ function updateMap(district) {
   }
 }
 
-// the below will be properties of the district feature
-var testResult = {
-  district: {
-    num: 14,
-    label: '14TH',
-    name: 'Shakespeare'
-  },
-  num_arrests: 2500,
-  male_youth_population: {
-    'black': '20',
-    'latino': '20',
-    'white': '60'
-  },
-  male_arrest_population: {
-    'black': 80,
-    'latino': 19,
-    'white': 1
-  }
-};
-
 function updateSidebar(district) {
+  console.log(district);
   if ( district ) {
     $('#my-divide').removeClass('hidden');
     districtMap.invalidateSize();
