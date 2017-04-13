@@ -24,20 +24,29 @@ district_profiles : arrest_subtables demographic_subtables
 		SELECT \
 		  demo.dist_num, \
 		  dist_name, \
-		  num_youth, \
-		  pct_black, \
-		  pct_hispanic, \
-		  pct_white, \
-		  arr.num_arrests, \
+		  demo.num_youth, \
+		  num_black_youth AS num_youth_black, \
+		  pct_black AS pct_youth_black, \
+		  num_hispanic_youth AS num_youth_hispanic, \
+		  pct_hispanic AS pct_youth_hispanic, \
+		  num_white_youth AS num_youth_white, \
+		  pct_white AS pct_youth_white, \
+		  num_arrests_black + num_arrests_hispanic + num_arrests_white \
+		    AS num_arrests, \
+		  num_arrests_black, \
 		  pct_arrests_black, \
-		  pct_arrests_black - pct_black AS arrest_pop_difference \
+		  num_arrests_hispanic, \
+		  pct_arrests_hispanic, \
+		  num_arrests_white, \
+		  pct_arrests_white, \
+		  num_arrests_black + num_arrests_hispanic + num_arrests_white
 		INTO $@ \
 		FROM juvenile_demographic_percents_by_district AS demo \
+		JOIN juvenile_demographic_totals_by_district AS total \
+		  ON demo.dist_num = total.dist_num \
 		JOIN police_district_names AS name \
 		  ON demo.dist_num = name.dist_num \
-		JOIN arrests_by_district AS arr \
-		  ON demo.dist_num = arr.dist_num \
-		JOIN ratio_arrests_black_by_district AS blk \
+		JOIN arrests_by_race_by_district AS blk \
 		  ON demo.dist_num = blk.dist_num"
 	
 output/police_district_profiles.geojson : 
