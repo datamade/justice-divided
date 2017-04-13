@@ -9,7 +9,7 @@ arrests_2014 : output/arrests_by_police_district.csv
 	csvsql --db postgresql:///$(PG_DB) --insert --table $@ $<
 
 .PHONY : arrest_subtables
-arrest_subtables : arrests_by_district arrests_by_race ratio_arrests_black_by_district
+arrest_subtables : arrests_by_district arrests_by_race arrests_by_race_by_district
 
 arrests_by_race :
 	psql -d $(PG_DB) -c " \
@@ -31,16 +31,43 @@ arrests_by_district :
 		GROUP BY dist_num \
 		ORDER BY dist_num"
 
-ratio_arrests_black_by_district :
+arrests_by_race_by_district :
 	psql -d $(PG_DB) -c " \
 		SELECT \
 		  dist_num, \
+		  SUM( \
+		      CASE WHEN race = 'BLACK' \
+		      THEN total \
+		      ELSE 0 \
+		      END) AS num_arrests_black, \
 		  ROUND( \
 		    SUM( \
 		      CASE WHEN race = 'BLACK' \
 		      THEN total \
 		      ELSE 0 \
-		      END)::numeric / SUM(total) * 100, 2) AS pct_arrests_black \
+		      END)::numeric / SUM(total) * 100, 2) AS pct_arrests_black, \
+		  SUM( \
+		      CASE WHEN race like '%HISPANIC' \
+		      THEN total \
+		      ELSE 0 \
+		      END) AS num_arrests_hispanic, \
+		  ROUND( \
+		    SUM( \
+		      CASE WHEN race like '%HISPANIC' \
+		      THEN total \
+		      ELSE 0 \
+		      END)::numeric / SUM(total) * 100, 2) AS pct_arrests_hispanic, \
+		  SUM( \
+		      CASE WHEN race = 'WHITE' \
+		      THEN total \
+		      ELSE 0 \
+		      END) AS num_arrests_white, \
+		  ROUND( \
+		    SUM( \
+		      CASE WHEN race = 'WHITE' \
+		      THEN total \
+		      ELSE 0 \
+		      END)::numeric / SUM(total) * 100, 2) AS pct_arrests_white \
 		INTO $@ \
 		FROM arrests_2014 \
 		GROUP BY dist_num \
