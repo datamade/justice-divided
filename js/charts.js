@@ -6,7 +6,39 @@ function generateLabels(x) {
   }
 }
 
-// define charts
+// interactive chart
+function makeDetailChart(data) {
+  chart = new Chartist.Bar('#detail-table', {
+    labels: [
+      'Youth Population',
+      'Arrests'
+    ],
+    series: data
+  }, {
+    high: 100,
+    fullWidth: true,
+    width: '100%',
+    height: '25vh',
+    seriesBarDistance: 40,
+    axisX: {
+      showGrid: false
+    },
+    axisY: {
+      showLabel: false
+    }
+  });
+
+  chart.on('draw', function(data) {
+    if ( data.type === 'bar' ) {
+      data.group.elem('text', {
+        x: data.x1 - 10,
+        y: data.y2 - 5,
+      }, 'ct-bar-label').text(data.value.y.toFixed(0) + '%');
+    }
+  });
+}
+
+// static charts
 var allArrestsChart = new Chartist.Bar('#all_arrests', {
   labels: [
     'Population',
@@ -80,7 +112,6 @@ var educationChart = new Chartist.Bar('#education_disparity', {
     labelInterpolationFnc: generateLabels
   }
 });
-
 
 // label bars
 
