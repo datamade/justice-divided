@@ -38,8 +38,7 @@ district_profiles : arrest_subtables demographic_subtables
 		  num_arrests_hispanic, \
 		  pct_arrests_hispanic, \
 		  num_arrests_white, \
-		  pct_arrests_white, \
-		  num_arrests_black + num_arrests_hispanic + num_arrests_white
+		  pct_arrests_white \
 		INTO $@ \
 		FROM juvenile_demographic_percents_by_district AS demo \
 		JOIN juvenile_demographic_totals_by_district AS total \
