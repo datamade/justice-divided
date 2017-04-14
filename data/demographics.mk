@@ -30,15 +30,9 @@ juvenile_demographic_percents :
 	psql -d $(PG_DB) -c " \
 		SELECT \
 		  num_youth, \
-		  ROUND( \
-		    (num_black_youth::numeric / num_youth * 100), \
-		  2) AS pct_black_youth, \
-		  ROUND( \
-		    (num_hispanic_youth::numeric / num_youth * 100), \
-		  2) AS pct_hispanic_youth, \
-		  ROUND( \
-		    (num_white_youth::numeric / num_youth * 100), \
-		  2) AS pct_white_youth \
+		  num_black_youth::numeric / num_youth AS pct_black_youth, \
+		  num_hispanic_youth::numeric / num_youth AS pct_hispanic_youth, \
+		  num_white_youth::numeric / num_youth AS pct_white_youth \
 		INTO $@ \
 		FROM juvenile_demographic_totals"
 
@@ -65,14 +59,8 @@ juvenile_demographic_percents_by_district :
 		SELECT \
 		  dist_num, \
 		  num_youth, \
-		  ROUND( \
-		    (num_black_youth::numeric / num_youth * 100), \
-		  2) AS pct_black, \
-		  ROUND( \
-		    (num_hispanic_youth::numeric / num_youth * 100), \
-		  2) AS pct_hispanic, \
-		  ROUND( \
-		    (num_white_youth::numeric / num_youth * 100), \
-		  2) AS pct_white \
+		  num_black_youth::numeric / num_youth AS pct_black, \
+		  num_hispanic_youth::numeric / num_youth AS pct_hispanic, \
+		  num_white_youth::numeric / num_youth AS pct_white \
 		INTO $@ \
 		FROM juvenile_demographic_totals_by_district"
