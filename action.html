@@ -1,61 +1,40 @@
 ---
 layout: default
 title: Act
+custom_css: floating-nav
+custom_js: 
+- lib/jquery.waypoints.min
+- js/floating-nav
 ---
 
 <div class="container">
-    <div class="col-sm-8">
-        <h2 class="red">What's the problem?</h2>
-        <h3 class="gray">The majority of youth in the juvenile justice system are black and brown.</h3> 
 
-        <p>Researchers attribute the racial disparity in the justice system to unconscious attitudes of decision-makers within the system.</p>
+    <div class="col-sm-8" style="margin-bottom: 25vh;">
 
-        <p>It is a fallacy to assume that disproportionate minority contact is a product of higher crime in non-white neighborhoods.</p>
+        <h2 class="red" id="me">What can I do?</h2>
 
-        <hr />
-
-        <h3 class="gray">DMC begins outside the justice system.</h3>
-
-        <p>During the 2015-2016 school year, black students comprised 38.9% of Chicago Public Schools enrollment, but accounted for 75.6% of expulsions and 70.7% of out-of-school suspensions.</p>
-
-        <p>Students who are suspended or expelled are almost three times more likely than their peers to make contact with the juvenile justice system within the school year.</p>
+        <p>Stuff.</p>
 
         <hr />
 
-        <h3 class="gray">Disparity in arrests fuels disparity throughout the justice system.</h3> 
+        <h2 class="red" id="chicago">What can Chicago do?</h2>
 
-        <p>Illinois ranks third in the nation for racial disparities in marijuana arrests. In general, black youth in Illinois are nearly seven times more likely to be arrested, while being less likely to be diverted from court.</p>
-
-        <p>As of November 2016, black youth comprised 69.9% of the Illinois Department of Juvenile Justice population.</p>
-
-        <hr />
-
-        <h3 class="gray">DMC is a self-perpetuating cycle.</h3>
-
-        <p>A criminal record makes it more difficult to find employment, secure housing, enroll in higher education, and participate in one's community. These obstacles significantly contribute to high rates of recidivism.</p>
-
-        <p>In Illinois, 58.% percent of youth who are released from an IDJJ facility return to prison within three years.</p>
-    </div>
-    <div class="col-sm-8">
-        <h2 class="red">How have other jurisdictions reduced DMC?</h2>
         <h3 class="gray">Take joint responsibility.</h3> 
 
         <p>Focus intentionally on reducing racial disparities (not just on general system improvement) without placing blame on particular system stakeholders. Encourage local and state leaders to make DMC reduction a long-term priority.</p>
 
-        <hr />
-
         <h3 class="gray">Work together.</h3> 
 
         <p>Affiliate with national juvenile justice reform initiatives to learn best practices that can be applied in their local jurisdiction. Increase collaboration across police, courts, and the community to minimize the number of youth who are incarcerated.</p>
-
-        <hr />
         
         <h3 class="gray">Change the conversation.</h3> 
 
         <p>Move away from a punitive culture to one that focuses on what’s best for the youth and community by creating and investing in alternatives to secure detention, secure confinement, and formal system involvement.</p>
-    </div>
-    <div class="col-sm-8" style="margin-bottom: 25vh;">
-        <h2><h3 class="red">How can Illinois reduce DMC?</h3></h2>
+
+        <hr />
+
+        <h2 class="red" id="illinois">What can Illinois do?</h2>
+
         <p>To effectively reduce DMC in Cook County, there must be a long-term commitment by system policy-makers, business leaders, young people and the community to work together to ensure the juvenile justice system is equitable for everyone. This will involve explicity addressing the issue of race, raising awareness of bias and having an intentional focus on reducing racial disparities.</p>
 
         <p>Funding (both public and private) should be invested in rehabilitative treatment and service providers who can address youth needs in their local community, not in punitive, traditional measures such as detention centers and youth prisons.</p>
@@ -65,6 +44,15 @@ title: Act
         <p>Funding should be provided to ensure equitable access to necessary services for ALL youth, regardless of their race, age, sex, address, sexual orientation or place of residence.</p>
 
         <p>Law enforcement officers, school officials and others in the justice system should receive training that will raise their awareness of implicit bias and the impact it has on youth of color and also receive information about available alternatives to arrest.</p>
+
     </div>
+
+    <div class="col-sm-3 col-sm-offset-1" id="floating-nav">
+        <a href="#me" id class="active">What can I do?</a><br />
+        <a href="#chicago" id>What can Chicago do?</a><br />
+        <a href="#illinois" id>What can Illinois do?</a><br /><br />
+        <a href="#top" id class="mute">Back to top</a>
+    </div>
+
 </div> 
 
