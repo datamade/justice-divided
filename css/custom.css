@@ -21,11 +21,16 @@ h2 {
 }
 
 h3 {
+  margin-top: unset;
   margin-bottom: 1em;
   font-weight: 700;
 }
 
-p {
+h3[id] {
+  padding-top: 4vh;
+}
+
+p, ul {
   font-size: 1.25em;
   margin-bottom: 1em;
 }
@@ -36,6 +41,10 @@ h3 > small, small {
 
 small {
   font-size: 1.15em;
+}
+
+.input-group {
+  margin-bottom: 5vh;
 }
 
 .footer {
@@ -60,9 +69,13 @@ small {
   text-decoration: underline;
 }
 
-a, a:active, a:focus, a:visited {
+a, a:active, a:visited {
   color: inherit;
   border-bottom: 1px solid #d7191c;
+}
+
+a:focus {
+  text-decoration: none;
 }
 
 a:hover {
@@ -71,8 +84,19 @@ a:hover {
   border-bottom: 1px solid #f3f1e5;
 }
 
+h3 > a::after {
+  font-family: 'FontAwesome';
+  content: ' \f08e';
+  margin-left: 5px;
+}
+
 img {
   max-width: 100%;
+}
+
+hr {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 /* HEADER */
@@ -117,6 +141,15 @@ div.title {
 
 .highlight {
   font-weight: 700;
+}
+
+.action {
+  background: #f3f1e5;
+  color: #333;
+  padding: 3px 5px;
+  border-radius: 5px;
+  font-size: 90%;
+  margin: 0 3px 0 3px;
 }
 
 /* SPACING */

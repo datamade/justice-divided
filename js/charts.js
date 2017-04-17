@@ -120,7 +120,7 @@ function makeRaceLabels(chart) {
     if ( data.type === 'bar' ) {
       labels = ['white', 'Hispanic', 'black'];
       baseClass = 'ct-bar-label';
-      if ( data.seriesIndex <= data.series.length - 1 ) {
+      if ( data.seriesIndex < data.series.length - 1 ) {
         baseClass += ' mute'; // mute non-black labels
       } 
       data.group.elem('text', {

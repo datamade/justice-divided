@@ -1,5 +1,5 @@
 // define map
-var districtMap = L.map('district-map').setView([41.845, -87.7], 10);
+var districtMap = L.map('district-map', {scrollWheelZoom: false}).setView([41.845, -87.7], 10);
 
 base_map_style = [
   {
@@ -193,10 +193,8 @@ $.getJSON('data/output/police_district_profiles.geojson', function(districtBound
   totalYouth = sumProperty(districtBoundaries, 'num_youth');
   pAllArrests = totalArrests / totalYouth;
 
-  // determine of arrest for black youth & divide by 
-  // citywide odds to make odds ratios
+  // determine of arrest for black youth & divide by citywide odds to make odds ratios
   districtOddsRatios = makeRatios(districtBoundaries);
-  //buckets = jenks(Object.values(districtOddsRatios), 4);
   buckets = [1.5, 2.25, 3, 3.75, 4.5];
 
   // define conditional styling
@@ -346,8 +344,6 @@ function generateData(district) {
 }
 
 function fillSidebar(dataObj) {
-  template = $('#statistics-template').html();
-
   if ( dataObj ) {
     try { // fill district info
       distNum = dataObj.feature.properties.dist_num;
@@ -357,20 +353,17 @@ function fillSidebar(dataObj) {
         dataObj.feature.properties, 
         {'odds_ratio': districtOddsRatios[distNum]}
       );
+      template = $('#statistics-template').html();
       content = ejs.render(template, {result: result});
-    } catch (err) { // fill city info
-      color = dataObj.color;
-      content = ejs.render(template, {result: dataObj});
-      data = dataObj.data;
+      $('#district-found').html(content);
+      makeDetailChart(data);
+      $('.highlight').css({'color': color});
+    } catch (err) { // fill instructions
+      template = $('#instructions').html();
+      content = ejs.render(template);
+      $('#district-found').html(content);
     }
   } else { // bad search
-    content = 'District not found.'
+    $('#district-found').html('<p>District not found.</p>');
   }  
-
-  $('#district-found').html(content);
-
-  if ( data ) {
-    makeDetailChart(data);
-    $('.highlight').css({'color': color});
-  }
 }

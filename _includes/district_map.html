@@ -1,21 +1,6 @@
 <div class="section">
-    <div class="row">
-        <div class="col-md-8">
-            <h3 class="red">It's not just a South Side problem.</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8">
-
-            <p>In 2014, black youth in Chicago were <strong>twice as likely</strong> to be arrested as the general youth population. However, those odds varied significantly across police districts.</p>
-
-            <p>The youth population is mostly not black in two-thirds of the districts where black youth were most likely to be arrested.</p>
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-7"> 
-            <p>Enter your address to see the odds in your neighborhood.</p>
+    <div class="row" id="my-divide">
+        <div class="col-md-7">
             <div class="input-group">
                 <input type="text" name="address" id="address" class="form-control" placeholder="Address">
                 <span class="input-group-btn">
@@ -24,11 +9,7 @@
                     </button>
                 </span>
             </div>
-        </div>
-    </div>
-    <div class="row" id="my-divide">
-        <div class="col-md-7">
-            <div id="district-map"></div>
+            <div id="district-map"></div><br />
         </div>
         <div class="col-md-5" id="district-stats">
             <div id="district-found">
@@ -40,13 +21,13 @@
 
 <script id="statistics-template" type="text/EJS">
 
-    <h3 class="gray"><% if (result.dist_num) { %>Police District <%= result.dist_num %> - <% } %><%= result.dist_name %></h3>
+    <h3><% if (result.dist_num) { %>Police District <%= result.dist_num %> - <% } %><%= result.dist_name %></h3>
 
     <div class="row">
       <div class="col-sm-12">
-        <p>In 2014, black youth in <% if (result.dist_num) { %>your district<% } else { %>Chicago<% } %> were <span class="highlight"><strong><%= result.odds_ratio.toFixed(1) %></strong> times more likely</span> to be arrested than all youth citywide.</p>
+        <p class="drop-cap lead">In 2014, black youth in <% if (result.dist_num) { %>your district<% } else { %>Chicago<% } %> were <span class="highlight"><strong><%= result.odds_ratio.toFixed(1) %></strong> times more likely</span> to be arrested than all youth citywide.</p>
 
-        <h4 class="gray"><% if (result.dist_num) { %>District<% } else { %>Chicago<% } %> Demographics</h4>
+        <h4><% if (result.dist_num) { %>District<% } else { %>Chicago<% } %> Demographics</h4>
         <br />
         <div class="ct-chart" id="detail-table" style="height: 25vh;"></div>
         <div id="detail-table-key" class="col-xs-12" style="color: #6f6d63;">
@@ -64,3 +45,11 @@
     </div>
 
 </script> 
+
+<script id="instructions" type="text/EJS">
+    <h3>It's not just a South Side problem.</h3>
+
+    <p class="drop-cap lead">This is a map of Chicago's police districts colored by a multiplier you interpret like, <strong>"Black youth in this police district are arrested X times more often than all youth citywide."</strong></p>
+
+    <p><span class="action"><i class="fa fa-fw fa-mouse-pointer" aria-hidden="true"></i>Hover</span> or <span class="action"><i class="fa fa-fw fa-hand-o-up" aria-hidden="true"></i>Tap</span> the map to to see how the odds vary between districts, or <span class="action"><i class="fa fa-fw fa-i-cursor" aria-hidden="true"></i>Type</span> your address to see the odds in your neighborhood.</p>
+</script>
