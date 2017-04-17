@@ -8,13 +8,11 @@ custom_css:
 custom_js:
 - lib/chartist.min
 - js/charts
-- lib/jenks
 - lib/leaflet
 - lib/leaflet-google
 - lib/leaflet-pip
 - lib/ejs
 - js/district_map
-- js/grid
 ---
 
 <div class="container">
@@ -35,7 +33,7 @@ custom_js:
         <div class="row">
             <div class="col-md-8">
                 <h3>
-                    In Chicago, the proportion of arrests that happen to black youth is twice the proportion of youth who are black.
+                    In Chicago, a disproportionate number of black youth are arrested.
                 </h3>
             </div>
         </div>
@@ -45,7 +43,40 @@ custom_js:
             </div>
         </div>
     </div>
+    <div class="section">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>How disproportionate?</h3>
+                <p class="drop-cap lead">The multiplier is equal to the probability a black youth is arrested, divided by the probability any youth is arrested.</p>
+
+                <p>[math, explained]</p>
+
+                <!--In 2014, there were 14,093 arrests of black youth from a population of 109,497, a probability of 0.129 or a rate of 12.9%. There were 17,724 total juvenile arrests from a population of 261,120, a probability of .068 or a rate of 6.8%.
+
+                When we divide 0.129 by 0.068, we see black youth were arrested 1.9 times more often than youth in general.-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="ct-chart" id="all_arrests"></div>
+            </div>
+        </div>
+    </div>
     {% include district_map.html %}
+    <div class="section">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>
+                    As a result, the majority of youth at every stage of the juvenile justice system are black and brown.
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="ct-chart" id="system_disparity"></div>
+            </div>
+        </div>
+    </div>
     <div class="section text-only">
         <div class="row">
             <div class="col-md-8">
@@ -67,20 +98,6 @@ custom_js:
         <div class="row">
             <div class="col-md-6 text-right pull-right">
                 <small>SOURCE: <a href="#" target="_blank">Juvenile Arrest and Collateral Educational Damage in the Transition to Adulthood</a>, a long-term study that tracked peer groups of CPS students across multiple years</small>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <div class="row">
-            <div class="col-md-8">
-                <h3>
-                    Once arrested, youth of color are more likely to go deeper into the system. As a consequence, youth of color account for a wide majority at each subsequent stage of the system.
-                </h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-10">
-                <div class="ct-chart" id="system_disparity"></div>
             </div>
         </div>
     </div>

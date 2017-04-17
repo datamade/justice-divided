@@ -21,6 +21,7 @@ h2 {
 }
 
 h3 {
+  margin-top: unset;
   margin-bottom: 1em;
   font-weight: 700;
 }
@@ -83,7 +84,7 @@ a:hover {
   border-bottom: 1px solid #f3f1e5;
 }
 
-a:not([id])::after {
+h3 > a::after {
   font-family: 'FontAwesome';
   content: ' \f08e';
   margin-left: 5px;
@@ -140,6 +141,15 @@ div.title {
 
 .highlight {
   font-weight: 700;
+}
+
+.action {
+  background: #f3f1e5;
+  color: #333;
+  padding: 3px 5px;
+  border-radius: 5px;
+  font-size: 90%;
+  margin: 0 3px 0 3px;
 }
 
 /* SPACING */
