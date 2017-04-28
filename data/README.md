@@ -1,39 +1,52 @@
-## under the hood
+### What's this?
 
-here are the calculations underlying the visualization to come. to revert to the full analysis:
+We crunched numbers on juvenile arrests in Chicago by police district (2014) and demographic (2013-early 2017). Now they're yours.
 
-```
-git reset --hard b2557b215254340b386dd630a101889665a80d38
-```
+### Requirements
 
-(n.b. contributors who do the above reversion **must** `git pull` to return to HEAD before making and pushing changes. tyvm.)
-
-### requirements
-
-- [census](https://github.com/CommerceDataService/census-wrapper) (`pip install census`)
+- If you want to re-run the script that retrieves police district demographics, [census_area](https://github.com/datamade/census_area) (`pip install census_area`)
 - [csvkit](https://github.com/wireservice/csvkit) (`pip install csvkit`)
 - postgresql (`brew install postgresql`)
 
-### replication
+### Makin' data
 
-[get an api key](http://api.census.gov/data/key_signup.html) for the us census.
+Clone this repo and navigate to the `data/` dir in your terminal. From there you can [make the database](#Make-the-database), [refresh the provided data](#Remake-provided-data), or [both](#Remake-provided-data-and-make-the-database).
 
-from the `data/` dir:
+#### Make the database
 
+```bash
+make database
 ```
+
+#### Remake provided data
+
+Warning: Re-running the Census script will take about 20 minutes. 
+
+If you must, first [get an API key](http://api.census.gov/data/key_signup.html) for the U.S. Census.
+
+From the `data/` dir, run this command.
+
+```bash
 cp scripts/config.py.example scripts/config.py
 ```
 
-then add your census api key to `config.py`.
+Then add your Census API key to your freshly created `config.py`. 
 
-to refresh the data, `make clean` then `make all`. 
+Finally, run:
+
+```bash
+make clean
+make output
+```
+
+### Remake provided data and make the database
+
+```bash
+make clean
+make all
+```
 
 ### contents
 
-- `raw/misdemeanor_cannabis_arrests.csv` was a foia response fulfilled by the chicago police department in march 2017.
-
-- `output/` contains:
-
-  - `misdemeanor_marijuana_arrests.csv` - from source foia, marijuana arrests of males aged 18 and 19 from 2015, the most recent complete year represented in the data
-  - `arrests_by_race.csv` - the above, rolled up by race
-  - `arrest_rate_by_race.csv` - the above, rolled up by race and divided respectively by the population of white and black 18- and 19-year-olds in chicago as gleaned from 5-year acs estimates, resulting in arrest rates per population
+- a psql database, `jdiv`, with useful tables
+- an `output/` dir with useful csv/geojson files
