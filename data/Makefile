@@ -1,22 +1,23 @@
 SHELL := bash
 
-GENERATED_FILES = output/arrest_rate_by_race.csv
 PG_DB = jdiv
+RAW_TABLES = arrests_by_district_2014 arrests_by_demographic_2013_thru_2017 \
+	police_district_names police_district_demographics district_profiles
+SUBTABLES = arrests_by_district_subtables arrests_by_demographic_subtables \
+	demographic_subtables
 
-.PHONY : all clean
+.PHONY : all clean $(PG_DB) $(RAW_TABLES) $(SUBTABLES) 
 
-.INTERMEDIATE : misdemeanor_marijuana_arrests.filtered.csv male_youth_population.csv
+.INTERMEDIATE : arrests_by_police_district.clean.csv arrests_by_demographic.clean.csv
+
+all : $(PG_DB) $(RAW_TABLES) $(SUBTABLES) output/police_district_profiles.geojson
+
+clean :
+	rm output/*
+	dropdb $(PG_DB)
 
 $(PG_DB) : 
 	createdb $@
 
-male_youth_population.csv : 
-	python scripts/retrieve_youth_pop.py > $@ 
+include arrests_by_district.mk arrests_by_demographic.mk demographics.mk map.mk
 
-include marijuana_arrests.mk
-
-all : $(PG_DB) $(GENERATED_FILES)
-	dropdb $(PG_DB)
-
-clean :
-	rm output/*
