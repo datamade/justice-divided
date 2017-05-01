@@ -6,44 +6,53 @@ function generateLabels(x) {
   }
 }
 
-// define charts
-var marijuanaArrestsChart = new Chartist.Bar('.ct-chart#marijuana_arrests', {
-  labels: [
-    'Juvenile Population',
-    'Marijuana Arrests'
-  ],
-  series: [
-    [39, 71],
-    [36, 23],
-  ]
-}, {
-  high: 100,
-  width: '100%',
-  height: '40vh',
-  seriesBarDistance: 30,
-  horizontalBars: true,
-  reverseData: true,
-  axisY: {
-    showGrid: false,
-  },
-  axisX: {
-    labelInterpolationFnc: generateLabels
-  }
-});
+// interactive chart
+function makeDetailChart(data) {
+  chart = new Chartist.Bar('#detail-table', {
+    labels: [
+      'Youth Population',
+      'Arrests'
+    ],
+    series: data
+  }, {
+    high: 100,
+    fullWidth: true,
+    width: '100%',
+    height: '25vh',
+    seriesBarDistance: 40,
+    axisX: {
+      showGrid: false
+    },
+    axisY: {
+      showLabel: false
+    }
+  });
 
+  chart.on('draw', function(data) {
+    if ( data.type === 'bar' ) {
+      data.group.elem('text', {
+        x: data.x1 - 10,
+        y: data.y2 - 5,
+      }, 'ct-bar-label').text(data.value.y.toFixed(0) + '%');
+    }
+  });
+}
+
+// static charts
 var allArrestsChart = new Chartist.Bar('#all_arrests', {
   labels: [
-    'Juvenile Population',
-    'All Arrests'
+    'Population',
+    'Arrests'
   ],
   series: [
-    [39, 79],
-    [36, 3],
+    [41.93, 79],
+    [43.18, 17],
+    [14.88, 3],
   ]
 }, {
   high: 100,
   width: '100%',
-  height: '40vh',
+  height: '50vh',
   seriesBarDistance: 30,
   horizontalBars: true,
   reverseData: true,
@@ -104,16 +113,12 @@ var educationChart = new Chartist.Bar('#education_disparity', {
   }
 });
 
-
 // label bars
 
 function makeRaceLabels(chart) {
   chart.on('draw', function(data) {
     if ( data.type === 'bar' ) {
       labels = ['white', 'Hispanic', 'black'];
-      if ( data.series.length == 2 ) {
-        labels.splice(1, 1); // remove Hispanic (to-do: get this population)
-      }
       baseClass = 'ct-bar-label';
       if ( data.seriesIndex < data.series.length - 1 ) {
         baseClass += ' mute'; // mute non-black labels
@@ -128,7 +133,7 @@ function makeRaceLabels(chart) {
   });
 }
 
-var raceCharts = [marijuanaArrestsChart, allArrestsChart, systemDisparityChart];
+var raceCharts = [allArrestsChart, systemDisparityChart];
 
 raceCharts.forEach(function(chart) {
   makeRaceLabels(chart);

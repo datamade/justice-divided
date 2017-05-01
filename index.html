@@ -2,13 +2,17 @@
 layout: default
 title: Learn
 custom_css: 
+- leaflet
 - chartist.min
 - custom.viz
 custom_js:
-- jquery.inview.min
-- grid
-- chartist.min
-- charts
+- lib/chartist.min
+- js/charts
+- lib/leaflet
+- lib/leaflet-google
+- lib/leaflet-pip
+- lib/ejs
+- js/district_map
 ---
 
 <div class="container">
@@ -29,100 +33,47 @@ custom_js:
         <div class="row">
             <div class="col-md-8">
                 <h3>
-                    By way of example, here are two groups of teen boys in Chicago. Group A is black. Group B is white. <small>(n = 3250)</small>
-                </h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 center-block" id="base_population">
-                <div class="col-md-6">
-                    <div class="grid" id="base_pop_a"></div>
-                    <small>Group A</small>
-                </div>
-                <div class="col-md-6">
-                    <div class="grid" id="base_pop_b"></div>
-                    <small>Group B</small>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <div class="row">
-            <div class="col-md-8">
-                <h3>
-                    Research shows an equal number of boys from both groups, about 20%, use marijuana. <small>(n = 650)</small>
-                </h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 center-block" id="marijuana_users">
-                <div class="col-md-6">
-                    <div class="grid" id="marijuana_a"></div>
-                    <small>Group A</small>
-                </div>
-                <div class="col-md-6">
-                    <div class="grid" id="marijuana_b"></div>
-                    <small>Group B</small>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 text-right pull-right">
-                <small>SOURCE: <a href="http://www.monitoringthefuture.org//pubs/monographs/mtf-overview2016.pdf" target="_blank">Monitoring the Future</a>, a survey of youth views on drug use conducted annually by the University of Michigan</small>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <div class="row">
-            <div class="col-md-8">
-                <h3>
-                    Some boys are caught with a small amount of marijuana. At Chicago's current juvenile arrest rate, 16 boys are arrested. Only one of them is white.
-                </h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12" id="marijuana_arrests">
-                <div class="col-md-6">
-                    <div class="grid" id="arrests_a"></div>
-                    <small>Group A</small>
-                </div>
-                <div class="col-md-6">
-                    <div class="grid" id="arrests_b"></div>
-                    <small>Group B</small>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 text-right pull-right">
-                <small>SOURCE: <a href="#" target="_blank">Chicago Police Department juvenile arrest data</a><br /> organized by charge and race</small>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <div class="row">
-            <div class="col-md-8">
-                <h3>
-                    Black and white youth account for similar proportions of the Chicago's juvenile population. Yet <span class="highlight">three times as many</span> black youth are arrested for minor marijuana offenses.
-                </h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-10">
-                <div class="ct-chart" id="marijuana_arrests"></div>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <div class="row">
-            <div class="col-md-8">
-                <h3>
-                    When we widen the pool to all juvenile arrests in Chicago, black youth are arrested more than white youth <span class="highlight">by a factor of 26.</span>
+                    In Chicago, a disproportionate number of black youth are arrested.
                 </h3>
             </div>
         </div>
         <div class="row">
             <div class="col-md-10">
                 <div class="ct-chart" id="all_arrests"></div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>How disproportionate?</h3>
+                <p class="drop-cap lead">The multiplier is equal to the probability a black youth is arrested, divided by the probability any youth is arrested.</p>
+
+                <p>[math, explained]</p>
+
+                <!--In 2014, there were 14,093 arrests of black youth from a population of 109,497, a probability of 0.129 or a rate of 12.9%. There were 17,724 total juvenile arrests from a population of 261,120, a probability of .068 or a rate of 6.8%.
+
+                When we divide 0.129 by 0.068, we see black youth were arrested 1.9 times more often than youth in general.-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="ct-chart" id="all_arrests"></div>
+            </div>
+        </div>
+    </div>
+    {% include district_map.html %}
+    <div class="section">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>
+                    As a result, the majority of youth at every stage of the juvenile justice system are black and brown.
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="ct-chart" id="system_disparity"></div>
             </div>
         </div>
     </div>
@@ -147,20 +98,6 @@ custom_js:
         <div class="row">
             <div class="col-md-6 text-right pull-right">
                 <small>SOURCE: <a href="#" target="_blank">Juvenile Arrest and Collateral Educational Damage in the Transition to Adulthood</a>, a long-term study that tracked peer groups of CPS students across multiple years</small>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <div class="row">
-            <div class="col-md-8">
-                <h3>
-                    Once arrested, youth of color are more likely to go deeper into the system. As a consequence, youth of color account for a wide majority at each subsequent stage of the system.
-                </h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-10">
-                <div class="ct-chart" id="system_disparity"></div>
             </div>
         </div>
     </div>
