@@ -3,7 +3,8 @@ arrests_by_police_district.clean.csv : raw/arrests-14.csv
 	python scripts/make_int.py > $@
 
 output/arrests_by_police_district_2014.csv : arrests_by_police_district.clean.csv
-	(echo 'dist_num,race,5-10,11,12,13,14,15,16,17,total'; csvcut -C 1 $< | python scripts/add_dist.py) > $@
+	(echo 'dist_num,race,5-10,11,12,13,14,15,16,17,total'; csvcut -C 1 $< | \
+	python scripts/add_dist.py) > $@
 
 arrests_by_district_2014 : output/arrests_by_police_district_2014.csv
 	csvsql --db postgresql:///$(PG_DB) --insert --table $@ $<
