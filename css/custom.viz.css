@@ -1,0 +1,92 @@
+/* GRID VISUALIZATION */
+
+.col-md-6 {
+  margin-bottom: 5vh;
+}
+
+.grid[id^="base"] {
+  line-height: .65vw;
+  font-size: 0.4vw;
+}
+
+.grid[id^="marijuana"] {
+  line-height: 1.25vw;
+  font-size: .85vw;
+}
+
+.grid[id^="arrest"] {
+  line-height: 7.5vw;
+  font-size: 4vw;
+}
+
+@media (max-width: 992px) {
+
+  .grid[id^="base"] {
+    line-height: 1.25vw;
+    font-size: 0.8vw;
+  }
+
+  .grid[id^="marijuana"] {
+    line-height: 3.5vw;
+    font-size: 2.2vw;
+  }
+
+  .grid[id^="arrest"] {
+    line-height: 17vw;
+    font-size: 10vw;
+  }
+}
+
+/* CHARTIST OVERRIDES */
+
+.ct-chart {
+  margin-left: -50px;
+}
+
+g.ct-series > line.ct-bar {
+  fill: #6c706f;
+  stroke: #6c706f;
+  stroke-width: 20px;
+}
+
+g.ct-series:last-of-type > line.ct-bar {
+  fill: #d7191c;
+  stroke: #d7191c;
+}
+
+.ct-label.ct-vertical {
+  color: inherit;
+  font-size: 1.5em;
+  width: 25vw!important;
+  margin-left: 45px;
+  text-anchor: start!important;
+  text-align: left!important;
+  justify-content: initial!important;
+  align-items: baseline!important;
+  -webkit-box-align: baseline!important;
+  -webkit-align-items: baseline!important;
+  -ms-flex-align: baseline!important;
+}
+
+.ct-label.ct-horizontal {
+  color: #6f6d63;
+  font-size: 1em;
+  margin-left: -10px;
+}
+
+.ct-bar-label {
+  fill: #dbe2db;
+  font-size: 1em;
+}
+
+.ct-bar-label.mute {
+  opacity: 0.6;
+}
+
+.ct-chart-bar {
+  overflow: visible!important;
+}
+
+.ct-grid {
+  stroke: #6f6d63;
+}
