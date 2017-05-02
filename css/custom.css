@@ -8,6 +8,7 @@ body {
 .jumbotron {
   background-color: inherit;
   padding: 3vh 0;
+  margin-bottom: unset;
 }
 
 .jumbotron h1 {
@@ -30,7 +31,7 @@ h3[id] {
   padding-top: 4vh;
 }
 
-p, ul {
+p {
   font-size: 1.25em;
   margin-bottom: 1em;
 }
@@ -200,4 +201,16 @@ progress::-webkit-progress-value {
 
 progress::-moz-progress-bar {
   background-color: #d7191c;
+}
+
+/* OTHER */
+.placeholder {
+  background-color: silver;
+  width: 50vw;
+  max-width: 100%;
+  height: 40vh;
+  padding-top: 22.5vh;
+  font-size: 150%;
+  color: #333;
+  text-align: center;
 }

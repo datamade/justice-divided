@@ -4,8 +4,8 @@
   margin-right: 2.5px;
 }
 
-div.grid {
-  font-size: .75vmax;
+div.grid > div {
+  font-size: 10vmax;
   color: gray;
 }
 
