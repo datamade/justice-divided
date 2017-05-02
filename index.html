@@ -2,10 +2,15 @@
 layout: default
 title: Learn
 custom_css: 
+- deck.core
+- fade
+- vertical-slide
 - leaflet
 - chartist.min
 - custom.viz
 custom_js:
+- lib/modernizr.custom
+- lib/deck.core
 - lib/chartist.min
 - js/charts
 - lib/leaflet
@@ -16,7 +21,8 @@ custom_js:
 ---
 
 <div class="container">
-    <div class="section">
+
+    <section class="slide">
         <div class="row">
             <div class="col-md-6">
                 <h3 class="red">Most teens break the law. Youth of color are more likely to be punished for it.</h3>
@@ -28,8 +34,9 @@ custom_js:
                 <p>It's <strong>#NotJusticeWhen</strong> the system harms one group significantly more than another.</p>
             </div>
         </div>
-    </div>
-    <div class="section">
+    </section>
+
+    <section class="slide">
         <div class="row">
             <div class="col-md-8">
                 <h3>
@@ -42,8 +49,9 @@ custom_js:
                 <div class="ct-chart" id="all_arrests"></div>
             </div>
         </div>
-    </div>
-    <div class="section">
+    </section>
+
+    <section class="slide">
         <div class="row">
             <div class="col-md-8">
                 <h3>How disproportionate?</h3>
@@ -61,9 +69,11 @@ custom_js:
                 <div class="ct-chart" id="all_arrests"></div>
             </div>
         </div>
-    </div>
-    {% include district_map.html %}
-    <div class="section">
+    </section>
+
+{% include district_map.html %}
+
+    <section class="slide">
         <div class="row">
             <div class="col-md-8">
                 <h3>
@@ -76,15 +86,17 @@ custom_js:
                 <div class="ct-chart" id="system_disparity"></div>
             </div>
         </div>
-    </div>
-    <div class="section text-only">
+    </section>
+
+    <section class="slide">
         <div class="row">
             <div class="col-md-8">
                 <h3>An arrest alone can have lifelong consequences.</h3>
             </div>
         </div>
-    </div>
-    <div class="section">
+    </section>
+
+    <section class="slide">
         <div class="row">
             <div class="col-md-8">
                 <h3>Chicago Public Schools students who are <span class="red">arrested</span> are more likely to drop out of high school and less likely to attend a four-year college, compared to <span class="gray">their peers.</span></h3>
@@ -100,5 +112,6 @@ custom_js:
                 <small>SOURCE: <a href="#" target="_blank">Juvenile Arrest and Collateral Educational Damage in the Transition to Adulthood</a>, a long-term study that tracked peer groups of CPS students across multiple years</small>
             </div>
         </div>
-    </div>
+    </section>
+
 </div>
