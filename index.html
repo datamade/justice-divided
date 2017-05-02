@@ -23,14 +23,88 @@ custom_js:
 
     <section class="slide">
         <div class="row">
+            <div class="col-md-4">
+                <h3>It's not <strong>#NotJusticeWhen</strong></h3>
+            </div>
             <div class="col-md-6">
-                <h3 class="red">Most teens break the law. Youth of color are more likely to be punished for it.</h3>
+                <h3 class="red" style="line-height: 130%;">
+                    <i class="fa fa-fw fa-balance-scale" aria-hidden="true"></i> the treatment is unequal.<br />
+                    <i class="fa fa-fw fa-gavel" aria-hidden="true"></i>the deck is stacked.<br />
+                    <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>the consequences are permanent.
+                </h3>
+            </div>
+        </div>
+    </section>
 
-                <p>This disparity is called <strong>disproportionate minority contact</strong>. It has been recognized for decades as a deep-rooted problem of the juvenile justice system.</p>
+    <section class="slide">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="red">Youth of all races break the law. Youth of color are more likely to be punished for it.</h2><br />
 
-                <p>Researchers say the divide stems from bias in police and courts. It matters because contact with the justice system puts youth at a persistent disadvantage, affecting their ability to get an education, find housing, and go to work.</p>
+                <h3>It's <strong>#NotJusticeWhen</strong> the treatment is unequal.</h3>
 
-                <p>It's <strong>#NotJusticeWhen</strong> the system harms one group significantly more than another.</p>
+                <h1><i class="fa fa-fw fa-balance-scale" aria-hidden="true"></i></h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>The overrepresentation of youth in the juvenile justice system is called disproportionate minority contact (DMC for short).</h3>
+
+                <p>DMC stems from bias. Researchers note that bias does not always happen on purpose. Nonetheless, it can sneak in whenever someone makes a decision.</p>
+
+                <div class="placeholder">System actors diagram</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>By way of example, among all races, about one in five youth <span class="red">use marijuana.</span></h3>
+                <br /><br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5" style="font-size: 3em; color: #000;">
+                <i class="fa fa-fw fa-male red" aria-hidden="true"></i>
+                <i class="fa fa-fw fa-male" aria-hidden="true"></i>
+                <i class="fa fa-fw fa-male" aria-hidden="true"></i>
+                <i class="fa fa-fw fa-male" aria-hidden="true"></i>
+                <i class="fa fa-fw fa-male" aria-hidden="true"></i><br />
+            </div>
+            <div class="col-md-5" style="font-size: 3em;">
+                <i class="fa fa-fw fa-male red" aria-hidden="true"></i>
+                <i class="fa fa-fw fa-male" aria-hidden="true"></i>
+                <i class="fa fa-fw fa-male" aria-hidden="true"></i>
+                <i class="fa fa-fw fa-male" aria-hidden="true"></i>
+                <i class="fa fa-fw fa-male" aria-hidden="true"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="row">
+            <div class="col-md-5">
+                <h3>Chicago decriminalized marijuana in 2012. Illinois followed suit in 2016. As such, the number of arrests for marijuana possession has fallen.</h3>
+
+                <div class="placeholder" id="marijuana_arrests_over_time">Marijuana arrests over time</div>
+            </div>
+
+            <div class="col-md-5 col-md-offset-1">
+                <h3>However, black kids consistently account for between 6 and 7 of every 10 arrests. They account for only 4 of every 10 kids in Chicago.</h3>
+
+                <div class="placeholder" id="marijuana_arrests_by race">Marijuana arrests by race</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-11">
+                <br />
+                <button class="btn btn-xs btn-default pull-right">
+                    <i class="fa fa-fw fa-download aria-hidden="true"></i> Download the data
+                </button>
             </div>
         </div>
     </section>
@@ -39,33 +113,17 @@ custom_js:
         <div class="row">
             <div class="col-md-8">
                 <h3>
-                    In Chicago, a disproportionate number of black youth are arrested.
+                    In Chicago, black youth were arrested twice as often as white youth in 2014.
+                    <!-- The multiplier is equal to the probability a black youth is arrested, divided by the probability any youth is arrested. -->
                 </h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-11">
                 <div class="ct-chart" id="all_arrests"></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="slide">
-        <div class="row">
-            <div class="col-md-8">
-                <h3>How disproportionate?</h3>
-                <p class="drop-cap lead">The multiplier is equal to the probability a black youth is arrested, divided by the probability any youth is arrested.</p>
-
-                <p>[math, explained]</p>
-
-                <!--In 2014, there were 14,093 arrests of black youth from a population of 109,497, a probability of 0.129 or a rate of 12.9%. There were 17,724 total juvenile arrests from a population of 261,120, a probability of .068 or a rate of 6.8%.
-
-                When we divide 0.129 by 0.068, we see black youth were arrested 1.9 times more often than youth in general.-->
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-10">
-                <div class="ct-chart" id="all_arrests"></div>
+                <button class="btn btn-xs btn-default pull-right">
+                    <i class="fa fa-fw fa-download aria-hidden="true"></i> Download the data
+                </button>
             </div>
         </div>
     </section>
@@ -75,13 +133,53 @@ custom_js:
     <section class="slide">
         <div class="row">
             <div class="col-md-8">
-                <h3>
-                    As a result, the majority of youth at every stage of the juvenile justice system are black and brown.
-                </h3>
+                <h2 class="red">DMC begins before youth even enter the juvenile justice system and persists as they move through it.</h2><br />
+
+                <h3>It's #NotJusticeWhen the deck is stacked.</h3>
+
+                <h1><i class="fa fa-fw fa-gavel" aria-hidden="true"></i></h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Students who are suspended or expelled are 3 times more likely to make contact with the justice system than students who are not removed from school.</h3>
+
+                <p>During the 2015-16 school year in Chicago Public Schools, black students made up:</p>
+
+                <ul>
+                    <li><span class="red">38.9%</span> of Chicago Public Schools enrollment</li>
+                    <li><span class="red">65.7%</span> of school-based arrests</li>
+                    <li><span class="red">70.7%</span> of CPS out-of-school suspensions</li>
+                    <li><span class="red">75.6%</span> of CPS expulsions</li>
+                </li>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>DMC occurs at every point of contact in the justice system.</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-12">
+                <div class="placeholder">Points of contact diagram (extends system actors)</div>
+            </div>
+        </div>
+    </section>    
+
+    <section class="slide">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>As a consequence, the majority of youth at every stage of the justice system is black.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <div class="ct-chart" id="system_disparity"></div>
             </div>
         </div>
@@ -90,7 +188,11 @@ custom_js:
     <section class="slide">
         <div class="row">
             <div class="col-md-8">
-                <h3>An arrest alone can have lifelong consequences.</h3>
+                <h2 class="red">DMC reaches beyond the justice system.</h2><br />
+
+                <h3>It's #NotJusticeWhen the consequences are permanent.</h3>
+
+                <h1><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i></h1>
             </div>
         </div>
     </section>
@@ -98,17 +200,69 @@ custom_js:
     <section class="slide">
         <div class="row">
             <div class="col-md-8">
-                <h3>Chicago Public Schools students who are <span class="red">arrested</span> are more likely to drop out of high school and less likely to attend a four-year college, compared to <span class="gray">their peers.</span></h3>
+                <h3>A criminal record makes it more difficult to get an education, find housing, and go to work.</h3>
+
+                <!--<h1>
+                    <i class="fa fa-fw fa-graduation-cap" aria-hidden="true"></i>
+                    <i class="fa fa-fw fa-home" aria-hidden="true"></i>
+                    <i class="fa fa-fw fa-briefcase" aria-hidden="true"></i>
+                </h1>-->
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Chicago Public Schools students who are <span class="red">arrested</span> are more likely to drop out of high school and less likely to attend a four-year college then <span class="gray">their peers.</span></h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="ct-chart" id="education_disparity"></div>
             </div>
         </div><br />
         <div class="row">
             <div class="col-md-6 text-right pull-right">
                 <small>SOURCE: <a href="#" target="_blank">Juvenile Arrest and Collateral Educational Damage in the Transition to Adulthood</a>, a long-term study that tracked peer groups of CPS students across multiple years</small>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>[ barriers to housing ]</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>[ barriers to employment ]</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>58% of teens released from incarceration in Illinois return to prison within three years.</h3>
+
+                <p>This is called recidivism, and it's a result of these obstacles combined with strict conditions of probation and parole.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="red">It doesn't have to be this way.</h2><br />
+
+                <button class="btn btn-xl btn-danger">
+                    <i class="fa fa-fw fa-chain-broken aria-hidden="true"></i> Take action!
+                </button>
             </div>
         </div>
     </section>
