@@ -5,19 +5,20 @@ custom_css:
 - deck.core
 - fade
 - leaflet
-- chartist.min
 - custom.viz
 custom_js:
 - lib/modernizr.custom
 - lib/deck.core
-- lib/chartist.min
-- js/charts
 - lib/leaflet
 - lib/leaflet-google
 - lib/leaflet-pip
 - lib/ejs
 - js/district_map
 ---
+
+<script src="{{ site.baseurl }}/lib/jquery-1.10.1.min.js"></script>
+<script src="{{ site.baseurl }}/lib/highcharts.js"></script>
+<script src="{{ site.baseurl }}/js/chart_helper.js"></script>
 
 <div class="container">
 
@@ -180,7 +181,9 @@ custom_js:
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="ct-chart" id="system_disparity"></div>
+
+{% include system_disparity_chart.html %}
+
             </div>
         </div>
     </section>
