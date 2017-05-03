@@ -180,6 +180,17 @@
         $.deck('section.slide');
       });
 
+      $(document).bind('deck.change', function(event, from, to) {
+          slideElement = '#slide-' + to;
+          chartsInSlide = $(slideElement).find('[id*="_chart"]');
+          if ( chartsInSlide ) {
+              chartsInSlide.each(function() {
+                  chart_obj = window[$(this).attr('data-chart')];
+                  new Highcharts.Chart(chart_obj);
+              })
+          }
+      });
+
   </script>
 
 </html>

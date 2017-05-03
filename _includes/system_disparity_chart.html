@@ -1,4 +1,4 @@
-                <div id="system_disparity_chart"></div>
+                <div id="system_disparity_chart" data-chart="systemDisparityChart"></div>
 
                 <script>
 
@@ -34,8 +34,8 @@
 
                     ChartHelper.stacked_label_options.y = -40
 
-                    ChartHelper.make_bar_chart(
-                        '#system_disparity_chart', 
+                    var systemDisparityChart = ChartHelper.make_bar_chart(
+                        'system_disparity_chart', 
                         seriesData, 
                         categories, 
                         plotOptions, 

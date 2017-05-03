@@ -1,4 +1,4 @@
-                <div id="marijuana_arrests_by_race"></div>
+                <div id="arrests_by_race_chart" data-chart="arrestsByRaceChart"></div>
 
                 <script>
 
@@ -42,8 +42,8 @@
                         }
                     }
 
-                    ChartHelper.make_bar_chart(
-                        '#marijuana_arrests_by_race', 
+                    var arrestsByRaceChart = ChartHelper.make_bar_chart(
+                        'arrests_by_race_chart', 
                         series_data,
                         categories,
                         plot_options,

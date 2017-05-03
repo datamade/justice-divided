@@ -1,4 +1,4 @@
-                <div id="education_outcomes_chart"></div>
+                <div id="education_outcomes_chart" data-chart="educationOutcomesChart"></div>
 
                 <script>
 
@@ -32,8 +32,8 @@
 
                     ChartHelper.stacked_label_options.y = -35
 
-                    ChartHelper.make_bar_chart(
-                        '#education_outcomes_chart', 
+                    var educationOutcomesChart = ChartHelper.make_bar_chart(
+                        'education_outcomes_chart', 
                         seriesData, 
                         categories, 
                         plotOptions, 

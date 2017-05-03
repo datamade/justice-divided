@@ -2,7 +2,7 @@ Highcharts.theme = {
     colors: ['#E74C3C', '#A0A0A0', '#D3D3D3'],
     chart: {
         backgroundColor: '#333',
-        fontFamily: '"Lato", sans-serif'
+        fontFamily: '"Lato", sans-serif',
     },
     title: {
       text: null
@@ -34,7 +34,6 @@ Highcharts.theme = {
         bar: {
             maxPointWidth: 20,
             borderWidth: 0,
-            animation: false,
             events: {
                 legendItemClick: function(e) {
                     e.preventDefault()
@@ -43,13 +42,12 @@ Highcharts.theme = {
         }, 
         column: {
             maxPointWidth: 20,
-            borderWidth: 0,
-            animation: false
+            borderWidth: 0
         }
     }   
 };
 
-var options = Highcharts.setOptions(Highcharts.theme);  
+Highcharts.setOptions(Highcharts.theme);  
 
 var ChartHelper = ChartHelper || {};
 var ChartHelper = {
@@ -67,7 +65,7 @@ var ChartHelper = {
 
     make_bar_chart: function(el, series_data, categories, plot_options, label_options) {
 
-        if ( el == '#marijuana_arrests_by_race' ) {
+        if ( el == 'arrests_by_race_chart' ) {
             chartHeight = '320';
             legend_options = {
                 enabled: true,
@@ -88,11 +86,12 @@ var ChartHelper = {
             }
         }
 
-        $(el).highcharts({
-        chart: {
+        return {
+            chart: {
                 type: 'bar',
                 height: chartHeight,
-                spacingTop: 40
+                spacingTop: 40,
+                renderTo: el
             },
             xAxis: {
                 categories: categories,
@@ -111,7 +110,8 @@ var ChartHelper = {
             legend: legend_options,
             plotOptions: plot_options,
             series: series_data
-        });
+        };
+
     },
 
     make_detail_chart: function(data) {
@@ -177,10 +177,11 @@ var ChartHelper = {
 
     make_area_chart: function(el, series_data, yaxis_title) {
 
-        $(el).highcharts({
+        return {
             chart: {
                 type: 'area',
-                height: '300'
+                height: '300',
+                renderTo: el
             },
             xAxis: {
                 labels: {
@@ -217,7 +218,7 @@ var ChartHelper = {
                 }
             },
             series: series_data
-        });
+        };
 
     }
 
