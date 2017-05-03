@@ -1,67 +1,74 @@
-Highcharts.setOptions({
-    lang: {
-        thousandsSep: ','
-    },
+Highcharts.theme = {
+    colors: ['#E74C3C', '#A0A0A0', '#D3D3D3'],
     chart: {
-        style: {
-            fontFamily: '"ColaborateThinRegular", sans-serif'
-        }
-    }
-});   
+        backgroundColor: '#333',
+        fontFamily: '"Lato", sans-serif'
+    },
+    title: {
+      text: null
+    },
+    xAxis: {
+        gridLineColor: '#525252',
+        tickColor: '#333',
+        lineWidth: 0,
+    },
+    yAxis: {
+        min: 0,
+        labels: {
+            overflow: 'justify',
+            align: 'center'
+        },
+        gridLineColor: '#525252',
+        gridLineDashStyle: 'Dash',
+    },
+    legend: {
+        enabled: false
+    },
+    credits: {
+        enabled: false
+    },
+    tooltip: {
+        enabled: false
+    }   
+};
+
+Highcharts.setOptions(Highcharts.theme);  
 
 var ChartHelper = ChartHelper || {};
 var ChartHelper = {
 
-    cleaned_data: [],
     categories: [],
 
-    get_colors: function(idx) {
-      colorBase = ['#E74C3C', '#A0A0A0', '#D3D3D3'];
-      return colorBase.slice(0, idx);
+    stacked_label_options: {
+          style: {
+            'fontSize': '20px',
+            'color': '#f3f1e5'
+          },
+          align: 'left',
+          y: -45,
+          x: 5
     },
 
-    make_bar_chart: function(el, seriesData, categories, plotOptions = {}) {
+    make_bar_chart: function(el, seriesData, categories, plotOptions = {}, xAxisLabelOptions = {}) {
 
       $(el).highcharts({
         chart: {
                 type: 'bar',
-                backgroundColor: '#333'
-            },
-            title: {
-                text: ''
             },
             xAxis: {
                 categories: categories,
                 title: {
                   text: null
                 },
-                gridLineColor: '#525252',
-                tickColor: '#333',
-                lineWidth: 0
+                labels: xAxisLabelOptions
             },
             yAxis: {
-                min: 0,
-                max: 100,
                 title: {
                     text: null
                 },
-                labels: {
-                    overflow: 'justify'
-                },
-                gridLineColor: '#525252',
-                gridLineDashStyle: 'Dash',
-                tickAmount: 5
-            },
-            tooltip: {
-                enabled: false
+                tickAmount: 6
             },
             plotOptions: plotOptions,
-            legend: {
-                enabled: false
-            },
-            credits: {
-                enabled: false
-            },
             series: seriesData
       });
     },

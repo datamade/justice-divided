@@ -2,42 +2,44 @@
 
                 <script>
 
-                    colors = ChartHelper.get_colors(3);
-
                     categories = ['Detention', 'Probation', 'Incarceration']
 
                     seriesData = [{
-                        name: 'Black',
+                        name: 'black',
                         data: [80.6, 85.6, 82.5],
-                        color: colors[0]
                     }, {
                         name: 'Hispanic',
                         data: [15.6, 7.6, 3.5],
-                        color: colors[1]
                     }, {
-                        name: 'White',
-                        data: [3.5, 5.6, 2.1],
-                        color: colors[2]
+                        name: 'white',
+                        data: [3.5, 5.6, 2.1]
                     }]
 
                     plotOptions = {
                         bar: {
                             dataLabels: {
-                                color: 'white',
                                 enabled: true,
+                                color: '#f3f1e5',
+                                style: {
+                                    'textOutline': 0,
+                                    'fontWeight': 'normal',
+                                    'fontSize': '14px'
+                                },
                                 formatter: function() {
                                    return this.y + '% ' + this.series.name
-                                },
-                                crop: false,
-                                overflow: 'none',
-                                style: {
-                                    textOutline: 0
                                 }
                             },
-                            borderWidth: 0
+                            borderWidth: 0,
+                            animation: false
                         }
                     }
 
-                    ChartHelper.make_bar_chart('#system_disparity_chart', seriesData, categories, plotOptions);
+                    ChartHelper.make_bar_chart(
+                        '#system_disparity_chart', 
+                        seriesData, 
+                        categories, 
+                        plotOptions, 
+                        ChartHelper.stacked_label_options
+                    );
 
                 </script>
