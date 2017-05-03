@@ -29,10 +29,15 @@ Highcharts.theme = {
     },
     tooltip: {
         enabled: false
+    },
+    plotOptions: {
+        bar: {
+            pointPadding: 0.15
+        }
     }   
 };
 
-Highcharts.setOptions(Highcharts.theme);  
+var options = Highcharts.setOptions(Highcharts.theme);  
 
 var ChartHelper = ChartHelper || {};
 var ChartHelper = {
@@ -45,22 +50,25 @@ var ChartHelper = {
             'color': '#f3f1e5'
           },
           align: 'left',
-          y: -45,
-          x: 5
+          x: 5,
+          y: -40
     },
 
-    make_bar_chart: function(el, seriesData, categories, plotOptions = {}, xAxisLabelOptions = {}) {
+    make_bar_chart: function(el, seriesData, categories, plotOptions, labelOptions) {
 
-      $(el).highcharts({
+        chartHeight = categories.length * 100 + 100
+
+        $(el).highcharts({
         chart: {
                 type: 'bar',
+                height: chartHeight
             },
             xAxis: {
                 categories: categories,
                 title: {
                   text: null
                 },
-                labels: xAxisLabelOptions
+                labels: labelOptions
             },
             yAxis: {
                 title: {
@@ -70,7 +78,7 @@ var ChartHelper = {
             },
             plotOptions: plotOptions,
             series: seriesData
-      });
+        });
     },
 
     make_line_chart: function(el, series_data, categories, chart_title, yaxis_title, data_type) {
