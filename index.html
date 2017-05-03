@@ -219,12 +219,14 @@ custom_js:
     <section class="slide">
         <div class="row">
             <div class="col-md-8">
-                <h3>Chicago Public Schools students who are <span class="red">arrested</span> are more likely to drop out of high school and less likely to attend a four-year college then <span class="gray">their peers.</span></h3>
+                <h3>Chicago Public Schools students who are <span class="red">arrested</span> are less likely to graduate high school and to attend a four-year college than <span class="gray">their peers.</span></h3>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="ct-chart" id="education_disparity"></div>
+
+{% include education_outcomes_chart.html %}
+
             </div>
         </div><br />
         <div class="row">

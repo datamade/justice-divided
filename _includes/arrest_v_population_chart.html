@@ -1,0 +1,47 @@
+                <div id="arrest_v_population_chart"></div>
+
+                <script>
+
+                    categories = ['Population', 'Arrests']
+
+                    seriesData = [{
+                        name: 'black',
+                        data: [41.93, 79],
+                    }, {
+                        name: 'Hispanic',
+                        data: [43.18, 17],
+                    }, {
+                        name: 'white',
+                        data: [14.88, 3]
+                    }]
+
+                    plotOptions = {
+                        bar: {
+                            dataLabels: {
+                                enabled: true,
+                                color: '#f3f1e5',
+                                style: {
+                                    'textOutline': 0,
+                                    'fontWeight': 'normal',
+                                    'fontSize': '14px'
+                                },
+                                formatter: function() {
+                                   return this.y.toFixed(0) + '% ' + this.series.name
+                                }
+                            },
+                            borderWidth: 0,
+                            animation: false
+                        }
+                    }
+
+                    ChartHelper.stacked_label_options.y = -45
+
+                    ChartHelper.make_bar_chart(
+                        '#arrest_v_population_chart', 
+                        seriesData, 
+                        categories, 
+                        plotOptions, 
+                        ChartHelper.stacked_label_options
+                    );
+
+                </script>

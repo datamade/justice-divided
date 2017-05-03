@@ -32,7 +32,7 @@ Highcharts.theme = {
     },
     plotOptions: {
         bar: {
-            pointPadding: 0.15
+            maxPointWidth: 20
         }
     }   
 };
@@ -50,8 +50,7 @@ var ChartHelper = {
             'color': '#f3f1e5'
           },
           align: 'left',
-          x: 5,
-          y: -40
+          x: 5
     },
 
     make_bar_chart: function(el, seriesData, categories, plotOptions, labelOptions) {
