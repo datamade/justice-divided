@@ -1,0 +1,53 @@
+                <div id="marijuana_arrests_by_race"></div>
+
+                <script>
+
+                    categories = ['2013', '2014', '2015', '2016']
+
+                    series_data = [{
+                        name: 'black',
+                        data: [68.59, 66.27, 63.42, 66.02]
+                    }, {
+                        name: 'white Hispanic',
+                        data: [26.32, 27.61, 30.16, 29.15]
+                    }, {
+                        name: 'white',
+                        data: [4.43, 4.82, 4.91, 4.05]
+                    }]
+
+                    plot_options = {
+                        bar: {
+                            dataLabels: {
+                                enabled: true,
+                                color: '#333',
+                                style: {
+                                    'textOutline': 0,
+                                    'fontWeight': 'normal',
+                                    'fontSize': '11px'
+                                },
+                                formatter: function() {
+                                   return this.y.toFixed(0) + '%'
+                                }
+                            }
+                        },
+                        series: {
+                            stacking: 'normal'
+                        }
+                    }
+
+                    label_options = {
+                        style: {
+                            color: '#f3f1e5',
+                            'fontSize': '14px'
+                        }
+                    }
+
+                    ChartHelper.make_bar_chart(
+                        '#marijuana_arrests_by_race', 
+                        series_data,
+                        categories,
+                        plot_options,
+                        label_options
+                    );
+
+                </script>

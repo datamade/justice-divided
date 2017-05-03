@@ -88,21 +88,22 @@ custom_js:
 
     <section class="slide">
         <div class="row">
-            <div class="col-md-5">
-                <h3>Chicago decriminalized marijuana in 2012. Illinois followed suit in 2016. As such, the number of arrests for marijuana possession has fallen.</h3>
+            <div class="col-md-6">
+                <h3>Chicago decriminalized marijuana in 2012. Illinois followed suit in 2016. As such, <span style="color: #674baa">the number of arrests</span> for marijuana possession has fallen.</h3>
 
-                <div class="placeholder" id="marijuana_arrests_over_time">Marijuana arrests over time</div>
+{% include arrest_chart.html %}
+
             </div>
 
-            <div class="col-md-5 col-md-offset-1">
-                <h3>However, black kids consistently account for between 6 and 7 of every 10 arrests. They account for only 4 of every 10 kids in Chicago.</h3>
+            <div class="col-md-6">
+                <h3>However, <span class="red">black kids</span> consistently account for between 6 and 7 of every 10 arrests. They account for only 4 of every 10 kids in Chicago.</h3>
 
-                <div class="placeholder" id="marijuana_arrests_by race">Marijuana arrests by race</div>
+{% include race_chart.html %}
+
             </div>
         </div>
         <div class="row">
-            <div class="col-md-11">
-                <br />
+            <div class="col-md-12">
                 <button class="btn btn-xs btn-default pull-right">
                     <i class="fa fa-fw fa-download aria-hidden="true"></i> Download the data
                 </button>
