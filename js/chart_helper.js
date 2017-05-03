@@ -32,7 +32,14 @@ Highcharts.theme = {
     },
     plotOptions: {
         bar: {
-            maxPointWidth: 20
+            maxPointWidth: 20,
+            borderWidth: 0,
+            animation: false
+        }, 
+        column: {
+            maxPointWidth: 20,
+            borderWidth: 0,
+            animation: false
         }
     }   
 };
@@ -76,6 +83,67 @@ var ChartHelper = {
                 tickAmount: 6
             },
             plotOptions: plotOptions,
+            series: seriesData
+        });
+    },
+
+    make_detail_chart: function(data) {
+
+        categories = ['Population', 'Arrests'];
+        
+        seriesData = [{
+            name: 'black',
+            data: data[0]
+        }, {
+            name: 'Hispanic',
+            data: data[1]
+        }, {
+            name: 'white',
+            data: data[2]
+        }];
+
+        new Highcharts.Chart({
+            chart: {
+                type: 'column',
+                height: '250',
+                renderTo: 'detail-chart',
+                spacingTop: 40
+            },
+            xAxis: {
+                categories: categories,
+                title: {
+                    text: null
+                },
+                labels: {
+                    style: {
+                        'color': '#f3f1e5',
+                        'fontSize': '12px'
+                    }
+                }
+            },
+            yAxis: {
+                title: {
+                    text: null
+                },
+                max: 100,
+                tickAmount: 6
+            },
+            legend: {
+                enabled: true,
+                symbolRadius: 0,
+                verticalAlign: 'top',
+                floating: true,
+                y: -40,
+                itemStyle: {
+                    'color': '#f3f1e5',
+                    'fontWeight': 'normal'
+                }
+            },
+            plotOptions: {
+                column: {
+                    groupPadding: 0.25
+                }
+            },
             series: seriesData
         });
     },
