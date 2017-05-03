@@ -34,7 +34,12 @@ Highcharts.theme = {
         bar: {
             maxPointWidth: 20,
             borderWidth: 0,
-            animation: false
+            animation: false,
+            events: {
+                legendItemClick: function(e) {
+                    e.preventDefault()
+                }
+            }
         }, 
         column: {
             maxPointWidth: 20,
@@ -62,12 +67,32 @@ var ChartHelper = {
 
     make_bar_chart: function(el, series_data, categories, plot_options, label_options) {
 
-        chartHeight = categories.length * 100 + 100
+        if ( el == '#marijuana_arrests_by_race' ) {
+            chartHeight = '320';
+            legend_options = {
+                enabled: true,
+                symbolRadius: 0,
+                verticalAlign: 'top',
+                floating: true,
+                y: -40,
+                itemStyle: {
+                    'color': '#f3f1e5',
+                    'fontWeight': 'normal'
+                },
+                reversed: true
+            }
+        } else {
+            chartHeight = categories.length * 100 + 100;
+            legend_options = {
+                enabled: false
+            }
+        }
 
         $(el).highcharts({
         chart: {
                 type: 'bar',
-                height: chartHeight
+                height: chartHeight,
+                spacingTop: 40
             },
             xAxis: {
                 categories: categories,
@@ -80,8 +105,10 @@ var ChartHelper = {
                 title: {
                     enabled: false
                 },
+                max: 100,
                 tickAmount: 6
             },
+            legend: legend_options,
             plotOptions: plot_options,
             series: series_data
         });
@@ -157,13 +184,7 @@ var ChartHelper = {
             },
             xAxis: {
                 labels: {
-                    enabled: true,
-                    style: {
-                        'textOutline': 0,
-                        'fontWeight': 'normal',
-                        'fontSize': '14px',
-                        'color': '#f3f1e5'
-                    }
+                    enabled: false
                 }
             },
             yAxis: {
@@ -172,8 +193,7 @@ var ChartHelper = {
                 },
                 labels: {
                     x: -20
-                },
-                showFirstLabel: false
+                }
             },
             plotOptions: {
                 area: {
@@ -182,6 +202,18 @@ var ChartHelper = {
                         symbol: 'square'
                     },
                     animation: false,
+                    dataLabels: {
+                        enabled: true,
+                        style: {
+                            'textOutline': 0,
+                            'fontWeight': 'normal',
+                            'fontSize': '14px',
+                            'color': '#f3f1e5'
+                        },
+                        formatter: function() {
+                            return this.x
+                        }
+                    }
                 }
             },
             series: series_data
