@@ -60,7 +60,7 @@ var ChartHelper = {
           x: 5
     },
 
-    make_bar_chart: function(el, seriesData, categories, plotOptions, labelOptions) {
+    make_bar_chart: function(el, series_data, categories, plot_options, label_options) {
 
         chartHeight = categories.length * 100 + 100
 
@@ -72,18 +72,18 @@ var ChartHelper = {
             xAxis: {
                 categories: categories,
                 title: {
-                  text: null
+                    enabled: false
                 },
-                labels: labelOptions
+                labels: label_options
             },
             yAxis: {
                 title: {
-                    text: null
+                    enabled: false
                 },
                 tickAmount: 6
             },
-            plotOptions: plotOptions,
-            series: seriesData
+            plotOptions: plot_options,
+            series: series_data
         });
     },
 
@@ -91,7 +91,7 @@ var ChartHelper = {
 
         categories = ['Population', 'Arrests'];
         
-        seriesData = [{
+        series_data = [{
             name: 'black',
             data: data[0]
         }, {
@@ -112,7 +112,7 @@ var ChartHelper = {
             xAxis: {
                 categories: categories,
                 title: {
-                    text: null
+                    enabled: false
                 },
                 labels: {
                     style: {
@@ -123,7 +123,7 @@ var ChartHelper = {
             },
             yAxis: {
                 title: {
-                    text: null
+                    enabled: false
                 },
                 max: 100,
                 tickAmount: 6
@@ -144,89 +144,48 @@ var ChartHelper = {
                     groupPadding: 0.25
                 }
             },
-            series: seriesData
+            series: series_data
         });
     },
 
-    make_line_chart: function(el, series_data, categories, chart_title, yaxis_title, data_type) {
-      if (data_type == 'percent') {
-        y_min = null
-        y_labels = {
-              formatter: function () {
-                  return this.value + '%';
-              }
-            }
-        data_labels = {
+    make_area_chart: function(el, series_data, yaxis_title) {
+
+        $(el).highcharts({
+            chart: {
+                type: 'area',
+                height: '300'
+            },
+            xAxis: {
+                labels: {
                     enabled: true,
-                    format: "{point.y:.1f}%"
+                    style: {
+                        'textOutline': 0,
+                        'fontWeight': 'normal',
+                        'fontSize': '14px',
+                        'color': '#f3f1e5'
+                    }
                 }
-        states = {
-                hover: {
-                  enabled: false
-                }
-              }
-        tooltip = {
-            enabled: false
-        }
-      } else {
-        y_min = 0
-        y_labels = {}
-        data_labels = {
-          enabled: false
-        }
-        states = {}
-        tooltip = {
-          borderColor: '#eee',
-          shadow: false,
-          headerFormat: '',
-          pointFormat: '{point.y:,.0f}',
-        }
-
-      }
-
-      $(el).highcharts({
-        chart: {
-          type: 'line',
-          backgroundColor:"rgba(255, 255, 255, 0)",
-          spacingTop: 40
-        },
-        credits: { enabled: false },
-        title: {
-            text: chart_title[0]
-        },
-        subtitle: {
-            text: chart_title[1]
-        },
-        xAxis: {
-            categories: categories,
-            tickmarkPlacement: 'on',
-            title: {
-                enabled: false
-            }
-        },
-        yAxis: {
-            title: {
-                text: yaxis_title
             },
-            labels: y_labels,
-            min: y_min
-        },
-        tooltip: tooltip,
-        plotOptions: {
-            line: {
-                marker: {
-                    lineWidth: 1,
-                    lineColor: '#ffffff',
-                    symbol: 'square'
+            yAxis: {
+                title: {
+                    enabled: false
                 },
-                dataLabels: data_labels
+                labels: {
+                    x: -20
+                },
+                showFirstLabel: false
             },
-            series: {
-              states: states
-            }
-        },
-        series: series_data
-      });
+            plotOptions: {
+                area: {
+                    color: '#674baa',
+                    marker: {
+                        symbol: 'square'
+                    },
+                    animation: false,
+                }
+            },
+            series: series_data
+        });
 
     }
 
