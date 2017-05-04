@@ -356,7 +356,7 @@ function fillSidebar(dataObj) {
       template = $('#statistics-template').html();
       content = ejs.render(template, {result: result});
       $('#district-found').html(content);
-      makeDetailChart(data);
+      ChartHelper.make_detail_chart(data);
       $('.highlight').css({'color': color});
     } catch (err) { // fill instructions
       template = $('#instructions').html();

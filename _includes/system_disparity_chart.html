@@ -1,0 +1,46 @@
+                <div id="system_disparity_chart" data-chart="systemDisparityChart"></div>
+
+                <script>
+
+                    categories = ['Detention', 'Probation', 'Incarceration']
+
+                    seriesData = [{
+                        name: 'black',
+                        data: [80.6, 85.6, 82.5],
+                    }, {
+                        name: 'Hispanic',
+                        data: [15.6, 7.6, 3.5],
+                    }, {
+                        name: 'white',
+                        data: [3.5, 5.6, 2.1]
+                    }]
+
+                    plotOptions = {
+                        bar: {
+                            dataLabels: {
+                                enabled: true,
+                                color: '#f3f1e5',
+                                style: {
+                                    'textOutline': 0,
+                                    'fontWeight': 'normal',
+                                    'fontSize': '14px'
+                                },
+                                formatter: function() {
+                                   return this.y.toFixed(0) + '% ' + this.series.name
+                                }
+                            }
+                        }
+                    }
+
+                    labelOptions = jQuery.extend({}, ChartHelper.stacked_label_options)
+                    labelOptions.y = -50
+
+                    var systemDisparityChart = ChartHelper.make_bar_chart(
+                        'system_disparity_chart', 
+                        seriesData, 
+                        categories, 
+                        plotOptions, 
+                        labelOptions
+                    );
+
+                </script>

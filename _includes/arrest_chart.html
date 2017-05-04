@@ -1,0 +1,20 @@
+                <div id="marijuana_arrests_over_time_chart" data-chart="arrestsOverTimeChart" style="max-width: 100%;"></div>
+
+                <script>
+
+                    series_data = [{
+                        name: 'arrests',
+                        data: [
+                            { x: 2013, y: 2413 }, 
+                            { x: 2014, y: 1702 }, 
+                            { x: 2015, y: 1386 }, 
+                            { x: 2016, y: 518 }
+                        ]
+                    }];
+
+                    var arrestsOverTimeChart = ChartHelper.make_area_chart(
+                        'marijuana_arrests_over_time_chart', 
+                        series_data
+                    );
+
+                </script>

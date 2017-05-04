@@ -5,19 +5,19 @@ custom_css:
 - deck.core
 - fade
 - leaflet
-- chartist.min
 - custom.viz
 custom_js:
 - lib/modernizr.custom
 - lib/deck.core
-- lib/chartist.min
-- js/charts
 - lib/leaflet
 - lib/leaflet-google
 - lib/leaflet-pip
 - lib/ejs
 - js/district_map
 ---
+
+<script src="{{ site.baseurl }}/lib/highcharts.js"></script>
+<script src="{{ site.baseurl }}/js/chart_helper.js"></script>
 
 <div class="container">
 
@@ -87,21 +87,22 @@ custom_js:
 
     <section class="slide">
         <div class="row">
-            <div class="col-md-5">
-                <h3>Chicago decriminalized marijuana in 2012. Illinois followed suit in 2016. As such, the number of arrests for marijuana possession has fallen.</h3>
+            <div class="col-md-6 side-by-side">
+                <h3>Chicago decriminalized marijuana in 2012. Illinois followed suit in 2016. As such, <span style="color: #674baa">the number of arrests</span> for marijuana possession has fallen.</h3>
 
-                <div class="placeholder" id="marijuana_arrests_over_time">Marijuana arrests over time</div>
+{% include arrest_chart.html %}
+
             </div>
 
-            <div class="col-md-5 col-md-offset-1">
-                <h3>However, black kids consistently account for between 6 and 7 of every 10 arrests. They account for only 4 of every 10 kids in Chicago.</h3>
+            <div class="col-md-6 side-by-side">
+                <h3>However, <span class="red">black kids</span> consistently account for between 6 and 7 of every 10 arrests. They account for only 4 of every 10 kids in Chicago.</h3>
 
-                <div class="placeholder" id="marijuana_arrests_by race">Marijuana arrests by race</div>
+{% include race_chart.html %}
+
             </div>
         </div>
         <div class="row">
-            <div class="col-md-11">
-                <br />
+            <div class="col-md-12">
                 <button class="btn btn-xs btn-default pull-right">
                     <i class="fa fa-fw fa-download aria-hidden="true"></i> Download the data
                 </button>
@@ -119,8 +120,10 @@ custom_js:
             </div>
         </div>
         <div class="row">
-            <div class="col-md-11">
-                <div class="ct-chart" id="all_arrests"></div>
+            <div class="col-md-12">
+
+{% include arrest_v_population_chart.html %}
+
                 <button class="btn btn-xs btn-default pull-right">
                     <i class="fa fa-fw fa-download aria-hidden="true"></i> Download the data
                 </button>
@@ -180,7 +183,9 @@ custom_js:
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="ct-chart" id="system_disparity"></div>
+
+{% include system_disparity_chart.html %}
+
             </div>
         </div>
     </section>
@@ -214,12 +219,14 @@ custom_js:
     <section class="slide">
         <div class="row">
             <div class="col-md-8">
-                <h3>Chicago Public Schools students who are <span class="red">arrested</span> are more likely to drop out of high school and less likely to attend a four-year college then <span class="gray">their peers.</span></h3>
+                <h3>Chicago Public Schools students who are <span class="red">arrested</span> are less likely to graduate high school and to attend a four-year college than <span class="gray">their peers.</span></h3>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="ct-chart" id="education_disparity"></div>
+
+{% include education_outcomes_chart.html %}
+
             </div>
         </div><br />
         <div class="row">

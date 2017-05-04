@@ -97,6 +97,9 @@
       <script src="/js/html5shiv.js"></script>
       <script src="/js/respond.min.js"></script>
     <![endif]-->
+
+    <script src="{{ site.baseurl }}/lib/jquery-1.10.1.min.js"></script>
+    
   </head>
 
   <body>
@@ -142,7 +145,6 @@
 
   </body>
 
-  <script src="{{ site.baseurl }}/lib/jquery-1.10.1.min.js"></script>
   <script src="{{ site.baseurl }}/lib/analytics_lib.js"></script>
   <script src="{{ site.baseurl }}/lib/bootstrap.min.js"></script>
   <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?libraries=places&key={{ site.google_api_key }}'></script>
@@ -155,30 +157,42 @@
   
   <script>
 
-      // progress bar (via https://css-tricks.com/reading-position-indicator/)
-      var winHeight = $(window).height(), 
-        docHeight = $(document).height(),
-        progressBar = $('progress'),
-        max, value;
+    // progress bar (via https://css-tricks.com/reading-position-indicator/)
+    var winHeight = $(window).height(), 
+    docHeight = $(document).height(),
+    progressBar = $('progress'),
+    max, value;
 
-      max = docHeight - winHeight;
-      progressBar.attr('max', max);
+    max = docHeight - winHeight;
+    progressBar.attr('max', max);
 
-      $(document).on('scroll', function(){
-         value = $(window).scrollTop();
-         progressBar.attr('value', value);
-      });
+    $(document).on('scroll', function(){
+        value = $(window).scrollTop();
+        progressBar.attr('value', value);
+    });
 
-      $('.section').each(function() {
-        if ( $(this).height() > $(this).css('min-height') ) {
-          $(this).next().css('padding-top', '20vh');
+    $('.section').each(function() {
+    if ( $(this).height() > $(this).css('min-height') ) {
+            $(this).next().css('padding-top', '20vh');
         }
-      })
+    })
 
-      // init slides
-      $(function() {
+    // init slides
+    $(function() {
         $.deck('section.slide');
-      });
+    });
+
+    // render chart on slide show
+    $(document).bind('deck.change', function(event, from, to) {
+        slideElement = '#slide-' + to;
+        chartsInSlide = $(slideElement).find('[id*="_chart"]');
+        if ( chartsInSlide ) {
+            chartsInSlide.each(function() {
+                chart_obj = window[$(this).attr('data-chart')];
+                new Highcharts.Chart(chart_obj);
+            })
+        }
+    });      
 
   </script>
 
