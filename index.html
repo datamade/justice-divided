@@ -17,6 +17,7 @@ custom_js:
 ---
 
 <script src="{{ site.baseurl }}/lib/highcharts.js"></script>
+<script src="{{ site.baseurl }}/lib/annotations.js"></script>
 <script src="{{ site.baseurl }}/js/chart_helper.js"></script>
 
 <div class="container">
@@ -88,14 +89,14 @@ custom_js:
     <section class="slide">
         <div class="row">
             <div class="col-md-6 side-by-side">
-                <h3>Chicago decriminalized marijuana in 2012. Illinois followed suit in 2016. As such, <span style="color: #674baa">the number of arrests</span> for marijuana possession has fallen.</h3>
+                <h3>Thanks to decriminalization, <span style="color: #674baa">the number of arrests</span> for marijuana possession has fallen.</h3>
 
 {% include arrest_chart.html %}
 
             </div>
 
             <div class="col-md-6 side-by-side">
-                <h3>However, <span class="red">black kids</span> consistently account for between 6 and 7 of every 10 arrests. They account for only 4 of every 10 kids in Chicago.</h3>
+                <h3>But <span class="red">black kids</span> continued to account for the same proportion of arrests for possession.</h3>
 
 {% include race_chart.html %}
 
