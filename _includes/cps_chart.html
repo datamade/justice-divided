@@ -1,0 +1,64 @@
+
+                <div class="col-sm-4 small-multiple" id="enrollment_chart" data-chart="enrollmentChart"></div>
+                <div class="col-sm-4 small-multiple" id="suspension_chart" data-chart="suspensionChart"></div>
+                <div class="col-sm-4 small-multiple" id="expulsion_chart" data-chart="expulsionChart"></div>
+
+                <script>
+
+                    data = [{
+                        name: 'Enrollment',
+                        data: [{
+                            name: 'Black',
+                            y: 38.9
+                        }, {
+                            name: 'Other',
+                            y: (100 - 38.9)
+                        }]
+                    }, {
+                        name: 'Suspensions',
+                        data: [{
+                            name: 'Black', 
+                            y: 70.7
+                        }, {
+                            name: 'Other', 
+                            y: (100 - 70.7)
+                        }]
+                    }, {
+                        name: 'Expulsions',
+                        data: [{
+                            name: 'Black', 
+                            y: 75.6
+                        }, {
+                            name: 'Other', 
+                            y: (100 - 75.6)
+                        }]
+                    }]
+
+                    plot_options = {
+                        pie: {
+                            dataLabels: {
+                                enabled: false
+                            },
+                            colors: ['#E74C3C', '#333'],
+                            borderColor: '#f3f1e5'
+                        }
+                    }
+
+                    $('.small-multiple').each(function(idx) {
+                        title = data[idx].data[0].y.toFixed(0) + '% of ' + data[idx].name
+                        title_options = { 
+                            text: title, 
+                            style: {
+                                'color': '#f3f1e5',
+                                'fontSize': '22px',
+                                'font-weight': '700'
+                            },
+                            verticalAlign: 'bottom',
+                            y: 25 
+                        }
+                        chartVar = $(this).attr('data-chart')
+                        window[chartVar] = ChartHelper.make_pie_chart(this.id, plot_options, [data[idx]], title_options);
+                        new Highcharts.Chart(window[chartVar]);
+                    })
+
+                </script>
