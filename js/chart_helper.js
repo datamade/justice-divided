@@ -5,7 +5,7 @@ Highcharts.theme = {
         fontFamily: '"Lato", sans-serif'
     },
     title: {
-      text: null
+        text: null
     },
     xAxis: {
         gridLineColor: '#525252',
@@ -66,8 +66,8 @@ var ChartHelper = {
 
     make_bar_chart: function(el, series_data, categories, plot_options, label_options) {
 
-        parent = $('#' + el).parent()
-        parentWidth = parent.innerWidth() - 30;
+        parent = $('#' + el).parent(),
+          parentWidth = parent.innerWidth() - 30;
 
         if ( el == 'arrests_by_race_chart' ) {
             chartHeight = '320',
@@ -183,8 +183,8 @@ var ChartHelper = {
 
     make_area_chart: function(el, series_data, yaxis_title) {
 
-        parent = $('#' + el).parent()
-        parentWidth = parent.innerWidth() - 30;
+        parent = $('#' + el).parent(),
+          parentWidth = parent.innerWidth() - 30;
 
         return {
             chart: {
@@ -229,6 +229,23 @@ var ChartHelper = {
             },
             series: series_data
         };
+
+    },
+
+    make_pie_chart: function(el, plot_options, series_data, title_options) {
+
+        return {
+            chart: {
+                type: 'pie',
+                renderTo: el,
+                height: 300,
+                width: $('#' + el).innerWidth(),
+                spacingBottom: 50
+            },
+            plotOptions: plot_options,
+            series: series_data,
+            title: title_options
+        }
 
     }
 
