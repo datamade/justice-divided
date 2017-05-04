@@ -2,6 +2,13 @@
 
                 <script>
 
+                    function offsetPx(pct) {
+                        fullChartWidth = $('#arrests_by_race_chart').parent().innerWidth() - 30,
+                          axisLabelWidth = 50,
+                          chartWidth = fullChartWidth - axisLabelWidth;
+                        return chartWidth * (pct / 100); 
+                    }
+
                     categories = ['2013', '2014', '2015', '2016']
 
                     series_data = [{
@@ -18,6 +25,7 @@
                     plot_options = {
                         bar: {
                             dataLabels: {
+                                align: 'right',
                                 enabled: true,
                                 color: '#333',
                                 style: {
@@ -38,16 +46,65 @@
                     label_options = {
                         style: {
                             color: '#f3f1e5',
-                            'fontSize': '14px'
+                            'fontSize': '14px',
                         }
                     }
+
+                    annotations = [{
+                        title: {
+                            text: '4 in 10 kids in<br />Chicago are black',
+                            style: {
+                                'color': '#f3f1e5',
+                                'font-family': '"Gloria Hallelujah", monospace'
+                            }
+                        },
+                        y: 120,
+                        x: offsetPx(40),
+                        anchorX: 'left',
+                        anchorY: 'top',
+                        shape: {
+                            type: 'rect',
+                            params: {
+                                height: 25,
+                                width: 1,
+                                stroke: '#f3f1e5',
+                                fill: '#f3f1e5',
+                                x: 50,
+                                y: 37
+                            }
+                        }
+                    }, {
+                        title: {
+                            text: 'btwn 6 & 7 in 10 kids<br />arrested are black',
+                            style: {
+                                'color': '#f3f1e5',
+                                'font-family': '"Gloria Hallelujah", monospace'
+                            }
+                        },
+                        y: 205,
+                        x: offsetPx(63),
+                        anchorX: 'left',
+                        anchorY: 'top',
+                        shape: {
+                            type: 'rect',
+                            params: {
+                                height: 25,
+                                width: 1,
+                                stroke: '#f3f1e5',
+                                fill: '#f3f1e5',
+                                x: 50,
+                                y: 37
+                            }
+                        }
+                    }]
 
                     var arrestsByRaceChart = ChartHelper.make_bar_chart(
                         'arrests_by_race_chart', 
                         series_data,
                         categories,
                         plot_options,
-                        label_options
+                        label_options,
+                        annotations
                     );
 
                 </script>

@@ -44,7 +44,7 @@ Highcharts.theme = {
             maxPointWidth: 20,
             borderWidth: 0
         }
-    }   
+    }  
 };
 
 Highcharts.setOptions(Highcharts.theme);  
@@ -64,13 +64,13 @@ var ChartHelper = {
           y: 25
     },
 
-    make_bar_chart: function(el, series_data, categories, plot_options, label_options) {
+    make_bar_chart: function(el, series_data, categories, plot_options, label_options, annotations = {}) {
 
         parent = $('#' + el).parent(),
           parentWidth = parent.innerWidth() - 30;
 
         if ( el == 'arrests_by_race_chart' ) {
-            chartHeight = '320',
+            chartHeight = '420',
               spacingTop = 40,
               legend_options = {
                   enabled: true,
@@ -82,13 +82,13 @@ var ChartHelper = {
                       'color': '#f3f1e5',
                       'fontWeight': 'normal'
                   },
-                  reversed: true
+                  reversed: false
               };
         } else {
             chartHeight = (categories.length + 1) * 100 + 100,
               legend_options = {
                   enabled: false
-              }
+              };
         }
 
         return {
@@ -111,11 +111,13 @@ var ChartHelper = {
                     enabled: false
                 },
                 max: 100,
-                tickAmount: 6
+                tickAmount: 6,
+                reversedStacks: false
             },
             legend: legend_options,
             plotOptions: plot_options,
-            series: series_data
+            series: series_data,
+            annotations: annotations
         };
 
     },
@@ -181,7 +183,7 @@ var ChartHelper = {
         });
     },
 
-    make_area_chart: function(el, series_data, yaxis_title) {
+    make_area_chart: function(el, series_data, annotations) {
 
         parent = $('#' + el).parent(),
           parentWidth = parent.innerWidth() - 30;
@@ -189,10 +191,11 @@ var ChartHelper = {
         return {
             chart: {
                 type: 'area',
-                height: '300',
+                height: '400',
                 width: parentWidth,
                 renderTo: el,
-                spacingRight: 50
+                spacingRight: 50,
+                paddingTop: 100
             },
             xAxis: {
                 labels: {
@@ -205,7 +208,8 @@ var ChartHelper = {
                 },
                 labels: {
                     x: -20
-                }
+                },
+                max: 3500
             },
             plotOptions: {
                 area: {
@@ -227,7 +231,8 @@ var ChartHelper = {
                     }
                 }
             },
-            series: series_data
+            series: series_data,
+            annotations: annotations
         };
 
     },
@@ -238,7 +243,7 @@ var ChartHelper = {
             chart: {
                 type: 'pie',
                 renderTo: el,
-                height: 300,
+                height: '300',
                 width: $('#' + el).innerWidth(),
                 spacingBottom: 50
             },

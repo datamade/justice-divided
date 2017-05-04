@@ -12,9 +12,38 @@
                         ]
                     }];
 
+                    annotations = [{
+                        title: {
+                            text: 'Chicago<br />decriminalized<br />pot in 2012',
+                            style: {
+                                'color': '#f3f1e5',
+                                'font-family': '"Gloria Hallelujah", monospace',
+                                'transform': 'rotate(-10deg)'
+                            }
+                        },
+                        anchorX: 'left',
+                        anchorY: 'top',
+                        xValue: 2013.1,
+                        yValue: 3250
+                    }, {
+                        title: {
+                            text: 'Illinois<br />decriminalizes<br />pot in 2016',
+                            style: {
+                                'color': '#f3f1e5',
+                                'font-family': '"Gloria Hallelujah", monospace',
+                                'transform': 'rotate(15deg)'
+                            }
+                        },
+                        anchorX: 'right',
+                        anchorY: 'top',
+                        xValue: 2016.05,
+                        yValue: 1700
+                    }]
+
                     var arrestsOverTimeChart = ChartHelper.make_area_chart(
                         'marijuana_arrests_over_time_chart', 
-                        series_data
+                        series_data,
+                        annotations
                     );
 
                 </script>
