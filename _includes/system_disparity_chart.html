@@ -32,14 +32,15 @@
                         }
                     }
 
-                    ChartHelper.stacked_label_options.y = -40
+                    labelOptions = jQuery.extend({}, ChartHelper.stacked_label_options)
+                    labelOptions.y = -50
 
                     var systemDisparityChart = ChartHelper.make_bar_chart(
                         'system_disparity_chart', 
                         seriesData, 
                         categories, 
                         plotOptions, 
-                        ChartHelper.stacked_label_options
+                        labelOptions
                     );
 
                 </script>

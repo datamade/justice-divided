@@ -2,7 +2,7 @@ Highcharts.theme = {
     colors: ['#E74C3C', '#A0A0A0', '#D3D3D3'],
     chart: {
         backgroundColor: '#333',
-        fontFamily: '"Lato", sans-serif',
+        fontFamily: '"Lato", sans-serif'
     },
     title: {
       text: null
@@ -60,37 +60,43 @@ var ChartHelper = {
             'color': '#f3f1e5'
           },
           align: 'left',
-          x: 5
+          x: 5,
+          y: 25
     },
 
     make_bar_chart: function(el, series_data, categories, plot_options, label_options) {
 
+        parent = $('#' + el).parent()
+        parentWidth = parent.innerWidth() - 30;
+
         if ( el == 'arrests_by_race_chart' ) {
-            chartHeight = '320';
-            legend_options = {
-                enabled: true,
-                symbolRadius: 0,
-                verticalAlign: 'top',
-                floating: true,
-                y: -40,
-                itemStyle: {
-                    'color': '#f3f1e5',
-                    'fontWeight': 'normal'
-                },
-                reversed: true
-            }
+            chartHeight = '320',
+              spacingTop = 40,
+              legend_options = {
+                  enabled: true,
+                  symbolRadius: 0,
+                  verticalAlign: 'top',
+                  floating: true,
+                  y: -40,
+                  itemStyle: {
+                      'color': '#f3f1e5',
+                      'fontWeight': 'normal'
+                  },
+                  reversed: true
+              };
         } else {
-            chartHeight = categories.length * 100 + 100;
-            legend_options = {
-                enabled: false
-            }
+            chartHeight = (categories.length + 1) * 100 + 100,
+              legend_options = {
+                  enabled: false
+              }
         }
 
         return {
             chart: {
                 type: 'bar',
                 height: chartHeight,
-                spacingTop: 40,
+                width: parentWidth,
+                spacingTop: spacingTop,
                 renderTo: el
             },
             xAxis: {
@@ -177,11 +183,16 @@ var ChartHelper = {
 
     make_area_chart: function(el, series_data, yaxis_title) {
 
+        parent = $('#' + el).parent()
+        parentWidth = parent.innerWidth() - 30;
+
         return {
             chart: {
                 type: 'area',
                 height: '300',
-                renderTo: el
+                width: parentWidth,
+                renderTo: el,
+                spacingRight: 50
             },
             xAxis: {
                 labels: {
@@ -202,7 +213,6 @@ var ChartHelper = {
                     marker: {
                         symbol: 'square'
                     },
-                    animation: false,
                     dataLabels: {
                         enabled: true,
                         style: {
