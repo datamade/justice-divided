@@ -176,7 +176,8 @@ var ChartHelper = {
             },
             plotOptions: {
                 column: {
-                    groupPadding: 0.25
+                    groupPadding: 0.25,
+                    animation: false
                 }
             },
             series: series_data
