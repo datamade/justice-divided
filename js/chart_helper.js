@@ -9,8 +9,9 @@ Highcharts.theme = {
     },
     xAxis: {
         gridLineColor: '#525252',
-        tickColor: '#333',
-        lineWidth: 0,
+        tickWidth: 0,
+        lineWidth: 1,
+        lineColor: '#525252'
     },
     yAxis: {
         min: 0,
@@ -111,8 +112,10 @@ var ChartHelper = {
                 title: {
                     enabled: false
                 },
+                min: 0,
                 max: 100,
-                tickAmount: 6,
+                tickInterval: 25,
+                tickAmount: 5,
                 reversedStacks: false
             },
             legend: legend_options,
@@ -233,7 +236,12 @@ var ChartHelper = {
                 labels: {
                     x: -20
                 },
-                max: 3500
+                min: 0,
+                max: 3500,
+                tickInterval: 500,
+                tickAmount: 8,
+                startOnTick: false,
+                endOnTick: false
             },
             plotOptions: {
                 area: {
