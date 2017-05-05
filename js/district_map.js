@@ -1,5 +1,5 @@
 // define map
-var districtMap = L.map('district-map', {scrollWheelZoom: false}).setView([41.845, -87.7], 10);
+var districtMap = L.map('district-map', {scrollWheelZoom: false}).setView([41.835, -87.7], 10);
 
 base_map_style = [
   {
@@ -278,7 +278,6 @@ $('#district-map').mouseout(function() { fillSidebar(cityData) });
 
 // search
 var geocoder = new google.maps.Geocoder;
-var autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"));
 
 $('#search-district').click(function() {
   addressInput = $(this).parent().prev();
@@ -362,6 +361,7 @@ function fillSidebar(dataObj) {
       template = $('#instructions').html();
       content = ejs.render(template);
       $('#district-found').html(content);
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"));
     }
   } else { // bad search
     $('#district-found').html('<p>District not found.</p>');

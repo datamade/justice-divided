@@ -70,7 +70,7 @@ var ChartHelper = {
           parentWidth = parent.innerWidth() - 30;
 
         if ( el == 'arrests_by_race_chart' ) {
-            chartHeight = '420',
+            chartHeight = '370',
               spacingTop = 40,
               legend_options = {
                   enabled: true,
@@ -88,7 +88,8 @@ var ChartHelper = {
             chartHeight = (categories.length + 1) * 100 + 100,
               legend_options = {
                   enabled: false
-              };
+              },
+              spacingTop = 0;
         }
 
         return {
@@ -124,7 +125,7 @@ var ChartHelper = {
 
     make_detail_chart: function(data) {
 
-        categories = ['Population', 'Arrests'];
+        categories = ['Population (% race)', 'Arrests (% race)'];
         
         series_data = [{
             name: 'black',
@@ -152,7 +153,7 @@ var ChartHelper = {
                 labels: {
                     style: {
                         'color': '#f3f1e5',
-                        'fontSize': '12px'
+                        'fontSize': '12px',
                     }
                 }
             },
@@ -192,7 +193,7 @@ var ChartHelper = {
         return {
             chart: {
                 type: 'area',
-                height: '400',
+                height: '350',
                 width: parentWidth,
                 renderTo: el,
                 spacingRight: 50,
@@ -235,23 +236,6 @@ var ChartHelper = {
             series: series_data,
             annotations: annotations
         };
-
-    },
-
-    make_pie_chart: function(el, plot_options, series_data, title_options) {
-
-        return {
-            chart: {
-                type: 'pie',
-                renderTo: el,
-                height: '300',
-                width: $('#' + el).innerWidth(),
-                spacingBottom: 50
-            },
-            plotOptions: plot_options,
-            series: series_data,
-            title: title_options
-        }
 
     }
 

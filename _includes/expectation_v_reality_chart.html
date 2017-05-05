@@ -1,0 +1,46 @@
+                <div id="expectation_v_reality_chart" data-chart="expectationVRealityChart"></div>
+
+                <script>
+
+                    categories = ['Population', 'Arrests']
+
+                    seriesData = [{
+                        name: 'black',
+                        data: [41.93, 66.27]
+                    }, {
+                        name: 'Hispanic',
+                        data: [43.18, 26.71]
+                    }, {
+                        name: 'white',
+                        data: [14.88, 4.82]
+                    }]
+
+                    plotOptions = {
+                        bar: {
+                            dataLabels: {
+                                enabled: true,
+                                color: '#f3f1e5',
+                                style: {
+                                    'textOutline': 0,
+                                    'fontWeight': 'normal',
+                                    'fontSize': '14px'
+                                },
+                                formatter: function() {
+                                   return this.y.toFixed(0) + '% ' + this.series.name
+                                }
+                            }
+                        }
+                    }
+
+                    labelOptions = jQuery.extend({}, ChartHelper.stacked_label_options)
+                    labelOptions.y = -55
+
+                    var expectationVRealityChart = ChartHelper.make_bar_chart(
+                        'expectation_v_reality_chart', 
+                        seriesData, 
+                        categories, 
+                        plotOptions, 
+                        labelOptions
+                    );
+                    
+                </script>
