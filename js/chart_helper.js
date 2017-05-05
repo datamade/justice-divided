@@ -125,7 +125,7 @@ var ChartHelper = {
 
     make_detail_chart: function(data) {
 
-        categories = ['Population (% race)', 'Arrests (% race)'];
+        categories = ['Population (%)', 'Arrests (%)'];
         
         series_data = [{
             name: 'black',
@@ -161,8 +161,17 @@ var ChartHelper = {
                 title: {
                     enabled: false
                 },
+                min: 0,
                 max: 100,
-                tickAmount: 6
+                tickInterval: 25,
+                tickAmount: 5,
+                startOnTick: false,
+                endOnTick: false,
+                plotBands: [{ // visually indicate majority
+                    color: '#434343',
+                    from: 50,
+                    to: 100
+                }],
             },
             legend: {
                 enabled: true,
@@ -181,7 +190,20 @@ var ChartHelper = {
                     animation: false
                 }
             },
-            series: series_data
+            series: series_data,
+            annotations: [{
+                title: {
+                    text: '“Most”',
+                    style: {
+                        'color': '#f3f1e5',
+                        'font-family': '"Gloria Hallelujah", monospace'
+                    }
+                },
+                anchorX: 'left',
+                anchorY: 'top',
+                x: 490,
+                y: 105
+            }]
         });
     },
 
