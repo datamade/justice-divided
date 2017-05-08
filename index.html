@@ -2,13 +2,10 @@
 layout: default
 title: Learn
 custom_css: 
-- deck.core
-- fade
 - leaflet
 - custom.viz
 custom_js:
-- lib/modernizr.custom
-- lib/deck.core
+- lib/jquery.waypoints.min
 - lib/leaflet
 - lib/leaflet-google
 - lib/leaflet-pip
@@ -22,24 +19,43 @@ custom_js:
 
 <div class="container">
 
-    <section class="slide">
+    <section id="intro">
         <div class="row">
-            <div class="col-sm-7">
-                <h2 class="red">Youth of all races break the law. Youth of color are more likely to be punished.</h2>
+            <div class="col-sm-7" style="margin-top: 15vh">
+
+                <h2>
+                    Youth of all races break the law.<br />
+                    Youth of color are more likely to be punished.
+                </h2>
+
                 <br />
-                <p class="drop-cap lead">
-                    This phenomenon is called <strong>disproportionate minority contact</strong> (DMC for short), and it stems from bias.
-                    <br /><br />
-                    Researchers note that bias does not always happen on purpose. Nonetheless, it can affect who an officer arrests, when an attorney prosecutes, and how a judge sentences.</h3>
-                </p>
-            </div>
-            <div class="col-sm-4 col-md-offset-1">
-                <img src="img/marcelus_miles_cuffed.png" />
+
+                <div class="col-lg-5" style="padding-left: 0px">
+                    <p class="drop-cap lead">It's <strong class="red">#NotJusticeWhen</strong></p>
+                </div>
+                <div class="col-lg-7">
+                    <h3 class="drop-cap lead">
+                        the treatment is different.<br>
+                        the deck is stacked.<br>
+                        the consequences are lifelong.
+                    </h3>
+                </div>
+                
             </div>
         </div>
     </section>
 
-    <section class="slide">
+    <section id="treatment-is-unequal">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>This phenomenon is called <strong>disproportionate minority contact</strong> (DMC for short), and it stems from bias.</h3>
+
+                <p class="drop-cap lead">Researchers note that bias does not always happen on purpose. Nonetheless, it can affect who an officer arrests, when an attorney prosecutes, and how a judge sentences.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
         <div class="row">
 
             <div class="col-md-6">
@@ -75,7 +91,7 @@ custom_js:
         </div>
     </section>
 
-    <section class="slide">
+    <section>
         <div class="row">
             <div class="col-md-9">
                 <h3>
@@ -98,7 +114,7 @@ custom_js:
 
 {% include district_map.html %}
 
-    <section class="slide">
+    <section id="deck-is-stacked">
         <div class="row">
             <div class="col-md-12">
                 <h3>A decrease in arrests does not mean a decrease in bias.</h3>
@@ -128,10 +144,10 @@ custom_js:
         </div>
     </section>
 
-    <section class="slide">
+    <section>
         <div class="row">
             <div class="col-md-9">
-                <h3>Bias at the entry point, arrests, is carried through the rest of the system.</h3>
+                <h3>Bias in arrests is carried through the rest of the justice system.</h3>
             </div>
         </div>
         <div class="row">
@@ -143,7 +159,7 @@ custom_js:
         </div>
     </section>
 
-    <section class="slide">
+    <section id="consequences-are-lifelong">
         <div class="row">
             <div class="col-md-9">
                 <h2 class="red">A criminal record makes it more difficult to get an education, find housing, and go to work.</h2>
@@ -151,7 +167,7 @@ custom_js:
         </div>
     </section>
 
-    <section class="slide">
+    <section>
         <div class="row">
             <div class="col-md-9">
                 <h3>Chicago Public Schools students who are <span class="red">arrested</span> are less likely to graduate high school and to attend a four-year college than <span class="gray">their peers.</span></h3>
@@ -165,13 +181,13 @@ custom_js:
             </div>
         </div><br />
         <div class="row">
-            <div class="col-md-6 text-right pull-right">
-                <small>SOURCE: <a href="#" target="_blank">Juvenile Arrest and Collateral Educational Damage in the Transition to Adulthood</a>, a long-term study that tracked peer groups of CPS students across multiple years</small>
+            <div class="col-md-8 text-right pull-right">
+                <small>SOURCE: <a href="#" target="_blank">Juvenile Arrest and Collateral Educational Damage in the Transition to Adulthood</a>,<br />a long-term study that tracked peer groups of CPS students across multiple years</small>
             </div>
         </div>
     </section>
 
-    <section class="slide">
+    <section>
         <div class="row">
             <div class="col-md-9">
                 <h3>[ barriers to housing ]</h3>
@@ -179,7 +195,7 @@ custom_js:
         </div>
     </section>
 
-    <section class="slide">
+    <section>
         <div class="row">
             <div class="col-md-9">
                 <h3>[ barriers to employment ]</h3>
@@ -187,7 +203,7 @@ custom_js:
         </div>
     </section>
 
-    <section class="slide">
+    <section>
         <div class="row">
             <div class="col-md-9">
                 <h3>58% of teens released from incarceration in Illinois return to prison within three years.</h3>
@@ -197,7 +213,7 @@ custom_js:
         </div>
     </section>
 
-    <section class="slide">
+    <section>
         <div class="row">
             <div class="col-md-9">
                 <h2 class="red">It doesn't have to be this way.</h2><br />

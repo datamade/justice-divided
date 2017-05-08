@@ -125,7 +125,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
 
     {{ content }}
@@ -133,7 +132,13 @@
     <div class="footer navbar-fixed-bottom">
       <div class="container">
         <div class="row">
-          <div id="nav-links" class="text-right">
+          <div class="col-md-7 visible-md visible-lg visible-xl" id="subhed">
+              <span id="prefix" class="hidden">It's <strong>#NotJusticeWhen</strong></span>
+              <span id="unequal" class="hidden">the treatment is different.</span>
+              <span id="stacked" class="hidden">the deck is stacked.</span>
+              <span id="lifelong" class="hidden">the consequences are lifelong.</span>
+          </div>
+          <div id="nav-links" class="col-md-5 text-right">
             <a id="learn" href="{{ site.baseurl }}/"{% if page.title == 'Learn' %}class="active"{% endif %}>Learn</a>
             <a id="act" href="{{ site.baseurl }}/action"{% if page.title == 'Act' %}class="active"{% endif %}>Act</a>
             <a id="resources" href="{{ site.baseurl }}/resources"{% if page.title == 'Resources' %}class="active"{% endif %}>Resources</a>
@@ -171,28 +176,42 @@
         progressBar.attr('value', value);
     });
 
-    $('.section').each(function() {
-    if ( $(this).height() > $(this).css('min-height') ) {
-            $(this).next().css('padding-top', '20vh');
-        }
-    })
-
-    // init slides
-    $(function() {
-        $.deck('section.slide');
-    });
-
-    // render chart on slide show
-    $(document).bind('deck.change', function(event, from, to) {
-        slideElement = '#slide-' + to;
-        chartsInSlide = $(slideElement).find('[id*="_chart"]');
+    // draw charts once
+    $('section').waypoint(function(direction) {
+        $(this.element).animate({'opacity': 1});
+        chartsInSlide = $(this.element).find('[id*="_chart"]');
         if ( chartsInSlide ) {
             chartsInSlide.each(function() {
                 chart_obj = window[$(this).attr('data-chart')];
                 new Highcharts.Chart(chart_obj);
             })
         }
-    });      
+        this.destroy();
+    }, {offset: '75%'});
+
+    // do navigation always
+    $('section').waypoint(function(direction) {
+        sectionId = $(this.element).attr('id');
+        if ( sectionId ) {
+            id = sectionId.split('-').pop();
+            $('#subhed').find('span').not('#prefix').addClass('hidden');
+
+            if ( direction == 'down' ) {
+                if ( id == 'unequal' ) { // user has scrolled past intro slide
+                    $('#prefix').removeClass('hidden');
+                }
+                // unhide current section
+                $('#subhed').find('span#' + id).removeClass('hidden');
+            } else {
+                if ( id == 'unequal' ) { // user has returned to intro slide
+                    $('#prefix').addClass('hidden');
+                } else {
+                    // unhide previous section
+                    $('#subhed').find('span#' + id).prev().removeClass('hidden');
+                }   
+            }
+        }
+    }, {offset: '75%'});  
 
   </script>
 
