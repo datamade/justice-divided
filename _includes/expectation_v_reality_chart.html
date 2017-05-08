@@ -1,18 +1,18 @@
-                <div id="arrest_v_population_chart" data-chart="arrestsVsPopulationChart"></div>
+                <div id="expectation_v_reality_chart" data-chart="expectationVRealityChart"></div>
 
                 <script>
 
-                    categories = ['Population', 'Marijuana arrests', 'All arrests']
+                    categories = ['Population', 'Marijuana arrests']
 
                     seriesData = [{
                         name: 'black',
-                        data: [41.93, 66.27, 79]
+                        data: [41.93, 66.27]
                     }, {
                         name: 'Hispanic',
-                        data: [43.18, 27.61, 17]
+                        data: [43.18, 26.71]
                     }, {
                         name: 'white',
-                        data: [14.88, 4.82, 3]
+                        data: [14.88, 4.82]
                     }]
 
                     plotOptions = {
@@ -35,12 +35,28 @@
                     labelOptions = jQuery.extend({}, ChartHelper.stacked_label_options)
                     labelOptions.y = -55
 
-                    var arrestsVsPopulationChart = ChartHelper.make_bar_chart(
-                        'arrest_v_population_chart', 
+                    annotations = [{
+                        title: {
+                            text: '(Youth ages 10-17)',
+                            style: {
+                                'color': '#f3f1e5',
+                                'font-family': '"Gloria Hallelujah", monospace',
+                                'transform': 'rotate(-3deg)'
+                            }
+                        },
+                        anchorX: 'left',
+                        anchorY: 'top',
+                        x: 135,
+                        y: 15
+                    }]
+
+                    var expectationVRealityChart = ChartHelper.make_bar_chart(
+                        'expectation_v_reality_chart', 
                         seriesData, 
                         categories, 
                         plotOptions, 
-                        labelOptions
+                        labelOptions,
+                        annotations
                     );
                     
                 </script>

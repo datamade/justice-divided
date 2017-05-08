@@ -17,6 +17,7 @@ body {
 }
 
 h2 {
+  margin-top: unset;
   line-height: 1.25em;
   font-weight: 700;
 }

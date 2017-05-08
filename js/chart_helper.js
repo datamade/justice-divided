@@ -9,8 +9,9 @@ Highcharts.theme = {
     },
     xAxis: {
         gridLineColor: '#525252',
-        tickColor: '#333',
-        lineWidth: 0,
+        tickWidth: 0,
+        lineWidth: 1,
+        lineColor: '#525252'
     },
     yAxis: {
         min: 0,
@@ -70,7 +71,7 @@ var ChartHelper = {
           parentWidth = parent.innerWidth() - 30;
 
         if ( el == 'arrests_by_race_chart' ) {
-            chartHeight = '420',
+            chartHeight = '370',
               spacingTop = 40,
               legend_options = {
                   enabled: true,
@@ -88,7 +89,8 @@ var ChartHelper = {
             chartHeight = (categories.length + 1) * 100 + 100,
               legend_options = {
                   enabled: false
-              };
+              },
+              spacingTop = 0;
         }
 
         return {
@@ -110,8 +112,10 @@ var ChartHelper = {
                 title: {
                     enabled: false
                 },
+                min: 0,
                 max: 100,
-                tickAmount: 6,
+                tickInterval: 25,
+                tickAmount: 5,
                 reversedStacks: false
             },
             legend: legend_options,
@@ -124,7 +128,7 @@ var ChartHelper = {
 
     make_detail_chart: function(data) {
 
-        categories = ['Population', 'Arrests'];
+        categories = ['Population (%)', 'Arrests (%)'];
         
         series_data = [{
             name: 'black',
@@ -152,7 +156,7 @@ var ChartHelper = {
                 labels: {
                     style: {
                         'color': '#f3f1e5',
-                        'fontSize': '12px'
+                        'fontSize': '12px',
                     }
                 }
             },
@@ -160,8 +164,17 @@ var ChartHelper = {
                 title: {
                     enabled: false
                 },
+                min: 0,
                 max: 100,
-                tickAmount: 6
+                tickInterval: 25,
+                tickAmount: 5,
+                startOnTick: false,
+                endOnTick: false/*,
+                plotBands: [{ // visually indicate majority
+                    color: '#434343',
+                    from: 50,
+                    to: 100
+                }],*/
             },
             legend: {
                 enabled: true,
@@ -180,7 +193,20 @@ var ChartHelper = {
                     animation: false
                 }
             },
-            series: series_data
+            series: series_data/*,
+            annotations: [{
+                title: {
+                    text: '“Most”',
+                    style: {
+                        'color': '#f3f1e5',
+                        'font-family': '"Gloria Hallelujah", monospace'
+                    }
+                },
+                anchorX: 'left',
+                anchorY: 'top',
+                x: 490,
+                y: 105
+            }]*/
         });
     },
 
@@ -192,7 +218,7 @@ var ChartHelper = {
         return {
             chart: {
                 type: 'area',
-                height: '400',
+                height: '350',
                 width: parentWidth,
                 renderTo: el,
                 spacingRight: 50,
@@ -210,7 +236,12 @@ var ChartHelper = {
                 labels: {
                     x: -20
                 },
-                max: 3500
+                min: 0,
+                max: 3500,
+                tickInterval: 500,
+                tickAmount: 8,
+                startOnTick: false,
+                endOnTick: false
             },
             plotOptions: {
                 area: {
@@ -235,23 +266,6 @@ var ChartHelper = {
             series: series_data,
             annotations: annotations
         };
-
-    },
-
-    make_pie_chart: function(el, plot_options, series_data, title_options) {
-
-        return {
-            chart: {
-                type: 'pie',
-                renderTo: el,
-                height: '300',
-                width: $('#' + el).innerWidth(),
-                spacingBottom: 50
-            },
-            plotOptions: plot_options,
-            series: series_data,
-            title: title_options
-        }
 
     }
 
