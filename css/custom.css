@@ -8,7 +8,7 @@ body {
 .jumbotron {
   background-color: inherit;
   padding: 3vh 0;
-  margin-bottom: unset;
+  margin-bottom: 10vh;
 }
 
 .jumbotron h1 {
@@ -54,23 +54,6 @@ small {
   background-color: #9e1408;
 }
 
-#nav-links > a {
-  border-bottom: unset;
-  margin-right: 20px;
-  padding: 5px;
-  color: #f3f1e5;
-  font-size: 1.25em;
-}
-
-#nav-links > a.active {
-  background-color: #f3f1e5;
-  color: #9e1408;
-}
-
-#nav-links > a:hover {
-  text-decoration: underline;
-}
-
 a, a:active, a:visited {
   color: inherit;
   border-bottom: 1px solid #d7191c;
@@ -108,6 +91,12 @@ div.title {
   vertical-align: middle;
 }
 
+div.title > h1,
+div.title * h1 {
+  font-size: 4em;
+  color: #d7191c;
+}
+
 .title .row:nth-child(2) {
   margin-top: .25em;
 }
@@ -116,19 +105,39 @@ div.title {
   margin-right: .25em;
 }
 
-#divided-top {
-  height: 2.8em; 
+div.jumbotron * #divided-top {
+  height: 3.6em; 
   overflow: hidden;
+  margin-bottom: 0.2em;
 }
 
-#divided-bottom {
-  height: 1.6em; 
+div.jumbotron * #divided-bottom {
+  height: 2.45em; 
   overflow: hidden;
 }
 
 #divided-bottom > h1 {
   position: absolute; 
   bottom: 0;
+}
+
+/* NAVIGATION */
+
+#nav-links > a {
+  border-bottom: unset;
+  margin-right: 20px;
+  padding: 5px;
+  color: #f3f1e5;
+  font-size: 1.25em;
+}
+
+#nav-links > a.active {
+  background-color: #f3f1e5;
+  color: #9e1408;
+}
+
+#nav-links > a:hover {
+  text-decoration: underline;
 }
 
 /* TYPOGRAPHY STYLES */
@@ -156,12 +165,18 @@ div.title {
 
 /* SPACING */
 
-.section {
-  min-height: 110vh;
+section {
+  min-height: 75vh;
+  margin-bottom: 20vh;
 }
 
-.text-only {
-  padding-top: 20vh;
+section:not(:first-child) {
+  opacity: 0.15;
+}
+
+#action {
+  min-height: unset;
+  height: 40vh;
 }
 
 /* PROGRESS BAR */
