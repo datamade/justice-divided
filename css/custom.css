@@ -77,7 +77,6 @@ h3 > a::after {
 
 img {
   max-width: 100%;
-  max-height: 60vh;
 }
 
 hr {
@@ -166,20 +165,18 @@ div.jumbotron * #divided-bottom {
 
 /* SPACING */
 
-#intro {
-  background-image: url('../img/marcelus_miles_cuffed.png');
-  background-repeat: no-repeat;
-  background-position: top right;
-  background-size: contain;
-}
-
 section {
-  min-height: 70vh;
+  min-height: 75vh;
   margin-bottom: 20vh;
 }
 
 section:not(:first-child) {
   opacity: 0.15;
+}
+
+#action {
+  min-height: unset;
+  height: 40vh;
 }
 
 /* PROGRESS BAR */
