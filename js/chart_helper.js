@@ -169,12 +169,12 @@ var ChartHelper = {
                 tickInterval: 25,
                 tickAmount: 5,
                 startOnTick: false,
-                endOnTick: false,
+                endOnTick: false/*,
                 plotBands: [{ // visually indicate majority
                     color: '#434343',
                     from: 50,
                     to: 100
-                }],
+                }],*/
             },
             legend: {
                 enabled: true,
@@ -193,7 +193,7 @@ var ChartHelper = {
                     animation: false
                 }
             },
-            series: series_data,
+            series: series_data/*,
             annotations: [{
                 title: {
                     text: '“Most”',
@@ -206,7 +206,7 @@ var ChartHelper = {
                 anchorY: 'top',
                 x: 490,
                 y: 105
-            }]
+            }]*/
         });
     },
 
