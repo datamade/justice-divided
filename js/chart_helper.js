@@ -6,19 +6,36 @@ Highcharts.theme = {
     },
     title: {
         enabled: false,
-        align: 'left'
+        text: null,
+        floating: true,
+        verticalAlign: 'top',
+        align: 'left',
+        style: {
+            'font-family': 'Lato',
+            'color': '#f3f1e5',
+            'font-size': '22px'
+        },
+        y: -20
     },
     xAxis: {
         gridLineColor: '#525252',
         tickWidth: 0,
         lineWidth: 1,
-        lineColor: '#525252'
+        lineColor: '#525252',
+        labels: {
+            style: {
+                'font-family': 'Lato'
+            }
+        }
     },
     yAxis: {
         min: 0,
         labels: {
             overflow: 'justify',
-            align: 'center'
+            align: 'center',
+            style: {
+                'font-family': 'Lato'
+            }
         },
         gridLineColor: '#525252',
         gridLineDashStyle: 'Dash',
@@ -28,7 +45,7 @@ Highcharts.theme = {
         href: '/data',
         style: {
             'color': '#525252',
-            'font-size': '12px',
+            'font-size': '14px',
             'font-family': 'Lato'
         },
         position: {
@@ -36,7 +53,15 @@ Highcharts.theme = {
         }
     },
     legend: {
-        enabled: false
+        enabled: false,
+        symbolRadius: 0,
+        floating: true,
+        verticalAlign: 'top',
+        align: 'left',
+        itemStyle: {
+          'color': '#f3f1e5',
+          'fontWeight': 'normal'
+        }
     },
     tooltip: {
         enabled: false
@@ -68,7 +93,8 @@ var ChartHelper = {
     stacked_label_options: {
           style: {
             'fontSize': '20px',
-            'color': '#f3f1e5'
+            'color': '#f3f1e5',
+            'whiteSpace': 'nowrap'
           },
           align: 'left',
           x: 5,
@@ -81,26 +107,23 @@ var ChartHelper = {
         parent = $('#' + el).parent(),
           parentWidth = parent.innerWidth() - 30;
 
-        small_multiples = ['population_chart', 'arrest_chart', 'incarceration_chart']
+        small_multiples = ['population_chart', 'arrest_chart', 'incarceration_chart'],
+          is_small_multiple = function(el) {
+              return small_multiples.indexOf(el) + 1;
+          };
 
         if ( el == 'arrests_by_race_chart' ) {
-            chartHeight = '340',
+            chartHeight = '350',
               spacingTop = 40,
               legend_options = {
                   enabled: true,
-                  symbolRadius: 0,
-                  verticalAlign: 'top',
-                  floating: true,
                   y: -40,
-                  itemStyle: {
-                      'color': '#f3f1e5',
-                      'fontWeight': 'normal'
-                  },
+                  x: 40,
                   reversed: false
               };
-        } else if ( small_multiples.indexOf(el) + 1 ) {
+        } else if ( is_small_multiple(el) ) {
             chartHeight = parentWidth,
-              spacingTop = 0,
+              spacingTop = 40,
               legend_options = {enabled: false};
         } else {
             chartHeight = (categories.length + 1) * 100 + 100,
@@ -110,7 +133,8 @@ var ChartHelper = {
 
         spacingBottom = 30;
 
-        two_line_credit = ['expectation_v_reality_chart', 'arrest_v_population_chart'];
+        two_line_credit = ['expectation_v_reality_chart', 
+                           'arrest_v_population_chart'];
 
         if ( two_line_credit.indexOf(el) + 1 ) {
             spacingBottom += 20;
@@ -141,7 +165,7 @@ var ChartHelper = {
                 max: 100,
                 tickInterval: 25,
                 tickAmount: 5,
-                reversedStacks: false
+                reversedStacks: false,
             },
             credits: credits_options,
             legend: legend_options,
@@ -170,10 +194,10 @@ var ChartHelper = {
         new Highcharts.Chart({
             chart: {
                 type: 'column',
-                height: '250',
+                height: '300',
                 renderTo: 'detail-chart',
-                spacingTop: 10,
-                spacingBottom: 50
+                spacingTop: 80,
+                spacingBottom: 40
             },
             xAxis: {
                 categories: categories,
@@ -198,17 +222,16 @@ var ChartHelper = {
                 startOnTick: false,
                 endOnTick: false
             },
+            title: {
+                enabled: true,
+                text: 'District Demographics',
+                x: 30,
+                y: -50
+            },
             legend: {
                 enabled: true,
-                symbolRadius: 0,
-                verticalAlign: 'top',
-                floating: true,
-                y: -15,
-                itemStyle: {
-                    'color': '#f3f1e5',
-                    'fontWeight': 'normal'
-                },
-                align: 'left'
+                x: 20,
+                y: -45
             },
             plotOptions: {
                 column: {
@@ -239,7 +262,8 @@ var ChartHelper = {
                 width: parentWidth,
                 renderTo: el,
                 spacingRight: 50,
-                paddingTop: 100
+                paddingTop: 100,
+                spacingBottom: 30
             },
             xAxis: {
                 labels: {
@@ -281,6 +305,13 @@ var ChartHelper = {
                 }
             },
             series: series_data,
+            credits: {
+                enabled: true,
+                text: 'Source: Chicago Police Department',
+                position: {
+                    x: -50
+                }
+            },
             annotations: annotations
         };
 

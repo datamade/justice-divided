@@ -37,12 +37,12 @@ p {
   margin-bottom: 1em;
 }
 
-h3 > small, small {
-  color: #6f6d63;
-}
-
-small {
-  font-size: 1.15em;
+small,
+small > a,
+small > a:hover {
+  font-size: 14px;
+  color: #525252;
+  border-bottom: unset;
 }
 
 .input-group {
