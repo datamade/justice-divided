@@ -127,6 +127,8 @@
         </div>
     </div>
 
+    <br />
+
     {{ content }}
 
     <div class="footer navbar-fixed-bottom">
@@ -134,8 +136,7 @@
         <div class="row">
           <div class="col-md-7 visible-md visible-lg visible-xl" id="subhed">
               <span id="prefix" class="hidden">It's <strong>#NotJusticeWhen</strong></span>
-              <span id="unequal" class="hidden">the treatment is different.</span>
-              <span id="stacked" class="hidden">the deck is stacked.</span>
+              <span id="unequal" class="hidden">the treatment is unequal.</span>
               <span id="lifelong" class="hidden">the consequences are lifelong.</span>
           </div>
           <div id="nav-links" class="col-md-5 text-right">
@@ -189,6 +190,8 @@
                 new Highcharts.Chart(chart_obj);
             })
 
+            $('[data-toggle="tooltip"]').tooltip();
+
         }
 
         this.destroy();
@@ -198,7 +201,7 @@
     $('section').waypoint(function(direction) {
         sectionId = $(this.element).attr('id');
         if ( sectionId ) {
-            sections = ['intro', 'unequal', 'stacked', 'lifelong', 'action'];
+            sections = ['intro', 'unequal', 'lifelong', 'action'];
 
             currentSection = sectionId.split('-').pop();
             prevSection = sections[sections.indexOf(currentSection) - 1];
@@ -234,6 +237,8 @@
             }
         }
     }, {offset: '75%'});  
+
+    console.log()
 
   </script>
 

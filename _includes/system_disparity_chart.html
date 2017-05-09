@@ -1,22 +1,38 @@
-                <div id="system_disparity_chart" data-chart="systemDisparityChart"></div>
+                
+
+                <div class="col-sm-4" style="padding-left: unset">
+                    <div class="small-multiple" id="population_chart" data-chart="populationChart"></div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="small-multiple" id="arrest_chart" data-chart="arrestChart"></div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="small-multiple" id="incarceration_chart" data-chart="incarcerationChart"></div>
+                </div>
 
                 <script>
 
-                    categories = ['Detention', 'Probation', 'Incarceration']
+                    categories = ['Black', 'White Hispanic', 'White']
 
-                    seriesData = [{
-                        name: 'black',
-                        data: [80.6, 85.6, 82.5],
+                    data = [{
+                        name: 'Youth <i class="fa fa-fw fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Chicago youth between the ages 10 and 17"></i>',
+                        data: [41.93, 43.18, 14.88]
                     }, {
-                        name: 'Hispanic',
-                        data: [15.6, 7.6, 3.5],
+                        name: 'Arrests <i class="fa fa-fw fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Juvenile arrests in Chicago in 2014"></i>',
+                        data: [79, 17, 3]
                     }, {
-                        name: 'white',
-                        data: [3.5, 5.6, 2.1]
+                        name: 'Imprisonment <i class="fa fa-fw fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Juvenile inmates returning to Cook County in 2015"></i>',
+                        data: [82.5, 3.5, 2.1]
                     }]
 
-                    plotOptions = {
-                        bar: {
+                    credits = ['American Community Survey', 
+                               'Chicago Police Department',
+                               'Illinois Department of Juvenile Justice']
+
+                    plot_options = {
+                        column: {
                             dataLabels: {
                                 enabled: true,
                                 color: '#f3f1e5',
@@ -26,21 +42,45 @@
                                     'fontSize': '14px'
                                 },
                                 formatter: function() {
-                                   return this.y.toFixed(0) + '% ' + this.series.name
+                                    return this.y.toFixed(0) + '%';
                                 }
-                            }
+                            },
+                            colorByPoint: true
                         }
                     }
 
-                    labelOptions = jQuery.extend({}, ChartHelper.stacked_label_options)
-                    labelOptions.y = -50
+                    label_options = {
+                        enabled: true,
+                        style: {
+                            'font-size': '12px',
+                            'color': '#f3f1e5'
+                        }
+                    }
 
-                    var systemDisparityChart = ChartHelper.make_bar_chart(
-                        'system_disparity_chart', 
-                        seriesData, 
-                        categories, 
-                        plotOptions, 
-                        labelOptions
-                    );
+                    $('.small-multiple').each(function(idx) {
+                        chartVar = $(this).attr('data-chart');
+                        title = data[idx].name;
+                        title_options = {
+                            enabled: true,
+                            text: title,
+                            x: 35,
+                            useHTML: true
+                        };
+                        credit_options = {
+                            enabled: true,
+                            text: 'Source: ' + credits[idx]
+                        }
+                        window[chartVar] = ChartHelper.make_column_chart(
+                            this.id, 
+                            [data[idx]],
+                            categories,
+                            plot_options,
+                            label_options,
+                            title_options,
+                            credit_options,
+                            {}
+                        );
+                        new Highcharts.Chart(window[chartVar]);
+                    })
 
                 </script>

@@ -2,7 +2,7 @@
         <div class="row">
             <div class="col-md-9">
 
-                <h3>The divide is not a result of more arrests in black areas. In fact, in several Chicago neighborhoods where most youth are not black, most arrested youth are.</h3>
+                <h3>The divide is not just a result of more arrests in black neighborhoods. In fact, in some Chicago neighborhoods where most youth are white, most arrested youth are black.</h3>
 
             </div>
         </div>
@@ -36,8 +36,6 @@
         <div class="row">
           <div class="col-sm-12">
             <p class="drop-cap lead">In 2014, black youth in <% if (result.dist_num) { %>your district<% } else { %>Chicago<% } %> were <span class="highlight"><strong><%= result.odds_ratio.toFixed(1) %></strong> times more likely</span> to be arrested than all youth citywide.</p>
-
-            <div class="text-center"><h4><% if (result.dist_num) { %>District<% } else { %>Chicago<% } %> Demographics</h4></div>
 
             <div id="detail-chart"></div>
 

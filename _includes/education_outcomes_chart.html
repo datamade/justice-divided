@@ -31,14 +31,17 @@
                     }
 
                     labelOptions = jQuery.extend({}, ChartHelper.stacked_label_options)
-                    labelOptions.y = -40
+                    labelOptions.y = -50
 
                     var educationOutcomesChart = ChartHelper.make_bar_chart(
                         'education_outcomes_chart', 
                         seriesData, 
                         categories, 
                         plotOptions, 
-                        labelOptions
+                        labelOptions,
+                        {},
+                        {},
+                        {}
                     );
 
                 </script>

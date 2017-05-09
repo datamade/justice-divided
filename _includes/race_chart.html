@@ -50,6 +50,11 @@
                         }
                     }
 
+                    credit_options = {
+                        enabled: true,
+                        text: 'Source: Chicago Police Department'
+                    }
+
                     annotations = [{
                         title: {
                             text: '4 in 10 kids in<br />Chicago are black',
@@ -58,7 +63,7 @@
                                 'font-family': '"Gloria Hallelujah", monospace'
                             }
                         },
-                        y: 101,
+                        y: 88,
                         x: offsetPx(40),
                         anchorX: 'left',
                         anchorY: 'top',
@@ -81,8 +86,8 @@
                                 'font-family': '"Gloria Hallelujah", monospace'
                             }
                         },
-                        y: 175,
-                        x: offsetPx(63),
+                        y: 153,
+                        x: offsetPx(62),
                         anchorX: 'left',
                         anchorY: 'top',
                         shape: {
@@ -104,6 +109,8 @@
                         categories,
                         plot_options,
                         label_options,
+                        {},
+                        credit_options,
                         annotations
                     );
 
