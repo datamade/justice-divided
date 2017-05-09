@@ -2,7 +2,7 @@
 
                 <script>
 
-                    categories = ['Population', 'Marijuana arrests']
+                    categories = ['Youth, Ages 10 to 17', 'Marijuana arrests']
 
                     seriesData = [{
                         name: 'black',
@@ -35,20 +35,13 @@
                     labelOptions = jQuery.extend({}, ChartHelper.stacked_label_options)
                     labelOptions.y = -55
 
-                    annotations = [{
-                        title: {
-                            text: '(Youth ages 10-17)',
-                            style: {
-                                'color': '#f3f1e5',
-                                'font-family': '"Gloria Hallelujah", monospace',
-                                'transform': 'rotate(-3deg)'
-                            }
-                        },
-                        anchorX: 'left',
-                        anchorY: 'top',
-                        x: 135,
-                        y: 15
-                    }]
+                    credit_options = {
+                        enabled: true,
+                        text: 'Source: American Community Survey<br />& Chicago Police Department',
+                        position: {
+                            y: -20
+                        }
+                    }
 
                     var expectationVRealityChart = ChartHelper.make_bar_chart(
                         'expectation_v_reality_chart', 
@@ -56,7 +49,9 @@
                         categories, 
                         plotOptions, 
                         labelOptions,
-                        annotations
+                        {},
+                        credit_options,
+                        {}
                     );
                     
                 </script>

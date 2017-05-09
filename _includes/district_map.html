@@ -37,7 +37,7 @@
           <div class="col-sm-12">
             <p class="drop-cap lead">In 2014, black youth in <% if (result.dist_num) { %>your district<% } else { %>Chicago<% } %> were <span class="highlight"><strong><%= result.odds_ratio.toFixed(1) %></strong> times more likely</span> to be arrested than all youth citywide.</p>
 
-            <div class="text-center"><h4><% if (result.dist_num) { %>District<% } else { %>Chicago<% } %> Demographics</h4></div>
+            <h4 style="margin-left: 20px;"><% if (result.dist_num) { %>District<% } else { %>Chicago<% } %> Demographics</h4>
 
             <div id="detail-chart"></div>
 

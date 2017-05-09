@@ -84,9 +84,8 @@ var ChartHelper = {
         small_multiples = ['population_chart', 'arrest_chart', 'incarceration_chart']
 
         if ( el == 'arrests_by_race_chart' ) {
-            chartHeight = '370',
+            chartHeight = '340',
               spacingTop = 40,
-              spacingBottom = 0,
               legend_options = {
                   enabled: true,
                   symbolRadius: 0,
@@ -102,13 +101,19 @@ var ChartHelper = {
         } else if ( small_multiples.indexOf(el) + 1 ) {
             chartHeight = parentWidth,
               spacingTop = 0,
-              spacingBottom = 30,
               legend_options = {enabled: false};
         } else {
             chartHeight = (categories.length + 1) * 100 + 100,
               spacingTop = 0,
-              spacingBottom = 0,
               legend_options = {enabled: false};
+        }
+
+        spacingBottom = 30;
+
+        two_line_credit = ['expectation_v_reality_chart', 'arrest_v_population_chart'];
+
+        if ( two_line_credit.indexOf(el) + 1 ) {
+            spacingBottom += 20;
         }
 
         return {
@@ -167,7 +172,8 @@ var ChartHelper = {
                 type: 'column',
                 height: '250',
                 renderTo: 'detail-chart',
-                spacingTop: 40
+                spacingTop: 10,
+                spacingBottom: 50
             },
             xAxis: {
                 categories: categories,
@@ -190,23 +196,19 @@ var ChartHelper = {
                 tickInterval: 25,
                 tickAmount: 5,
                 startOnTick: false,
-                endOnTick: false/*,
-                plotBands: [{ // visually indicate majority
-                    color: '#434343',
-                    from: 50,
-                    to: 100
-                }],*/
+                endOnTick: false
             },
             legend: {
                 enabled: true,
                 symbolRadius: 0,
                 verticalAlign: 'top',
                 floating: true,
-                y: -40,
+                y: -15,
                 itemStyle: {
                     'color': '#f3f1e5',
                     'fontWeight': 'normal'
-                }
+                },
+                align: 'left'
             },
             plotOptions: {
                 column: {
@@ -214,20 +216,14 @@ var ChartHelper = {
                     animation: false
                 }
             },
-            series: series_data/*,
-            annotations: [{
-                title: {
-                    text: '“Most”',
-                    style: {
-                        'color': '#f3f1e5',
-                        'font-family': '"Gloria Hallelujah", monospace'
-                    }
-                },
-                anchorX: 'left',
-                anchorY: 'top',
-                x: 490,
-                y: 105
-            }]*/
+            credits: {
+                enabled: true,
+                text: 'Source: American Community Survey<br />& Chicago Police Department',
+                position: {
+                    y: -20
+                }
+            },
+            series: series_data
         });
     },
 
