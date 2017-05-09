@@ -1,26 +1,29 @@
                 
-                <div class="col-sm-4">
+
+                <div class="col-sm-4" style="padding-left: unset">
                     <div class="small-multiple" id="population_chart" data-chart="populationChart"></div>
                 </div>
+
                 <div class="col-sm-4">
                     <div class="small-multiple" id="arrest_chart" data-chart="arrestChart"></div>
                 </div>
+
                 <div class="col-sm-4">
                     <div class="small-multiple" id="incarceration_chart" data-chart="incarcerationChart"></div>
                 </div>
 
                 <script>
 
-                    categories = ['black', 'white Hispanic', 'white']
+                    categories = ['Black', 'White Hispanic', 'White']
 
                     data = [{
-                        name: 'Youth, Ages 10 to 17',
+                        name: 'Youth <i class="fa fa-fw fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Chicago youth between the ages 10 and 17"></i>',
                         data: [41.93, 43.18, 14.88]
                     }, {
-                        name: 'Juvenile Arrests',
+                        name: 'Arrests <i class="fa fa-fw fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Juvenile arrests in Chicago in 2014"></i>',
                         data: [79, 17, 3]
                     }, {
-                        name: 'Juvenile Prison Exits',
+                        name: 'Imprisonment <i class="fa fa-fw fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Juvenile inmates returning to Cook County in 2015"></i>',
                         data: [82.5, 3.5, 2.1]
                     }]
 
@@ -29,7 +32,7 @@
                                'Illinois Department of Juvenile Justice']
 
                     plot_options = {
-                        bar: {
+                        column: {
                             dataLabels: {
                                 enabled: true,
                                 color: '#f3f1e5',
@@ -39,27 +42,35 @@
                                     'fontSize': '14px'
                                 },
                                 formatter: function() {
-                                    console.log(this);
-                                    return this.y.toFixed(0) + '% ' + this.key
+                                    return this.y.toFixed(0) + '%';
                                 }
-                            }
+                            },
+                            colorByPoint: true
                         }
                     }
 
-                    label_options = {enabled: false}
+                    label_options = {
+                        enabled: true,
+                        style: {
+                            'font-size': '12px',
+                            'color': '#f3f1e5'
+                        }
+                    }
 
                     $('.small-multiple').each(function(idx) {
                         chartVar = $(this).attr('data-chart');
                         title = data[idx].name;
                         title_options = {
                             enabled: true,
-                            text: title
+                            text: title,
+                            x: 35,
+                            useHTML: true
                         };
                         credit_options = {
                             enabled: true,
                             text: 'Source: ' + credits[idx]
                         }
-                        window[chartVar] = ChartHelper.make_bar_chart(
+                        window[chartVar] = ChartHelper.make_column_chart(
                             this.id, 
                             [data[idx]],
                             categories,

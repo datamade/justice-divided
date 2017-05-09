@@ -98,7 +98,8 @@ var ChartHelper = {
           },
           align: 'left',
           x: 5,
-          y: 25
+          y: 25,
+          useHTML: true
     },
 
     make_bar_chart: function(el, series_data, categories, plot_options, label_options, 
@@ -106,11 +107,6 @@ var ChartHelper = {
 
         parent = $('#' + el).parent(),
           parentWidth = parent.innerWidth() - 30;
-
-        small_multiples = ['population_chart', 'arrest_chart', 'incarceration_chart'],
-          is_small_multiple = function(el) {
-              return small_multiples.indexOf(el) + 1;
-          };
 
         if ( el == 'arrests_by_race_chart' ) {
             chartHeight = '350',
@@ -121,10 +117,6 @@ var ChartHelper = {
                   x: 40,
                   reversed: false
               };
-        } else if ( is_small_multiple(el) ) {
-            chartHeight = parentWidth,
-              spacingTop = 40,
-              legend_options = {enabled: false};
         } else {
             chartHeight = (categories.length + 1) * 100 + 100,
               spacingTop = 0,
@@ -133,7 +125,8 @@ var ChartHelper = {
 
         spacingBottom = 30;
 
-        two_line_credit = ['expectation_v_reality_chart', 
+        two_line_credit = ['expected_arrests_chart',
+                           'actual_arrests_chart', 
                            'arrest_v_population_chart'];
 
         if ( two_line_credit.indexOf(el) + 1 ) {
@@ -169,6 +162,48 @@ var ChartHelper = {
             },
             credits: credits_options,
             legend: legend_options,
+            plotOptions: plot_options,
+            series: series_data,
+            annotations: annotations
+        };
+
+    },
+
+    make_column_chart: function(el, series_data, categories, plot_options, label_options, 
+                                title_options, credits_options, annotations) {
+
+        parent = $('#' + el).parent(),
+          parentWidth = parent.innerWidth() - 30;
+    
+        return {
+            chart: {
+                type: 'column',
+                height: parentWidth,
+                width: parentWidth,
+                spacingTop: 70,
+                paddingTop: 20,
+                spacingBottom: 30,
+                renderTo: el
+            },
+            title: title_options,
+            xAxis: {
+                categories: categories,
+                title: {
+                    enabled: false
+                },
+                labels: label_options
+            },
+            yAxis: {
+                title: {
+                    enabled: false
+                },
+                min: 0,
+                max: 100,
+                tickInterval: 25,
+                tickAmount: 5,
+                reversedStacks: false,
+            },
+            credits: credits_options,
             plotOptions: plot_options,
             series: series_data,
             annotations: annotations

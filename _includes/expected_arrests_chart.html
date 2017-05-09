@@ -1,4 +1,4 @@
-                <div id="arrest_v_population_chart" data-chart="arrestsVsPopulationChart"></div>
+                <div id="expected_arrests_chart" data-chart="expectedArrestsChart"></div>
 
                 <script>
 
@@ -6,24 +6,20 @@
                                    data-toggle="tooltip" data-placement="bottom" 
                                    title="Chicago youth between the ages 10 and 17">
                                    </i>`, 
-                                  `Marijuana Arrests <i class="fa fa-fw fa-info-circle" 
+                                  `Expected Arrests <i class="fa fa-fw fa-info-circle" 
                                    data-toggle="tooltip" data-placement="bottom" 
-                                   title="Arrests for marijuana possession 
-                                   in Chicago in 2014"></i>`,
-                                  `All Arrests <i class="fa fa-fw fa-info-circle" 
-                                   data-toggle="tooltip" data-placement="bottom" 
-                                   title="Juvenile arrests for all offenses 
-                                   in Chicago in 2014"></i>`]
+                                   title="Arrests for marijuana possession if youth of 
+                                   all races were arrested at an equal rate"></i>`]
 
                     seriesData = [{
                         name: 'black',
-                        data: [41.93, 66.27, 79]
+                        data: [41.93, 42]
                     }, {
                         name: 'Hispanic',
-                        data: [43.18, 27.61, 17]
+                        data: [43.18, 43]
                     }, {
                         name: 'white',
-                        data: [14.88, 4.82, 3]
+                        data: [14.88, 15]
                     }]
 
                     plotOptions = {
@@ -48,14 +44,14 @@
 
                     credit_options = {
                         enabled: true,
-                        text: 'Source: American Community Survey<br />& Chicago Police Department',
+                        text: 'Source: American Community Survey',
                         position: {
                             y: -20
                         }
                     }
 
-                    var arrestsVsPopulationChart = ChartHelper.make_bar_chart(
-                        'arrest_v_population_chart', 
+                    var expectedArrestsChart = ChartHelper.make_bar_chart(
+                        'expected_arrests_chart', 
                         seriesData, 
                         categories, 
                         plotOptions, 

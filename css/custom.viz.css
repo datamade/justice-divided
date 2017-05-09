@@ -57,3 +57,19 @@
 g.highcharts-button {
   visibility: hidden;
 }
+
+i[data-toggle] {
+  color: #525252;
+}
+
+i[data-toggle]:hover {
+  color: #f3f1e5;
+}
+
+.tooltip {
+  width: 150px;
+}
+
+.tooltip-inner {
+  text-align: left;
+}

@@ -22,13 +22,13 @@ custom_js:
     <section id="intro">
         <div class="row">
             <div class="col-md-9">
-                <br />
 
-                <h2>
-                    Youth of all races break the law. Youth of color are more likely to be punished.
-                </h2>
+                <h2>Youth of all races break the law. Youth of color are more likely to be punished.</h2>
 
                 <br />
+
+                <p class="drop-cap lead">This inequality is called disproportionate minority contact (DMC for short), and it means black Chicago youth are impacted by the justice system more than their peers.</p>
+
             </div>
         </div>
         <div class="row">
@@ -38,32 +38,27 @@ custom_js:
 
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-9">
-
-                <br />
-                <p class="drop-cap lead">
-                    This inequality is called disproportionate minority contact (DMC for short), and it means the juvenile justice system impacts black and brown youth more than their white peers. Here's how.
-                </p>
-
-            </div>
-        </div>
     </section>
 
     <section id="treatment-is-unequal">
         <div class="row">
             <div class="col-md-9">
+
                 <h2>Black youth are arrested more often, even for the same behavior.</h2><br />
+
             </div>
         </div>
 
         <div class="row">
 
-            <div class="col-md-6">
-                <h3>For example, white, black, and Hispanic 12th graders self-report monthly <span style="color: #009051">marijuana use</span> at the same rate, about one in five.</h3>
-                
-                <br /><br /><br /><br />
+            <div class="col-md-9">
 
+                <h3 style="margin-bottom: 10px">For example, one in five high school seniors say they've <span style="color: #009051">used marijuana</span> in the last month. This is true of white, black, and Hispanic youth.</h3>
+
+                <small><a href="http://monitoringthefuture.org/pubs/occpapers/mtf-occ88.pdf" target="_blank">Source: “Monitoring the Future,” University of Michigan</a></small>
+
+                <br /><br />
+                
                 <span style="font-size: 5vmax; color: #000">
                     <i class="fa fa-fw fa-male" aria-hidden="true" style="color: #009051"></i>
                     <i class="fa fa-fw fa-male" aria-hidden="true"></i>
@@ -71,19 +66,6 @@ custom_js:
                     <i class="fa fa-fw fa-male" aria-hidden="true"></i>
                     <i class="fa fa-fw fa-male" aria-hidden="true"></i>
                 </span>
-
-                <br /><br /><br /><br /><br /><br /><br /><br />
-
-                <div class="pull-right">
-                    <small><a href="http://monitoringthefuture.org/pubs/occpapers/mtf-occ88.pdf" target="_blank">Source: “Monitoring the Future,” University of Michigan</a></small>
-                </div>
-
-            </div>
-            
-            <div class="col-md-6">
-                <h3>Yet in 2014, black youth in Chicago were 1.6 times more likely to be arrested for it.</h3>
-
-{% include expectation_v_reality_chart.html %}
 
             </div>
 
@@ -93,10 +75,56 @@ custom_js:
     <section>
         <div class="row">
             <div class="col-md-9">
+
+                <h3>If Chicago youth were treated the same, the youth who were arrested would look like the population.</h3>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+{% include expected_arrests_chart.html %}
+
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="row">
+            <div class="col-md-9">
+
+                <h3>They don't.</h3>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+{% include actual_arrests_chart.html %}
+            
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+
+                <button class="btn btn-xs btn-default pull-right">
+                    <i class="fa fa-fw fa-download aria-hidden="true"></i> Download the data
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="row">
+            <div class="col-md-9">
+
                 <h3>
-                    This pattern is not only true of arrests overall – it's <em>worse</em>. In 2014, black youth in Chicago were 1.9 times more likely to be arrested than all youth in Chicago.
-                    <!-- The multiplier is equal to the probability a black youth is arrested, divided by the probability any youth is arrested. -->
+                    This pattern is worse among arrests for all offenses. In 2014, black youth in Chicago were 1.9 times more likely to be arrested than all youth in Chicago.
                 </h3>
+
             </div>
         </div>
         <div class="row">
@@ -109,9 +137,11 @@ custom_js:
         <br />
         <div class="row">
             <div class="col-md-12">
+
                 <button class="btn btn-xs btn-default pull-right">
                     <i class="fa fa-fw fa-download aria-hidden="true"></i> Download the data
                 </button>
+
             </div>
         </div>
     </section>
@@ -121,19 +151,21 @@ custom_js:
     <section>
         <div class="row">
             <div class="col-md-12">
-                <h3>Fewer arrests does not mean less bias.</h3>
+                <h3>Fewer arrests does not make arrests more fair.</h3>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <h3>Due to decriminalization, <span style="color: #674baa">the number of arrests</span> for marijuana possession has fallen to virtually zero in 2017.</h3>
+
+                <h3>Due to decriminalization, <span style="color: #674baa">the number of arrests</span> for marijuana possession has fallen over time.</h3>
 
 {% include arrest_chart.html %}
 
             </div>
 
             <div class="col-md-6">
-                <h3>While possession was still an arrestable offense, however, the proportion of arrests happening to <span class="red">black youths</span> stayed the same.</h3>
+
+                <h3>As the number of arrests fell, the proportion of arrests of <span class="red">black youth</span> stayed the same.</h3>
 
 {% include race_chart.html %}
 
@@ -142,9 +174,11 @@ custom_js:
         <br />
         <div class="row">
             <div class="col-md-12">
+
                 <button class="btn btn-xs btn-default pull-right">
                     <i class="fa fa-fw fa-download aria-hidden="true"></i> Download the data
                 </button>
+
             </div>
         </div>
     </section>
@@ -152,7 +186,9 @@ custom_js:
     <section id="consequences-are-lifelong">
         <div class="row">
             <div class="col-md-9">
+
                 <h2>A criminal record makes it more difficult to get an education, find housing, and go to work.</h2>
+
             </div>
         </div>
     </section>
@@ -160,7 +196,13 @@ custom_js:
     <section>
         <div class="row">
             <div class="col-md-9">
-                <h3>Chicago Public Schools students who are <span class="red">arrested</span> are less likely to graduate high school and to attend a four-year college than <span class="gray">their peers.</span></h3>
+
+                <h3 style="margin-bottom: 10px;">Chicago Public Schools students who are <span class="red">arrested</span> are less likely to graduate high school and to attend a four-year college than <span class="gray">their peers.</span></h3>
+
+                <small><a href="http://www.asanet.org/sites/default/files/savvy/journals/soe/Jan13SOEFeature.pdf" target="_blank">Source: “Juvenile Arrest and Collateral Educational Damage in the Transition to Adulthood,” Sociology of Education</a></small>
+
+                <br /><br />
+
             </div>
         </div>
         <div class="row">

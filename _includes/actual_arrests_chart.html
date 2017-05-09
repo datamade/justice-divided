@@ -1,8 +1,15 @@
-                <div id="expectation_v_reality_chart" data-chart="expectationVRealityChart"></div>
+                <div id="actual_arrests_chart" data-chart="actualArrestsChart"></div>
 
                 <script>
 
-                    categories = ['Youth, Ages 10 to 17', 'Juvenile Arrests for Marijuana Possession']
+                    categories = [`Population <i class="fa fa-fw fa-info-circle" 
+                                   data-toggle="tooltip" data-placement="bottom" 
+                                   title="Chicago youth between the ages 10 and 17">
+                                   </i>`, 
+                                  `Actual Arrests <i class="fa fa-fw fa-info-circle" 
+                                   data-toggle="tooltip" data-placement="bottom" 
+                                   title="Arrests for marijuana possession 
+                                   in Chicago in 2014"></i>`]
 
                     seriesData = [{
                         name: 'black',
@@ -43,8 +50,8 @@
                         }
                     }
 
-                    var expectationVRealityChart = ChartHelper.make_bar_chart(
-                        'expectation_v_reality_chart', 
+                    var actualArrestsChart = ChartHelper.make_bar_chart(
+                        'actual_arrests_chart', 
                         seriesData, 
                         categories, 
                         plotOptions, 

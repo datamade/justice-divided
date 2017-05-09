@@ -31,13 +31,7 @@
                     }
 
                     labelOptions = jQuery.extend({}, ChartHelper.stacked_label_options)
-                    labelOptions.y = -40
-
-                    credits_options = {
-                        enabled: true,
-                        text: 'Source: “Juvenile Arrest and Collateral Educational Damage in the Transition to Adulthood”',
-                        href: 'http://www.asanet.org/sites/default/files/savvy/journals/soe/Jan13SOEFeature.pdf'
-                    }
+                    labelOptions.y = -50
 
                     var educationOutcomesChart = ChartHelper.make_bar_chart(
                         'education_outcomes_chart', 
@@ -46,7 +40,7 @@
                         plotOptions, 
                         labelOptions,
                         {},
-                        credits_options,
+                        {},
                         {}
                     );
 
