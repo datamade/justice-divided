@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Knewave');
+
 /* BOOTSTRAP OVERRIDES */
 
 body {
@@ -88,6 +90,7 @@ div.title {
 
 div.title > h1,
 div.title * h1 {
+  font-family: 'Knewave', cursive;
   font-size: 4em;
   color: #d7191c;
 }
@@ -97,17 +100,17 @@ div.title * h1 {
 }
 
 .title:first-of-type {
-  margin-right: .25em;
+  margin-right: 1em;
 }
 
 div.jumbotron * #divided-top {
-  height: 3.5em; 
+  height: 3.8em; 
   overflow: hidden;
   margin-bottom: 0.2em;
 }
 
 div.jumbotron * #divided-bottom {
-  height: 2.5em; 
+  height: 2.2em; 
   overflow: hidden;
 }
 
