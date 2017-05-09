@@ -70,6 +70,8 @@ var ChartHelper = {
         parent = $('#' + el).parent(),
           parentWidth = parent.innerWidth() - 30;
 
+        small_multiples = ['population_chart', 'arrest_chart', 'incarceration_chart']
+
         if ( el == 'arrests_by_race_chart' ) {
             chartHeight = '370',
               spacingTop = 40,
@@ -85,12 +87,14 @@ var ChartHelper = {
                   },
                   reversed: false
               };
+        } else if ( small_multiples.indexOf(el) + 1 ) {
+            chartHeight = parentWidth,
+              spacingTop = 0,
+              legend_options = {enabled: false};
         } else {
             chartHeight = (categories.length + 1) * 100 + 100,
-              legend_options = {
-                  enabled: false
-              },
-              spacingTop = 0;
+              spacingTop = 0,
+              legend_options = {enabled: false};
         }
 
         return {
