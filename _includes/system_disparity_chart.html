@@ -14,15 +14,19 @@
                     categories = ['black', 'white Hispanic', 'white']
 
                     data = [{
-                        name: 'Youth aged 10-17',
+                        name: 'Youth, Ages 10 to 17',
                         data: [41.93, 43.18, 14.88]
                     }, {
-                        name: 'Juvenile arrests',
+                        name: 'Juvenile Arrests',
                         data: [79, 17, 3]
                     }, {
-                        name: 'Juvenile prison exits',
+                        name: 'Juvenile Prison Exits',
                         data: [82.5, 3.5, 2.1]
                     }]
+
+                    credits = ['American Community Survey', 
+                               'Chicago Police Department',
+                               'Illinois Department of Juvenile Justice']
 
                     plot_options = {
                         bar: {
@@ -45,13 +49,31 @@
                     label_options = {enabled: false}
 
                     $('.small-multiple').each(function(idx) {
-                        chartVar = $(this).attr('data-chart')
+                        chartVar = $(this).attr('data-chart');
+                        title = data[idx].name;
+                        title_options = {
+                            enabled: true,
+                            text: title,
+                            style: {
+                                'font-family': 'Lato',
+                                'color': '#f3f1e5',
+                                'fontSize': '22px',
+                                'font-weight': '700'
+                            }
+                        };
+                        credit_options = {
+                            enabled: true,
+                            text: 'Source: ' + credits[idx]
+                        }
                         window[chartVar] = ChartHelper.make_bar_chart(
                             this.id, 
                             [data[idx]],
                             categories,
                             plot_options,
-                            label_options
+                            label_options,
+                            title_options,
+                            credit_options,
+                            {}
                         );
                         new Highcharts.Chart(window[chartVar]);
                     })

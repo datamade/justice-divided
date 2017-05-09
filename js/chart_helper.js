@@ -5,7 +5,8 @@ Highcharts.theme = {
         fontFamily: '"Lato", sans-serif'
     },
     title: {
-        text: null
+        enabled: false,
+        align: 'left'
     },
     xAxis: {
         gridLineColor: '#525252',
@@ -22,10 +23,19 @@ Highcharts.theme = {
         gridLineColor: '#525252',
         gridLineDashStyle: 'Dash',
     },
-    legend: {
-        enabled: false
-    },
     credits: {
+        enabled: false,
+        href: '/data',
+        style: {
+            'color': '#525252',
+            'font-size': '12px',
+            'font-family': 'Lato'
+        },
+        position: {
+            x: 0
+        }
+    },
+    legend: {
         enabled: false
     },
     tooltip: {
@@ -65,7 +75,8 @@ var ChartHelper = {
           y: 25
     },
 
-    make_bar_chart: function(el, series_data, categories, plot_options, label_options, annotations = {}) {
+    make_bar_chart: function(el, series_data, categories, plot_options, label_options, 
+                             title_options, credits_options, annotations) {
 
         parent = $('#' + el).parent(),
           parentWidth = parent.innerWidth() - 30;
@@ -75,6 +86,7 @@ var ChartHelper = {
         if ( el == 'arrests_by_race_chart' ) {
             chartHeight = '370',
               spacingTop = 40,
+              spacingBottom = 0,
               legend_options = {
                   enabled: true,
                   symbolRadius: 0,
@@ -90,10 +102,12 @@ var ChartHelper = {
         } else if ( small_multiples.indexOf(el) + 1 ) {
             chartHeight = parentWidth,
               spacingTop = 0,
+              spacingBottom = 30,
               legend_options = {enabled: false};
         } else {
             chartHeight = (categories.length + 1) * 100 + 100,
               spacingTop = 0,
+              spacingBottom = 0,
               legend_options = {enabled: false};
         }
 
@@ -103,8 +117,10 @@ var ChartHelper = {
                 height: chartHeight,
                 width: parentWidth,
                 spacingTop: spacingTop,
+                spacingBottom: spacingBottom,
                 renderTo: el
             },
+            title: title_options,
             xAxis: {
                 categories: categories,
                 title: {
@@ -122,6 +138,7 @@ var ChartHelper = {
                 tickAmount: 5,
                 reversedStacks: false
             },
+            credits: credits_options,
             legend: legend_options,
             plotOptions: plot_options,
             series: series_data,
