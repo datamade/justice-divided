@@ -247,7 +247,8 @@ $.getJSON('data/output/police_district_profiles.geojson', function(districtBound
 
   legend.addTo(districtMap);
 
-  fillSidebar(cityData);
+  fillInstructions();
+
 });
 
 // interactivity
@@ -274,36 +275,41 @@ function resetHighlight(e) {
   districtLayer.resetStyle(e.target);
 }
 
-$('#district-map').mouseout(function() { fillSidebar(cityData) });
-
 // search
 var geocoder = new google.maps.Geocoder;
 
-$('#search-district').click(function() {
-  addressInput = $(this).parent().prev();
-  locateAddress(geocoder, addressInput.val());
-})
+function initLookup() {
+  autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"));
+  $('#search-district').click(function() {
+    addressInput = $(this).parent().prev();
+    locateAddress(geocoder, addressInput.val());
+  });
+}
 
 function locateAddress(geocoder, address) {
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === 'OK') {
+
       coord = results[0].geometry.location;
       [lat, lng] = [coord.lat(), coord.lng()];
-      district = getDistrict(lat, lng);
+    	district = leafletPip.pointInLayer(
+      	[lng, lat], districtLayer, first=true
+      )[0]
       updateMap(district);
       fillSidebar(district);
-    } else {
-      fillSidebar();
+      
+    } else { // invalid address
+
+    	fillInstructions();
+      $('#map-search').after('<span id="error"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Oops! We couldn\'t find that address.</span><br />');
+
     }
   });
 }
 
-function getDistrict(lat, lng) {
-  return leafletPip.pointInLayer([lng, lat], districtLayer, first=true)[0];   
-}
-
 function updateMap(district) {
   if ( district ) {
+
     districtNumber = district.feature.properties.dist_num;
     districtLayer.eachLayer(function(layer) {
       if ( layer.feature.properties.dist_num ==  districtNumber) {    
@@ -312,42 +318,46 @@ function updateMap(district) {
         resetHighlight({'target': layer});
       }
     })
+
+  } else {
+
+    districtLayer.eachLayer(function(layer) {
+      resetHighlight({'target': layer})
+    });
+
   }
 }
 
 // sidebar
-var cityData = {
-  'color': '#fcd77c',
-  'dist_name': 'City of Chicago',
-  'odds_ratio': 1.9,
-  'data': [
-    [41.93, 79],
-    [43.18, 17],
-    [14.88, 3]
-  ]
-}
 
 function generateData(district) {
-  return [
-    [
-      parseFloat(district.feature.properties.pct_youth_black) * 100, 
-      parseFloat(district.feature.properties.pct_arrests_black) * 100
-    ], [
-      parseFloat(district.feature.properties.pct_youth_hispanic) * 100, 
-      parseFloat(district.feature.properties.pct_arrests_hispanic) * 100
-    ], [
-      parseFloat(district.feature.properties.pct_youth_white) * 100, 
-      parseFloat(district.feature.properties.pct_arrests_white) * 100
-    ]
-  ]
+  return [[
+    parseFloat(district.feature.properties.pct_youth_black) * 100, 
+    parseFloat(district.feature.properties.pct_arrests_black) * 100
+  ], [
+    parseFloat(district.feature.properties.pct_youth_hispanic) * 100, 
+    parseFloat(district.feature.properties.pct_arrests_hispanic) * 100
+  ], [ 
+    parseFloat(district.feature.properties.pct_youth_white) * 100, 
+    parseFloat(district.feature.properties.pct_arrests_white) * 100
+  ]];
 }
 
+function fillInstructions() {
+	template = $('#instructions').html();
+	content = ejs.render(template);
+	$('#district-found').html(content);
+	initLookup();
+};
+
 function fillSidebar(dataObj) {
-  if ( dataObj ) {
+
     try { // fill district info
+
       distNum = dataObj.feature.properties.dist_num;
       color = dataObj._options.style(dataObj.feature).fillColor;
       data = generateData(dataObj);
+
       result = Object.assign(
         dataObj.feature.properties, 
         {'odds_ratio': districtOddsRatios[distNum]}
@@ -355,15 +365,19 @@ function fillSidebar(dataObj) {
       template = $('#statistics-template').html();
       content = ejs.render(template, {result: result});
       $('#district-found').html(content);
+
       ChartHelper.make_detail_chart(data);
       $('.highlight').css({'color': color});
-    } catch (err) { // fill instructions
-      template = $('#instructions').html();
-      content = ejs.render(template);
-      $('#district-found').html(content);
-      var autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"));
+      $('#reset').click(function() {
+        updateMap();
+        fillInstructions();
+      });
+
+    } catch (err) { // address isn't in our map
+
+      fillInstructions();
+      $('#map-search').after('<span id="error"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Oops! We couldn\'t find that address.</span><br />');
+
     }
-  } else { // bad search
-    $('#district-found').html('<p>District not found.</p>');
-  }  
+
 }

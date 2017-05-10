@@ -31,7 +31,13 @@
 
     <script id="statistics-template" type="text/EJS">
 
-        <h3><% if (result.dist_num) { %>Police District <%= result.dist_num %> - <% } %><%= result.dist_name %></h3>
+        <h3>
+            Police District <%= result.dist_num %> - <%= result.dist_name %>
+            <button class="btn btn-link btn-xs" id="reset">
+                <i class="fa fa-fw fa-undo" aria-hidden="true"></i> 
+                Back to search
+            </button>   
+        </h3>
 
         <div class="row">
           <div class="col-sm-12">
@@ -48,7 +54,7 @@
 
         <p class="drop-cap lead">This map of Chicago's police districts is colored by a multiplier you interpret like, <strong>“Black youth in this police district were arrested X times more often in 2014 than all youth citywide.”</strong></p>
 
-        <div class="input-group">
+        <div class="input-group" id="map-search">
             <input type="text" name="address" id="address" class="form-control" placeholder="Address">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="button" id="search-district">
@@ -57,5 +63,8 @@
             </span>
         </div>
 
-        <p><span class="action"><i class="fa fa-fw fa-mouse-pointer" aria-hidden="true"></i>Hover</span> or <span class="action"><i class="fa fa-fw fa-hand-o-up" aria-hidden="true"></i>Tap</span> the map to to see how the odds vary between districts, or <span class="action"><i class="fa fa-fw fa-i-cursor" aria-hidden="true"></i>Type</span> your address to see the odds in your neighborhood.</p>
+        <br />
+
+        <p style="font-size: 1.25em;"><span class="action"><i class="fa fa-fw fa-mouse-pointer" aria-hidden="true"></i>Hover</span> or <span class="action"><i class="fa fa-fw fa-hand-o-up" aria-hidden="true"></i>Tap</span> the map to to see how the odds vary between districts, or <span class="action"><i class="fa fa-fw fa-i-cursor" aria-hidden="true"></i>Type</span> your address to see the odds in your neighborhood.</p>
+
     </script>

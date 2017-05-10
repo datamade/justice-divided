@@ -23,10 +23,6 @@ h3 {
   font-weight: 700;
 }
 
-h3.prose {
-  margin-bottom: 1em;
-}
-
 p, ul, li {
   font-size: 1.25em;
   margin-bottom: 1em;
@@ -38,10 +34,6 @@ small > a:hover {
   font-size: 14px;
   color: #525252;
   border-bottom: unset;
-}
-
-.input-group {
-  margin-bottom: 5vh;
 }
 
 .footer {
@@ -65,21 +57,6 @@ a:hover {
   border-bottom: 1px solid #f3f1e5;
 }
 
-a.offsite::after {
-  font-family: 'FontAwesome';
-  content: ' \f08e';
-  margin-left: 5px;
-}
-
-a.social {
-  border-bottom: unset;
-  font-size: 1.5em;
-}
-
-a.social:hover {
-  color: #d7191c;
-}
-
 img {
   max-width: 100%;
 }
@@ -87,6 +64,15 @@ img {
 hr {
   margin-top: 5vh;
   margin-bottom: 5vh;
+}
+
+.btn-link {
+  color: #8f9392;
+}
+
+.btn-link:hover,
+.btn-link:focus {
+  color: unset;
 }
 
 /* HEADER */
@@ -146,7 +132,26 @@ div.jumbotron * #divided-bottom {
   text-decoration: underline;
 }
 
-/* TYPOGRAPHY STYLES */
+/* MISC TYPOGRAPHY STYLES */
+
+h3.prose {
+  margin-bottom: 1em;
+}
+
+a.offsite::after {
+  font-family: 'FontAwesome';
+  content: ' \f08e';
+  margin-left: 5px;
+}
+
+a.social {
+  border-bottom: unset;
+  font-size: 1.5em;
+}
+
+a.social:hover {
+  color: #d7191c;
+}
 
 .gray {
   color: #8f9392;
@@ -156,10 +161,6 @@ div.jumbotron * #divided-bottom {
   color: #d7191c;
 }
 
-.highlight {
-  font-weight: 700;
-}
-
 .action {
   background: #f3f1e5;
   color: #333;
@@ -167,6 +168,20 @@ div.jumbotron * #divided-bottom {
   border-radius: 5px;
   font-size: 90%;
   margin: 0 3px 0 3px;
+}
+
+#instructions {
+  font-size: 1.15em;
+}
+
+#error {
+  line-height: 2em;
+  font-size: 1.15em;
+  color: #8f9392;
+}
+
+#error > i {
+  color: gold;
 }
 
 /* SPACING */
