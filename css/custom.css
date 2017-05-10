@@ -20,16 +20,14 @@ h2 {
 }
 
 h3 {
-  margin-top: unset;
-  margin-bottom: 1em;
   font-weight: 700;
 }
 
-h3[id] {
-  padding-top: 4vh;
+h3.prose {
+  margin-bottom: 1em;
 }
 
-p {
+p, ul, li {
   font-size: 1.25em;
   margin-bottom: 1em;
 }
@@ -57,6 +55,7 @@ a, a:active, a:visited {
 }
 
 a:focus {
+  color: unset;
   text-decoration: none;
 }
 
@@ -66,10 +65,19 @@ a:hover {
   border-bottom: 1px solid #f3f1e5;
 }
 
-h3 > a::after {
+a.offsite::after {
   font-family: 'FontAwesome';
   content: ' \f08e';
   margin-left: 5px;
+}
+
+a.social {
+  border-bottom: unset;
+  font-size: 1.5em;
+}
+
+a.social:hover {
+  color: #d7191c;
 }
 
 img {
