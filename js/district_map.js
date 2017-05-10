@@ -275,10 +275,6 @@ function resetHighlight(e) {
   districtLayer.resetStyle(e.target);
 }
 
-$('#district-map').mouseout(function() { 
-	fillInstructions() 
-});
-
 // search
 var geocoder = new google.maps.Geocoder;
 
@@ -323,6 +319,12 @@ function updateMap(district) {
       }
     })
 
+  } else {
+
+    districtLayer.eachLayer(function(layer) {
+      resetHighlight({'target': layer})
+    });
+
   }
 }
 
@@ -362,10 +364,14 @@ function fillSidebar(dataObj) {
       );
       template = $('#statistics-template').html();
       content = ejs.render(template, {result: result});
-
       $('#district-found').html(content);
+
       ChartHelper.make_detail_chart(data);
       $('.highlight').css({'color': color});
+      $('#reset').click(function() {
+        updateMap();
+        fillInstructions();
+      });
 
     } catch (err) { // address isn't in our map
 
