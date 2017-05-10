@@ -153,6 +153,10 @@ a.social:hover {
   color: #d7191c;
 }
 
+a.btn {
+  border-bottom: unset;
+}
+
 .gray {
   color: #8f9392;
 }
