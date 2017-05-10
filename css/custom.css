@@ -138,6 +138,10 @@ h3.prose {
   margin-bottom: 1em;
 }
 
+.btn > h3 {
+  margin-top: unset;
+}
+
 a.offsite::after {
   font-family: 'FontAwesome';
   content: ' \f08e';
