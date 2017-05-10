@@ -296,26 +296,16 @@ function locateAddress(geocoder, address) {
 
       coord = results[0].geometry.location;
       [lat, lng] = [coord.lat(), coord.lng()];
-
-      try {
-
-      	district = leafletPip.pointInLayer(
-	      	[lng, lat], districtLayer, first=true
-	      )[0]
-	      updateMap(district);
-	      fillSidebar(district);
-
-      } catch (err) {
-
-      	fillInstructions();
-      	$('#map-search').after('<span id="error"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Could not locate address</span><br />');
-
-      }
+    	district = leafletPip.pointInLayer(
+      	[lng, lat], districtLayer, first=true
+      )[0]
+      updateMap(district);
+      fillSidebar(district);
       
-    } else {
+    } else { // invalid address
 
     	fillInstructions();
-      $('#map-search').after('<span id="error"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Could not locate address</span><br />');
+      $('#map-search').after('<span id="error"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Oops! We couldn\'t find that address.</span><br />');
 
     }
   });
@@ -377,10 +367,10 @@ function fillSidebar(dataObj) {
       ChartHelper.make_detail_chart(data);
       $('.highlight').css({'color': color});
 
-    } catch (err) { // bad search
+    } catch (err) { // address isn't in our map
 
       fillInstructions();
-      $('#map-search').after('<span id="error"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Could not locate address</span><br />');
+      $('#map-search').after('<span id="error"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Oops! We couldn\'t find that address.</span><br />');
 
     }
 
