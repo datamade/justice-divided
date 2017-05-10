@@ -32,16 +32,16 @@ p, ul, li {
   margin-bottom: 1em;
 }
 
+#instructions {
+  font-size: 1.15em;
+}
+
 small,
 small > a,
 small > a:hover {
   font-size: 14px;
   color: #525252;
   border-bottom: unset;
-}
-
-.input-group {
-  margin-bottom: 5vh;
 }
 
 .footer {
@@ -156,10 +156,6 @@ div.jumbotron * #divided-bottom {
   color: #d7191c;
 }
 
-.highlight {
-  font-weight: 700;
-}
-
 .action {
   background: #f3f1e5;
   color: #333;
@@ -167,6 +163,16 @@ div.jumbotron * #divided-bottom {
   border-radius: 5px;
   font-size: 90%;
   margin: 0 3px 0 3px;
+}
+
+#error {
+  line-height: 2em;
+  font-size: 1.15em;
+  color: #8f9392;
+}
+
+#error > i {
+  color: gold;
 }
 
 /* SPACING */
