@@ -27,21 +27,6 @@
   animation-name: slideInDown;
 }
 
-@keyframes slideOutDown {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    visibility: hidden;
-    transform: translate3d(0, 50%, 0);
-  }
-}
-
-.slideOutDown {
-  animation-name: slideOutDown;
-}
-
 @keyframes slideInUp {
   from {
     transform: translate3d(0, 50%, 0);
@@ -55,19 +40,4 @@
 
 .slideInUp {
   animation-name: slideInUp;
-}
-
-@keyframes slideOutUp {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    visibility: hidden;
-    transform: translate3d(0, -50%, 0);
-  }
-}
-
-.slideOutUp {
-  animation-name: slideOutUp;
 }

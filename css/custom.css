@@ -132,6 +132,15 @@ div.jumbotron * #divided-bottom {
   text-decoration: underline;
 }
 
+#subhed > a.social {
+  font-size: 1.25em;
+}
+
+#subhed > a.social:hover {
+  color: unset;
+  border-bottom: 1px solid #f3f1e5;
+}
+
 /* MISC TYPOGRAPHY STYLES */
 
 h3.prose {

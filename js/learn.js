@@ -18,7 +18,7 @@ $('section').waypoint(function(direction) {
     this.destroy();
 }, {offset: '50%'});
 
-// do navigation 
+// do section nav 
 function showSection(el, direction) {
 
     if ( direction == 'down' ) {
@@ -33,16 +33,21 @@ function showSection(el, direction) {
 }
 
 function hideSection(el, direction) {
-    if ( direction == 'down' ) {
-        anim = 'slideOutDown';
-    } else {
-        anim = 'slideOutUp';
-    };
 
     $(el).removeAttr('class');
-    $(el).addClass('animated ' + anim);
     $(el).addClass('hidden');
 
+}
+
+function makeShareUrl(el) {
+
+    try {
+        tweet = 'It\'s #NotJusticeWhen ' + el.text() + ' ' + window.location;
+        return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweet);
+    } catch (err) {
+        return undefined;
+    }
+    
 }
 
 
@@ -67,6 +72,8 @@ $('section').waypoint(function(direction) {
 
             hideSection(prevElement, direction);
             showSection(currentElement, direction);
+            twitterShareURL = makeShareUrl(currentElement);
+            $('#callout').attr('href', twitterShareURL);
 
         } else {
             
@@ -78,7 +85,9 @@ $('section').waypoint(function(direction) {
 
             hideSection(currentElement, direction);
             showSection(prevElement, direction);
+            twitterShareURL = makeShareUrl(prevElement);
+            $('#callout').attr('href', twitterShareURL);
 
         }
     }
-}, {offset: '75%'});  
+}, {offset: '50%'});  
