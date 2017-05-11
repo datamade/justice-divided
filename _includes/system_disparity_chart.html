@@ -27,9 +27,16 @@
                         data: [82.5, 3.5, 2.1]
                     }]
 
-                    credits = ['American Community Survey', 
-                               'Chicago Police Department',
-                               'Illinois Department of Juvenile Justice']
+                    credits = [{
+                        'text': 'American Community Survey', 
+                        'href': '/download-data#population-by-race'
+                    }, {
+                        'text': 'Chicago Police Department',
+                        'href': '/download-data#arrest-by-police-district',
+                    }, {
+                        'text': 'Illinois Department of Juvenile Justice',
+                        'href': '/download-data'
+                    }]
 
                     plot_options = {
                         column: {
@@ -68,7 +75,8 @@
                         };
                         credit_options = {
                             enabled: true,
-                            text: 'Source: ' + credits[idx]
+                            text: 'Source: ' + credits[idx]['text'],
+                            href: credits[idx]['href']
                         }
                         window[chartVar] = ChartHelper.make_column_chart(
                             this.id, 
