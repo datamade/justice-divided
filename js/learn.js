@@ -19,76 +19,66 @@ $('section').waypoint(function(direction) {
 }, {offset: '50%'});
 
 // do navigation 
+function showSection(el, direction) {
+
+    if ( direction == 'down' ) {
+        anim = 'slideInDown';
+    } else {
+        anim = 'slideInUp';
+    };
+
+    $(el).removeAttr('class');
+    $(el).addClass('animated ' + anim);
+
+}
+
+function hideSection(el, direction) {
+    if ( direction == 'down' ) {
+        anim = 'slideOutDown';
+    } else {
+        anim = 'slideOutUp';
+    };
+
+    $(el).removeAttr('class');
+    $(el).addClass('animated ' + anim);
+    $(el).addClass('hidden');
+
+}
+
+
 $('section').waypoint(function(direction) {
     sectionId = $(this.element).attr('id');
     if ( sectionId ) {
-
         sections = ['intro', 'unequal', 'lifelong', 'action'];
 
         currentSection = sectionId.split('-').pop();
+        currentElement = $('[data-section="' + currentSection + '"]');
+
         prevSection = sections[sections.indexOf(currentSection) - 1];
+        prevElement = '[data-section="' + prevSection + '"]';
 
         if ( direction == 'down' ) {
 
             if ( currentSection == 'unequal' ) { 
-
-                $('#prefix').removeAttr('class');
-                $('#prefix').removeClass('hidden');
-                $('#prefix').addClass('animated slideInDown');
-
+                showSection('#prefix', direction);
             } else if ( currentSection == 'action' ) {
-
-                $('#prefix').removeAttr('class');
-                $('#prefix').addClass('animated slideOutDown');
-                $('#prefix').addClass('hidden');
-
+                hideSection('#prefix', direction);
             }
 
-            if ( currentSection != 'unequal' ) {
-
-                // hide previous section
-                $('[data-section="' + prevSection + '"]').removeAttr('class');
-                $('[data-section="' + prevSection + '"]').addClass('animated slideOutDown');
-                $('[data-section="' + prevSection + '"]').addClass('hidden');
-
-            }
-
-            // show current section
-            $('[data-section="' + currentSection + '"]').removeAttr('class');
-            $('[data-section="' + currentSection + '"]').removeClass('hidden');
-            $('[data-section="' + currentSection + '"]').addClass('animated slideInDown');
+            hideSection(prevElement, direction);
+            showSection(currentElement, direction);
 
         } else {
             
             if ( currentSection == 'unequal' ) { 
-
-                $('#prefix').removeAttr('class');
-                $('#prefix').addClass('animated slideOutUp');
-                $('#prefix').addClass('hidden');
-
+                hideSection('#prefix', direction);
             } else if ( currentSection == 'action' ) {
-
-                $('#prefix').removeAttr('class');
-                $('#prefix').removeClass('hidden');
-                $('#prefix').addClass('animated slideInUp');
-
+                showSection('#prefix', direction);
             } 
 
-            if ( currentSection != 'action' ) { 
-
-                // hide current section
-                $('[data-section="' + currentSection + '"]').removeAttr('class');
-                $('[data-section="' + currentSection + '"]').addClass('animated slideOutUp');
-                $('[data-section="' + currentSection + '"]').addClass('hidden');
-
-            }
-
-            // show previous section
-            $('[data-section="' + prevSection + '"]').removeAttr('class');
-            $('[data-section="' + prevSection + '"]').removeClass('hidden');
-            $('[data-section="' + prevSection + '"]').addClass('animated slideInUp');
+            hideSection(currentElement, direction);
+            showSection(prevElement, direction);
 
         }
-
     }
 }, {offset: '75%'});  
