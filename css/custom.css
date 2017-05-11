@@ -140,6 +140,7 @@ h3.prose {
 
 .btn > h3 {
   margin-top: unset;
+  margin-bottom: unset;
 }
 
 a.offsite::after {
