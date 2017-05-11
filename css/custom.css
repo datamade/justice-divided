@@ -201,7 +201,8 @@ section * div[id*="chart"] {
 
 #action {
   min-height: unset;
-  height: 40vh;
+  padding-top: 10vh;
+  height: 50vh;
 }
 
 /* PROGRESS BAR */
