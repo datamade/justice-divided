@@ -1,0 +1,110 @@
+---
+layout: default
+title: Data
+---
+
+<div class="container">
+
+    <div class="col-sm-8">
+
+        <div class="row">
+
+            <h2 class="red">Download the data</h2>
+
+            <p>The data behind Justice Divided were obtained from public data sources. They have been cleaned and documented. Now, we're pleased to make them available to you.</p>
+
+            <p>Each of the following data files is available in CSV format, which can be opened as plain text or with any spreadsheet editor, such as Google Sheets or Microsoft Excel. The composite dataset that powers the map of per-district disparity is also available as GeoJSON.</p>
+
+        </div>
+
+        <hr />
+
+        <div class="row">
+
+            <h2 class="red">Available datasets</h2>
+
+            <h3 class="red" id="arrest-by-demographic">Juvenile arrests by demographic (2013 - early 2017)</h3>
+
+            <p>
+                <strong>Source:</strong> Chicago Police Department<br />
+                <strong>Obtained by:</strong> <a href="http://datamade.us" class="offsite" target="_blank">DataMade</a><br /><br />
+                <strong>Description:</strong><br />
+                This dataset contains age, sex, race, statute violated, statute description, and charge type (misdemeanor or felony) for all juvenile arrests made by the Chicago Police Department from Jan. 1, 2013 to March 2017.
+            </p>
+
+            <br />
+
+            <a class="btn btn-default pull-right" href="https://raw.githubusercontent.com/datamade/justice-divided/master/data/output/arrests_by_demographic_2013-2017.csv" download>
+                <i class="fa fa-fw fa-download"></i> Download data (CSV)
+            </a>
+
+        </div>
+
+        <hr />
+
+        <div class="row">
+
+            <h3 class="red" id="arrest-by-police-district">Juvenile arrrests by Chicago police district (2014)</h3>
+
+            <p>
+                <strong>Source:</strong> Chicago Police Department<br />
+                <strong>Obtained by:</strong> <a href="http://mariamekaba.com/" class="offsite" target="_blank">Mariame Kaba</a> / <a href="http://www.project-nia.org/" class="offsite" target="_blank">Project NIA</a><br /><br />
+                <strong>Description:</strong><br />
+                Originally published in the third edition of <a href="https://chiyouthjustice.files.wordpress.com/2015/11/cpd-juvenile-arrest-stats-2013-2014rev.pdf" class="offsite" target="_blank">Arresting Justice</a>, a semi-annual analysis of juvenile arrests in Chicago, this dataset contains counts of all juvenile arrests made by the Chicago Police Department in 2014 per police district, by race and age.
+            </p>
+
+            <br />
+
+            <a class="btn btn-default pull-right" href="https://raw.githubusercontent.com/datamade/justice-divided/master/data/output/arrests_by_police_district_2014.csv" download>
+                <i class="fa fa-fw fa-download"></i> Download data (CSV)
+            </a>
+
+        </div>
+
+        <hr />
+
+        <div class="row">
+
+            <h3 class="red" id="population-by-race">Chicago police district juvenile population by race (2014)</h3>
+
+            <p>
+                <strong>Source:</strong> American Community Survey five-year estimates<br />
+                <strong>Obtained by:</strong> <a href="http://datamade.us" class="offsite" target="_blank">DataMade</a><br /><br />
+                <strong>Description:</strong><br />
+                This dataset contains the number of boys and girls between the ages of 10 and 17 in each Chicago police district for the following racial/ethnic categories: White, not Hispanic; Black only; and Hispanic.<br /><br />
+
+                These counts were compiled using <a href="https://github.com/datamade/census_area" class="offsite" target="_blank">census_area</a>, a Python library for querying Census and American Community Survey data using custom boundaries, and police district boundaries from <a href="https://data.cityofchicago.org/Public-Safety/Boundaries-Police-Districts-current-/fthy-xz3r" class="offsite" target="_blank">the City of Chicago data portal</a>.
+            </p>
+
+            <br />
+
+            <a class="btn btn-default pull-right" href="https://raw.githubusercontent.com/datamade/justice-divided/master/data/output/police_district_demographics.csv" download>
+                <i class="fa fa-fw fa-download"></i> Download data (CSV)
+            </a>
+
+        </div>
+
+        <hr />
+
+        <div class="row">
+
+            <h3 class="red" id="police-district-profiles">Chicago police district profiles</h3>
+            
+            <p>
+                <strong>Source:</strong> Chicago Police Department / American Community Survey five-year estimates<br /><br />
+                <strong>Description:</strong><br />
+                This dataset contains police district name and number, plus count and percent total for youth population and juvenile arrests by the following racial/ethnic categories: White, not Hispanic; Black only; and Hispanic.<br /><br />
+                It combines information from juvenile arrests by Chicago police district, Chicago police district juvenile population by race, and police district boundaries from <a href="https://data.cityofchicago.org/Public-Safety/Boundaries-Police-Districts-current-/fthy-xz3r" class="offsite" target="_blank">the City of Chicago data portal</a>. 
+            </p>
+
+            <br />
+
+            <a class="btn btn-default pull-right" href="https://raw.githubusercontent.com/datamade/justice-divided/master/data/output/police_district_profiles.geojson" download>
+                <i class="fa fa-fw fa-download"></i> Download data (GeoJSON)
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

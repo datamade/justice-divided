@@ -42,7 +42,7 @@ Highcharts.theme = {
     },
     credits: {
         enabled: false,
-        href: '/data',
+        href: '/download-data',
         style: {
             'color': '#525252',
             'font-size': '14px',
@@ -277,6 +277,7 @@ var ChartHelper = {
             credits: {
                 enabled: true,
                 text: 'Source: American Community Survey<br />& Chicago Police Department',
+                href: '/download-data#police-district-profiles',
                 position: {
                     y: -20
                 }
@@ -343,6 +344,7 @@ var ChartHelper = {
             credits: {
                 enabled: true,
                 text: 'Source: Chicago Police Department',
+                href: '/download-data#arrest-by-demographic',
                 position: {
                     x: -50
                 }
