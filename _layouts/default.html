@@ -135,9 +135,12 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7 visible-md visible-lg visible-xl" id="subhed">
-              <span id="prefix" class="hidden">It's <strong>#NotJusticeWhen</strong></span>
-              <span id="unequal" class="hidden">the treatment is unequal.</span>
-              <span id="lifelong" class="hidden">the consequences are lifelong.</span>
+              <a class="social" id="callout" target="_blank">
+                <span id="prefix" class="hidden">
+                  <i class="fa fa-fw fa-twitter" aria-hidden="true" style="color:#069ff5"></i> It's <strong>#NotJusticeWhen</strong></span>
+                <span data-section="unequal" class="hidden">black youth are unduly punished.</span>
+                <span data-section="lifelong" class="hidden">the consequences of punishment are lifelong.</span>
+              </a>
           </div>
           <div id="nav-links" class="col-md-5 text-right">
             <a id="learn" href="{{ site.baseurl }}/"{% if page.title == 'Learn' %}class="active"{% endif %}>Learn</a>
@@ -176,67 +179,6 @@
         value = $(window).scrollTop();
         progressBar.attr('value', value);
     });
-
-    // draw charts once
-    $('section').waypoint(function(direction) {
-        $(this.element).animate({'opacity': 1});
-
-        chartsInSlide = $(this.element).find('[id*="_chart"]');
-
-        if ( chartsInSlide ) {
-
-            chartsInSlide.each(function() {
-                chart_obj = window[$(this).attr('data-chart')];
-                new Highcharts.Chart(chart_obj);
-            })
-
-            $('[data-toggle="tooltip"]').tooltip();
-
-        }
-
-        this.destroy();
-    }, {offset: '50%'});
-
-    // do navigation always
-    $('section').waypoint(function(direction) {
-        sectionId = $(this.element).attr('id');
-        if ( sectionId ) {
-            sections = ['intro', 'unequal', 'lifelong', 'action'];
-
-            currentSection = sectionId.split('-').pop();
-            prevSection = sections[sections.indexOf(currentSection) - 1];
-
-            if ( direction == 'down' ) {
-
-                if ( currentSection == 'unequal' ) { 
-                    $('#prefix').removeClass('hidden');
-                } else if ( currentSection == 'action' ) {
-                    $('#prefix').addClass('hidden');
-                }
-
-                $('#' + currentSection).removeClass('hidden');
-
-                if ( prevSection != 'intro' ) {
-                    $('#' + prevSection).addClass('hidden');
-                }
-
-            } else {
-                
-                if ( currentSection == 'unequal' ) { 
-                    $('#prefix').addClass('hidden');
-                } else if ( currentSection == 'action' ) {
-                    $('#prefix').removeClass('hidden');
-                } 
-
-                $('#' + prevSection).removeClass('hidden');
-
-                if ( currentSection != 'action' ) {
-                    $('#' + currentSection).addClass('hidden');
-                }
-
-            }
-        }
-    }, {offset: '75%'});  
 
   </script>
 
