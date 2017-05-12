@@ -44,7 +44,7 @@ Highcharts.theme = {
         enabled: false,
         href: '/download-data',
         style: {
-            'color': '#525252',
+            'color': '#79797a',
             'font-size': '14px',
             'font-family': 'Lato'
         },

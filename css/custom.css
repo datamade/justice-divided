@@ -32,7 +32,7 @@ small,
 small > a,
 small > a:hover {
   font-size: 14px;
-  color: #525252;
+  color: #79797a;
   border-bottom: unset;
 }
 
@@ -126,7 +126,7 @@ div.jumbotron * #divided-bottom {
 }
 
 #subhed > li > a:hover {
-  color: #333;
+  color: #212121;
   background-color: unset;
 }
 
@@ -225,7 +225,7 @@ a.btn {
 }
 
 #lil-men {
-  color: #000;
+  color: #A0A0A0;
   font-size: 10vh;
 }
 
@@ -348,7 +348,7 @@ g.highcharts-button {
 }
 
 i[data-toggle] {
-  color: #525252;
+  color: #79797a;
 }
 
 i[data-toggle]:hover {
