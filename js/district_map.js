@@ -162,11 +162,17 @@ base_map_style = [
   }
 ]
 
+function sum(a, b) {
+  return a + b;
+}
+
 function sumProperty(boundaries, property) {
   nByDistrict = boundaries.features.map(function(feature) { 
     return parseInt(feature.properties[property]);
   });
-  return nByDistrict.reduce((a, b) => a + b, 0);
+  return nByDistrict.reduce(function(a, b) {
+    return a + b;
+  }, 0);
 }
 
 function makeRatios(boundaries) {
@@ -291,7 +297,8 @@ function locateAddress(geocoder, address) {
     if (status === 'OK') {
 
       coord = results[0].geometry.location;
-      [lat, lng] = [coord.lat(), coord.lng()];
+      lat = coord.lat();
+      lng = coord.lng();
     	district = leafletPip.pointInLayer(
       	[lng, lat], districtLayer, first=true
       )[0]
@@ -358,10 +365,8 @@ function fillSidebar(dataObj) {
       color = dataObj._options.style(dataObj.feature).fillColor;
       data = generateData(dataObj);
 
-      result = Object.assign(
-        dataObj.feature.properties, 
-        {'odds_ratio': districtOddsRatios[distNum]}
-      );
+      dataObj.feature.properties['odds_ratio'] = districtOddsRatios[distNum];
+      result = dataObj.feature.properties;
       template = $('#statistics-template').html();
       content = ejs.render(template, {result: result});
       $('#district-found').html(content);
