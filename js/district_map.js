@@ -256,6 +256,7 @@ $.getJSON('data/output/police_district_profiles.geojson', function(districtBound
 // interactivity
 function enableHighlight(feature, layer) {
   layer.on({
+    click: highlightFeature,
     mouseover: highlightFeature,
     mouseout: resetHighlight
   });
