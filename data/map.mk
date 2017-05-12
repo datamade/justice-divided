@@ -32,8 +32,10 @@ district_profiles : arrests_by_district_subtables demographic_subtables
 		  ON demo.dist_num = name.dist_num \
 		JOIN arrests_by_race_by_district AS blk \
 		  ON demo.dist_num = blk.dist_num"
-	
-output/police_district_profiles.geojson : 
+
+output/police_district_profiles.csv : 
 	psql -d $(PG_DB) -c "\\copy (select * from district_profiles) \
-		to stdout with csv header" | python scripts/update_geojson.py > $@
-		
+		to stdout with csv header" > $@
+	
+output/police_district_profiles.geojson : output/police_district_profiles.csv
+	cat $^ | python scripts/update_geojson.py > $@
