@@ -144,11 +144,11 @@ div.jumbotron * #divided-bottom {
   height: 20px;
   font-size: 20px;
   margin-right: 1vw;
-  color: #333;
+  color: #212121;
   border-bottom: unset;
 }
 
-#nav-links > li > a.highlight {
+#nav-links > li > a.current-page {
   color: #f3f1e5;
   font-weight: 700;
 }
