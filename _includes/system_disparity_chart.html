@@ -78,7 +78,7 @@
                             text: 'Source: ' + credits[idx]['text'],
                             href: credits[idx]['href']
                         }
-                        window[chartVar] = ChartHelper.make_column_chart(
+                        window.charts[chartVar] = ChartHelper.make_column_chart(
                             this.id, 
                             [data[idx]],
                             categories,
@@ -88,7 +88,6 @@
                             credit_options,
                             {}
                         );
-                        new Highcharts.Chart(window[chartVar]);
                     })
 
                 </script>

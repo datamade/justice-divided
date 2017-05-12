@@ -7,7 +7,7 @@ $('section').waypoint(function(direction) {
     if ( chartsInSlide ) {
 
         chartsInSlide.each(function() {
-            chart_obj = window[$(this).attr('data-chart')];
+            chart_obj = window.charts[$(this).attr('data-chart')];
             new Highcharts.Chart(chart_obj);
         })
 

@@ -99,6 +99,9 @@
     <![endif]-->
 
     <script src="{{ site.baseurl }}/lib/jquery-1.10.1.min.js"></script>
+    <script>
+      window.charts = {};
+    </script>
     
   </head>
 
@@ -143,11 +146,13 @@
               </a>
           </div>
           <div id="nav-links" class="col-md-5 text-right">
-            <a id="learn" href="{{ site.baseurl }}/"{% if page.title == 'Learn' %}class="active"{% endif %}>Learn</a>
-            <a id="act" href="{{ site.baseurl }}/action"{% if page.title == 'Act' %}class="active"{% endif %}>Act</a>
-            <a id="resources" href="{{ site.baseurl }}/resources"{% if page.title == 'Resources' %}class="active"{% endif %}>Resources</a>
-            <a id="resources" href="{{ site.baseurl }}/download-data"{% if page.title == 'Data' %}class="active"{% endif %}>Data</a>
-            <a id="about" href="{{ site.baseurl }}/about"{% if page.title == 'About' %}class="active"{% endif %}>About</a>
+
+            <a id="learn" href="{{ site.baseurl }}/"{% if page.title == 'Learn' %} class="active"{% endif %}>Learn</a>
+            <a id="act" href="{{ site.baseurl }}/action"{% if page.title == 'Act' %} class="active"{% endif %}>Act</a>
+            <a id="resources" href="{{ site.baseurl }}/resources"{% if page.title == 'Resources' %} class="active"{% endif %}>Resources</a>
+            <a id="resources" href="{{ site.baseurl }}/download-data"{% if page.title == 'Data' %} class="active"{% endif %}>Data</a>
+            <a id="about" href="{{ site.baseurl }}/about"{% if page.title == 'About' %} class="active"{% endif %}>About</a>
+
           </div>
         </div>
       </div>

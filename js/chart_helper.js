@@ -105,8 +105,8 @@ var ChartHelper = {
     make_bar_chart: function(el, series_data, categories, plot_options, label_options, 
                              title_options, credits_options, annotations) {
 
-        parent = $('#' + el).parent(),
-          parentWidth = parent.innerWidth() - 30;
+        var parent = $('#' + el).parent();
+        parentWidth = parent.innerWidth() - 30;
 
         if ( el == 'arrests_by_race_chart' ) {
             chartHeight = '350',
@@ -172,8 +172,8 @@ var ChartHelper = {
     make_column_chart: function(el, series_data, categories, plot_options, label_options, 
                                 title_options, credits_options, annotations) {
 
-        parent = $('#' + el).parent(),
-          parentWidth = parent.innerWidth() - 30;
+        var parent = $('#' + el).parent();
+        parentWidth = $(parent).innerWidth() - 30;
     
         return {
             chart: {
@@ -288,8 +288,8 @@ var ChartHelper = {
 
     make_area_chart: function(el, series_data, annotations) {
 
-        parent = $('#' + el).parent(),
-          parentWidth = parent.innerWidth() - 30;
+        var parent = $('#' + el).parent();
+        parentWidth = parent.innerWidth() - 30;
 
         return {
             chart: {
