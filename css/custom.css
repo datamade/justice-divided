@@ -10,7 +10,10 @@ body {
 .jumbotron {
   background-color: inherit;
   padding: 1vh 0;
-  margin-bottom: 10vh;
+}
+
+.container {
+  padding: unset;
 }
 
 h2 {
@@ -23,8 +26,8 @@ h3 {
   font-weight: 700;
 }
 
-p, ul, li {
-  font-size: 1.25em;
+p, li {
+  font-size: 1.5em;
   margin-bottom: 1em;
 }
 
@@ -34,11 +37,6 @@ small > a:hover {
   font-size: 14px;
   color: #525252;
   border-bottom: unset;
-}
-
-.footer {
-  padding: 10px;
-  background-color: #9e1408;
 }
 
 a, a:active, a:visited {
@@ -115,20 +113,36 @@ div.jumbotron * #divided-bottom {
 
 /* NAVIGATION */
 
-#nav-links > a {
-  border-bottom: unset;
-  margin-right: 20px;
-  padding: 5px;
-  color: #f3f1e5;
-  font-size: 1.25em;
+.navbar {
+  padding: unset;
+  margin: unset;
+  height: 10px;
+  background-color: #9e1408;
 }
 
-#nav-links > a.active {
+.navbar-nav {
+  padding: unset;
+  margin: unset;
+}
+
+#callout {
+  font-size: .75em;
+}
+
+#nav-links > li > a {
+  font-size: 20px;
+  margin-right: 1vw;
+  border-bottom: unset;
+  color: #f3f1e5;
+}
+
+#nav-links > li > a.highlight {
   background-color: #f3f1e5;
   color: #9e1408;
 }
 
-#nav-links > a:hover {
+#nav-links > li > a:hover {
+  background-color: unset;
   text-decoration: underline;
 }
 
@@ -219,7 +233,6 @@ section * div[id*="chart"] {
 
 #action {
   min-height: unset;
-  padding-top: 10vh;
   height: 50vh;
 }
 
