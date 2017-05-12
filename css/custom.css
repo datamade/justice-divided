@@ -115,50 +115,56 @@ div.jumbotron * #divided-bottom {
 /* NAVIGATION */
 
 .navbar {
-  padding: unset;
-  margin: unset;
-  height: 10px;
   background-color: #9e1408;
 }
 
-.navbar-nav {
-  padding: unset;
-  margin: unset;
+@media (max-width: 768px) {
+  .nav > li > a {
+    padding: 10px 35px;
+  }
 }
 
 #callout {
+  height: 20px;
   font-size: .75em;
 }
 
+#subhed > li > a:hover {
+  color: #333;
+  background-color: unset;
+}
+
+#subhed > li > a {
+  border-bottom: unset;
+}
+
+#subhed > a.social:hover {
+  color: unset;
+  background-color: unset;
+  border-bottom: 1px solid #f3f1e5;
+}
+
 #nav-links > li > a {
+  height: 20px;
   font-size: 20px;
   margin-right: 1vw;
+  color: #333;
   border-bottom: unset;
-  color: #f3f1e5;
 }
 
 #nav-links > li > a.highlight {
-  background-color: #f3f1e5;
-  color: #9e1408;
+  color: #f3f1e5;
+  font-weight: 700;
 }
 
 #nav-links > li > a:hover {
   background-color: unset;
-  text-decoration: underline;
+  color: #f3f1e5;
 }
 
 #nav-links > li > a:focus {
   background-color: unset;
   color: unset;
-}
-
-#subhed > a.social {
-  font-size: 1.25em;
-}
-
-#subhed > a.social:hover {
-  color: unset;
-  border-bottom: 1px solid #f3f1e5;
 }
 
 /* MISC TYPOGRAPHY STYLES */
