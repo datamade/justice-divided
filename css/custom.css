@@ -13,10 +13,6 @@ body {
   padding: 1vh 0;
 }
 
-.container {
-  padding: unset;
-}
-
 h2 {
   margin-top: unset;
   line-height: 1.25em;
@@ -228,6 +224,11 @@ a.btn {
   color: gold;
 }
 
+#lil-men {
+  color: #000;
+  font-size: 10vh;
+}
+
 /* SPACING */
 
 section {
@@ -245,7 +246,7 @@ section * div[id*="chart"] {
 
 #action {
   min-height: unset;
-  height: 50vh;
+  height: 60vh;
 }
 
 /* PROGRESS BAR */
