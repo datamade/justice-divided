@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
 @import url('https://fonts.googleapis.com/css?family=Knewave');
 
 /* BOOTSTRAP OVERRIDES */
@@ -10,7 +11,6 @@ body {
 .jumbotron {
   background-color: inherit;
   padding: 1vh 0;
-  margin-bottom: 10vh;
 }
 
 h2 {
@@ -23,8 +23,8 @@ h3 {
   font-weight: 700;
 }
 
-p, ul, li {
-  font-size: 1.25em;
+p, li {
+  font-size: 1.5em;
   margin-bottom: 1em;
 }
 
@@ -34,11 +34,6 @@ small > a:hover {
   font-size: 14px;
   color: #525252;
   border-bottom: unset;
-}
-
-.footer {
-  padding: 10px;
-  background-color: #9e1408;
 }
 
 a, a:active, a:visited {
@@ -115,30 +110,57 @@ div.jumbotron * #divided-bottom {
 
 /* NAVIGATION */
 
-#nav-links > a {
+.navbar {
+  background-color: #9e1408;
+}
+
+@media (max-width: 768px) {
+  .nav > li > a {
+    padding: 10px 35px;
+  }
+}
+
+#callout {
+  height: 20px;
+  font-size: .75em;
+}
+
+#subhed > li > a:hover {
+  color: #333;
+  background-color: unset;
+}
+
+#subhed > li > a {
   border-bottom: unset;
-  margin-right: 20px;
-  padding: 5px;
-  color: #f3f1e5;
-  font-size: 1.25em;
-}
-
-#nav-links > a.active {
-  background-color: #f3f1e5;
-  color: #9e1408;
-}
-
-#nav-links > a:hover {
-  text-decoration: underline;
-}
-
-#subhed > a.social {
-  font-size: 1.25em;
 }
 
 #subhed > a.social:hover {
   color: unset;
+  background-color: unset;
   border-bottom: 1px solid #f3f1e5;
+}
+
+#nav-links > li > a {
+  height: 20px;
+  font-size: 20px;
+  margin-right: 1vw;
+  color: #212121;
+  border-bottom: unset;
+}
+
+#nav-links > li > a.current-page {
+  color: #f3f1e5;
+  font-weight: 700;
+}
+
+#nav-links > li > a:hover {
+  background-color: unset;
+  color: #f3f1e5;
+}
+
+#nav-links > li > a:focus {
+  background-color: unset;
+  color: unset;
 }
 
 /* MISC TYPOGRAPHY STYLES */
@@ -202,6 +224,11 @@ a.btn {
   color: gold;
 }
 
+#lil-men {
+  color: #000;
+  font-size: 10vh;
+}
+
 /* SPACING */
 
 section {
@@ -219,8 +246,7 @@ section * div[id*="chart"] {
 
 #action {
   min-height: unset;
-  padding-top: 10vh;
-  height: 50vh;
+  height: 60vh;
 }
 
 /* PROGRESS BAR */
@@ -261,4 +287,111 @@ progress::-webkit-progress-value {
 
 progress::-moz-progress-bar {
   background-color: #d7191c;
+}
+
+/* MAPS */
+
+#district-map { 
+  width: 100%;
+  height: 55vh; 
+}
+
+@media (max-width: 990px) {
+  #district-map {
+    height: 40vh;
+  }
+}
+
+.leaflet-control-attribution a {
+  color: unset;
+}
+
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
+
+.legend {
+  padding: 7.5px;
+  background-color: #f5f5f5;
+  line-height: 18px;
+  color: #555;
+}
+
+.legend strong {
+  line-height: 25px;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.75;
+}
+
+
+/* HIGHCHARTS */
+
+/* hide annotation controls */
+g.highcharts-button {
+  visibility: hidden;
+}
+
+i[data-toggle] {
+  color: #525252;
+}
+
+i[data-toggle]:hover {
+  color: #f3f1e5;
+}
+
+.tooltip {
+  width: 150px;
+}
+
+.tooltip-inner {
+  text-align: left;
+}
+
+/* FLOATING NAV */
+
+#floating-nav {
+    color: #6f6d63;
+    margin-top: 8vh;
+    position: fixed;
+    right: 5vw;
+    height: 50vh;
+    font-size: 1.15em;
+    line-height: 1.5em;
+}
+
+#floating-nav a {
+    border: unset;
+}
+
+#floating-nav a:hover {
+    text-decoration: underline;
+}
+
+#floating-nav .active {
+    font-weight: 700;
+    color: #d7191c;
+    border-left: 3px solid #f3f1e5;
+    padding-left: 5px;
+    margin-left: -8px;
+}
+
+#floating-nav a.mute {
+    font-size: 90%;
+    padding-top: 10px;
 }

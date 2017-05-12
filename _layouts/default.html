@@ -128,35 +128,40 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
-
-    <br />
 
     {{ content }}
 
-    <div class="footer navbar-fixed-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-7 visible-md visible-lg visible-xl" id="subhed">
-              <a class="social" id="callout" target="_blank">
-                <span id="prefix" class="hidden">
-                  <i class="fa fa-fw fa-twitter" aria-hidden="true" style="color:#069ff5"></i> It's <strong>#NotJusticeWhen</strong></span>
-                <span data-section="unequal" class="hidden">black youth are unduly punished.</span>
-                <span data-section="lifelong" class="hidden">the consequences of punishment are lifelong.</span>
-              </a>
-          </div>
-          <div id="nav-links" class="col-md-5 text-right">
 
-            <a id="learn" href="{{ site.baseurl }}/"{% if page.title == 'Learn' %} class="active"{% endif %}>Learn</a>
-            <a id="act" href="{{ site.baseurl }}/action"{% if page.title == 'Act' %} class="active"{% endif %}>Act</a>
-            <a id="resources" href="{{ site.baseurl }}/resources"{% if page.title == 'Resources' %} class="active"{% endif %}>Resources</a>
-            <a id="resources" href="{{ site.baseurl }}/download-data"{% if page.title == 'Data' %} class="active"{% endif %}>Data</a>
-            <a id="about" href="{{ site.baseurl }}/about"{% if page.title == 'About' %} class="active"{% endif %}>About</a>
-
+      <nav class="navbar navbar-fixed-bottom">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <i class="fa fa-fw fa-bars" aria-hidden="true" style="font-size: 2em;"></i>
+              <span class="sr-only">Toggle navigation</span>
+            </button>
           </div>
-        </div>
-      </div>
-    </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav visible-lg visible-xl" id="subhed">
+              <li>
+                <a id="callout" target="_blank">
+                  <span id="prefix" class="hidden"><i class="fa fa-fw fa-twitter" aria-hidden="true" style="color:#069ff5"></i> It's <strong>#NotJusticeWhen</strong></span>
+                  <span data-section="unequal" class="hidden">black youth are unduly punished.</span>
+                  <span data-section="lifelong" class="hidden">the consequences of punishment are lifelong.</span>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" id="nav-links">              
+              <li><a id="learn" href="{{ site.baseurl }}/"{% if page.title == 'Learn' %} class="current-page"{% endif %}>Learn</a></li>
+              <li><a id="act" href="{{ site.baseurl }}/action"{% if page.title == 'Act' %} class="current-page"{% endif %}>Act</a></li>
+              <li><a id="resources" href="{{ site.baseurl }}/resources"{% if page.title == 'Resources' %} class="current-page"{% endif %}>Resources</a></li>
+              <li><a id="data" href="{{ site.baseurl }}/download-data"{% if page.title == 'Data' %} class="current-page"{% endif %}>Data</a></li>
+              <li><a id="about" href="{{ site.baseurl }}/about"{% if page.title == 'About' %} class="current-page"{% endif %}>About</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
 
   </body>
 
