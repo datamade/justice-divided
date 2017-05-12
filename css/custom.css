@@ -231,6 +231,10 @@ a.btn {
 
 /* SPACING */
 
+.page-content {
+  margin-bottom: 25vh;
+}
+
 section {
   min-height: 50vh;
   margin-bottom: 20vh;
@@ -246,7 +250,7 @@ section * div[id*="chart"] {
 
 #action {
   min-height: unset;
-  height: 60vh;
+  height: 40vh;
 }
 
 /* PROGRESS BAR */
