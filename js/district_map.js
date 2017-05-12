@@ -162,10 +162,6 @@ base_map_style = [
   }
 ]
 
-function sum(a, b) {
-  return a + b;
-}
-
 function sumProperty(boundaries, property) {
   nByDistrict = boundaries.features.map(function(feature) { 
     return parseInt(feature.properties[property]);
