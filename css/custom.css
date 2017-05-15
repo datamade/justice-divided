@@ -13,6 +13,12 @@ body {
   padding: 1vh 0;
 }
 
+h1.mobile-head {
+  margin-top: unset;
+  margin-bottom: .75em;
+  font-weight: 900;
+}
+
 h2 {
   margin-top: unset;
   line-height: 1.25em;
@@ -28,12 +34,16 @@ p, li {
   margin-bottom: 1em;
 }
 
-small,
-small > a,
-small > a:hover {
+small {
   font-size: 14px;
   color: #79797a;
+}
+
+small > a,
+small > a:hover,
+small > a: {
   border-bottom: unset;
+  text-decoration: underline;
 }
 
 a, a:active, a:visited {
@@ -232,7 +242,7 @@ a.btn {
 /* SPACING */
 
 .page-content {
-  margin-bottom: 25vh;
+  margin-bottom: 50vh;
 }
 
 section {
@@ -250,7 +260,7 @@ section * div[id*="chart"] {
 
 #action {
   min-height: unset;
-  height: 40vh;
+  height: 60vh;
 }
 
 /* PROGRESS BAR */
@@ -371,7 +381,6 @@ i[data-toggle]:hover {
 
 #floating-nav {
     color: #6f6d63;
-    margin-top: 8vh;
     position: fixed;
     right: 5vw;
     height: 50vh;
