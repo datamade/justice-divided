@@ -39,13 +39,6 @@ small {
   color: #79797a;
 }
 
-small > a,
-small > a:hover,
-small > a: {
-  border-bottom: unset;
-  text-decoration: underline;
-}
-
 a, a:active, a:visited {
   color: inherit;
   border-bottom: 1px solid #d7191c;
