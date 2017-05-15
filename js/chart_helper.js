@@ -42,11 +42,12 @@ Highcharts.theme = {
     },
     credits: {
         enabled: false,
-        href: '/download-data',
+        href: null,
         style: {
             'color': '#79797a',
             'font-size': '14px',
-            'font-family': 'Lato'
+            'font-family': 'Lato',
+            'cursor': 'unset'
         },
         position: {
             x: 0
@@ -277,7 +278,6 @@ var ChartHelper = {
             credits: {
                 enabled: true,
                 text: 'Source: American Community Survey<br />& Chicago Police Department',
-                href: '/download-data#police-district-profiles',
                 position: {
                     y: -20
                 }
@@ -322,7 +322,7 @@ var ChartHelper = {
             },
             plotOptions: {
                 area: {
-                    color: '#674baa',
+                    color: '#009051',
                     marker: {
                         symbol: 'square'
                     },
@@ -344,7 +344,6 @@ var ChartHelper = {
             credits: {
                 enabled: true,
                 text: 'Source: Chicago Police Department',
-                href: '/download-data#arrest-by-demographic',
                 position: {
                     x: -50
                 }
