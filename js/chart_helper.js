@@ -212,7 +212,7 @@ var ChartHelper = {
 
     },
 
-    make_detail_chart: function(data) {
+    make_detail_chart: function(data, city = false) {
 
         categories = ['Population (%)', 'Arrests (%)'];
         
@@ -227,11 +227,19 @@ var ChartHelper = {
             data: data[2]
         }];
 
+        if ( city ) {
+            title = 'City Demographics';
+            container = 'city-detail-chart';
+        } else {
+            title = 'District Demographics';
+            container = 'district-detail-chart';
+        }
+
         new Highcharts.Chart({
             chart: {
                 type: 'column',
-                height: '300',
-                renderTo: 'detail-chart',
+                height: '350',
+                renderTo: container,
                 spacingTop: 80,
                 spacingBottom: 40
             },
@@ -260,7 +268,7 @@ var ChartHelper = {
             },
             title: {
                 enabled: true,
-                text: 'District Demographics',
+                text: title,
                 x: 30,
                 y: -50
             },

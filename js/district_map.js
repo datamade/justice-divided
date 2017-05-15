@@ -282,13 +282,11 @@ function resetHighlight(e) {
 // search
 var geocoder = new google.maps.Geocoder;
 
-function initLookup() {
-  autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"));
-  $('#search-district').click(function() {
-    addressInput = $(this).parent().prev();
-    locateAddress(geocoder, addressInput.val());
-  });
-}
+autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"));
+$('#search-district').click(function() {
+  addressInput = $(this).parent().prev();
+  locateAddress(geocoder, addressInput.val());
+});
 
 function locateAddress(geocoder, address) {
   geocoder.geocode({'address': address}, function(results, status) {
@@ -351,8 +349,12 @@ function generateData(district) {
 function fillInstructions() {
 	template = $('#instructions').html();
 	content = ejs.render(template);
-	$('#district-found').html(content);
-	initLookup();
+  $('#district-found').html(content);
+	ChartHelper.make_detail_chart([
+    [41.93, 79],
+    [43.18, 17],
+    [14.88, 3]
+  ], city = true);
 };
 
 function fillSidebar(dataObj) {

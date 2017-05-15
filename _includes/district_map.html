@@ -2,20 +2,25 @@
         <div class="row">
             <div class="col-md-9">
 
-                <h3 class="prose">While black youth are 1.9 times more likely to be arrested citywide, the disparity is worse certain neighborhoods. In several of them, black youth make up the smallest share of the population, but the largest share of arrests.</h3>
+                <h3 class="prose">While black youth were almost twice as likely to be arrested citywide, the disparity was worse in certain neighborhoods. In several of them, black youth made up the smallest share of the population, but the largest share of arrests.</h3>
+
+                <p style="font-size: 1.25em"><span class="action"><i class="fa fa-fw fa-mouse-pointer" aria-hidden="true"></i>Hover</span> or <span class="action"><i class="fa fa-fw fa-hand-o-up" aria-hidden="true"></i>Tap</span> the map to to see how the odds varied between districts, or <span class="action"><i class="fa fa-fw fa-i-cursor" aria-hidden="true"></i>Type</span> your address to see the odds in your neighborhood.</p>
 
             </div>
         </div>
         <div class="row" id="my-divide">
             <div class="col-md-6">
-                
+                        
                 <div id="district-map"></div><br />
 
-                <a class="btn btn-xs btn-default pull-right hidden-xs" target="_blank" href="/download-data#police-district-profiles">
-                    <i class="fa fa-fw fa-download" aria-hidden="true"></i> Download the data
-                </a>
-
-                <br /><br />
+                <div class="input-group" id="map-search">
+                    <input type="text" name="address" id="address" class="form-control" placeholder="Enter your address to find your police district">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="search-district">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
 
             </div>
             <div class="col-md-6" id="district-stats">
@@ -26,7 +31,7 @@
 
             </div>
         </div>
-        <div id="detail-chart"></div>
+        <div id="city-detail-chart"></div> <!-- needed on init to not throw a js error -->
     </section>
 
     <script id="statistics-template" type="text/EJS">
@@ -35,15 +40,15 @@
             Police District <%= result.dist_num %> - <%= result.dist_name %>
             <button class="btn btn-link btn-xs" id="reset">
                 <i class="fa fa-fw fa-undo" aria-hidden="true"></i> 
-                Back to search
+                Back to city stats
             </button>   
         </h3>
 
         <div class="row">
           <div class="col-sm-12">
-            <p class="drop-cap lead">In 2014, black youth in <% if (result.dist_num) { %>your district<% } else { %>Chicago<% } %> were <span class="highlight"><strong><%= result.odds_ratio.toFixed(1) %></strong> times more likely</span> to be arrested than all youth citywide.</p>
+            <p>In 2014, black youth in <%= result.dist_name %> were <span class="highlight"><strong><%= result.odds_ratio.toFixed(1) %></strong> times more likely</span> to be arrested than all youth citywide.</p>
 
-            <div id="detail-chart"></div>
+            <div id="district-detail-chart"></div>
 
           </div>
         </div>
@@ -52,19 +57,10 @@
 
     <script id="instructions" type="text/EJS">
 
-        <p class="drop-cap lead">This map of Chicago's police districts is colored by a multiplier you interpret like, <strong>“Black youth in this police district were arrested X times more often in 2014 than all youth citywide.”</strong></p>
+        <h3>City of Chicago</h3>
 
-        <div class="input-group" id="map-search">
-            <input type="text" name="address" id="address" class="form-control" placeholder="Address">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button" id="search-district">
-                    <i class="fa fa-search"></i>
-                </button>
-            </span>
-        </div>
+        <p>In 2014, black youth in Chicago were <span style="color: #fcd77c;"><strong>1.9</strong> times more likely</span> to be arrested than all youth citywide.</p>
 
-        <br />
-
-        <p style="font-size: 1.25em;"><span class="action"><i class="fa fa-fw fa-mouse-pointer" aria-hidden="true"></i>Hover</span> or <span class="action"><i class="fa fa-fw fa-hand-o-up" aria-hidden="true"></i>Tap</span> the map to to see how the odds vary between districts, or <span class="action"><i class="fa fa-fw fa-i-cursor" aria-hidden="true"></i>Type</span> your address to see the odds in your neighborhood.</p>
+        <div id="city-detail-chart" style="min-height: unset!important;"></div>
 
     </script>
