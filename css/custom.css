@@ -59,6 +59,11 @@ img {
   max-width: 100%;
 }
 
+img.logo {
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
 hr {
   margin-top: 5vh;
   margin-bottom: 5vh;
