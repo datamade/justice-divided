@@ -1,5 +1,6 @@
 // define map
-var districtMap = L.map('district-map', {scrollWheelZoom: false}).setView([41.835, -87.7], 10);
+var districtMap = L.map('district-map').setView([41.835, -87.7], 10);
+districtMap.scrollWheelZoom.disable();
 
 base_map_style = [
   {
