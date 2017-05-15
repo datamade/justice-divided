@@ -69,7 +69,7 @@ Highcharts.theme = {
     },
     plotOptions: {
         bar: {
-            maxPointWidth: 20,
+            pointWidth: 20,
             borderWidth: 0,
             events: {
                 legendItemClick: function(e) {

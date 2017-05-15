@@ -24,14 +24,15 @@
 
                     plot_options = {
                         bar: {
+                            pointWidth: 30,
                             dataLabels: {
-                                align: 'right',
+                                align: 'center',
                                 enabled: true,
                                 color: '#333',
                                 style: {
                                     'textOutline': 0,
                                     'fontWeight': 'normal',
-                                    'fontSize': '11px'
+                                    'fontSize': '13px'
                                 },
                                 formatter: function() {
                                    return this.y.toFixed(0) + '%'
@@ -71,7 +72,7 @@
                             type: 'rect',
                             params: {
                                 height: 25,
-                                width: 1,
+                                width: 0.25,
                                 stroke: '#f3f1e5',
                                 fill: '#f3f1e5',
                                 x: 50,
