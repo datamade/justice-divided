@@ -59,9 +59,14 @@ img {
   max-width: 100%;
 }
 
-img.logo {
+.logo {
   max-width: 300px;
   margin-bottom: 20px;
+}
+
+.logo-white {
+  background: #fff; 
+  padding: 15px;
 }
 
 hr {
