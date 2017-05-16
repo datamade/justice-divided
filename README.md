@@ -75,4 +75,4 @@ Your patches are welcome. Here's our suggested workflow:
 
 ## Copyright and attribution
 
-Copyright (c) 2016 DataMade. Released under the [MIT License](https://github.com/datamade/justice-divided/blob/master/LICENSE).
+Copyright (c) 2017 DataMade. Released under the [MIT License](https://github.com/datamade/justice-divided/blob/master/LICENSE).
