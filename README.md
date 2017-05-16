@@ -12,7 +12,9 @@ This website is intended to facilitate all the above.
 
 #### 📊 For data, see [the data documentation](https://github.com/datamade/justice-divided/tree/master/data).
 
-Justice Divided is built using Jekyll, a static site generator that runs on Ruby. If you don't have Ruby installed, we recommend you manage your installation with [rbenv](https://github.com/rbenv/rbenv) or [RVM](https://rvm.io/).
+Justice Divided is built using [Jekyll](https://jekyllrb.com/), a static site generator that runs on Ruby. If you don't have Ruby installed, we recommend you manage your installation with [rbenv](https://github.com/rbenv/rbenv) or [RVM](https://rvm.io/).
+
+### Getting started
 
 Once you have the correct Ruby version up and running, install the package manager Bundler:
 
@@ -36,6 +38,14 @@ jekyll serve
 
 Then open your web browser and navigate to http://localhost:5000 (or whatever server address Jekyll printed to your console).
 
+### Dependencies 
+
+We used the following open-source tools:
+
+* [Bootstrap](http://getbootstrap.com/)
+* [Leaflet](http://leafletjs.com/)
+* [Highcharts](https://www.highcharts.com/)
+
 ## Team
 
 Justice Divided is a joint effort of [Illinois Justice Project](http://www.iljp.org/), [Adler University](http://www.adler.edu/), and [DataMade](https://datamade.us), with funding from the [Polk Bros. Foundation](http://www.polkbrosfdn.org/).
@@ -45,6 +55,8 @@ The development team is:
 * [Hannah Cushman](https://twitter.com/hancush) - data, research, design, development
 * [Forest Gregg](https://github.com/fgregg) - data, research, design
 * [Derek Eder](https://github.com/derekeder) - design, development
+
+Special thanks to Era Laudermilk at ILJP, Dan Cooper at Adler, and Mariame Kaba at Project NIA for contributing data and invaluable feedback during development; and Martin Macias, Jr., of City Bureau for contributing reporting.
 
 ## Errors and bugs
 
