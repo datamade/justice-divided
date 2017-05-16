@@ -56,7 +56,7 @@ The development team is:
 * [Forest Gregg](https://github.com/fgregg) - data, research, design
 * [Derek Eder](https://github.com/derekeder) - design, development
 
-Special thanks to Era Laudermilk at ILJP, Dan Cooper at Adler, and Mariame Kaba at Project NIA for contributing data and invaluable feedback during development; and Martin Macias, Jr., of City Bureau for contributing reporting.
+Special thanks to Era Laudermilk of ILJP, Dan Cooper of Adler, and Mariame Kaba of Project NIA for contributing data and invaluable feedback during development; Martin Macias, Jr., of [City Bureau](http://www.citybureau.org/) for contributing reporting; and [Precious Blood Ministry of Reconcilation](http://www.pbmr.org/) for providing artwork.
 
 ## Errors and bugs
 
