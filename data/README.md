@@ -51,7 +51,7 @@ make all
 
 Running the provided scripts will generate two sorts of output: several CSVs, located in the `/output` directory, and a Postgres database called `jdiv`, containing those CSVs, plus some aggegregated, composite, and/or metadata tables for your convenience.
 
-**Jump to:** [Arrests](#-arrests) | [Demographics](#-demographics) | [Detention](#-detention) | [Composite/meta data](#-composite-meta-data)
+**Jump to:** [Arrests](#-arrests) | [Demographics](#-demographics) | [Detention](#-detention) | [Composite/meta data](#-compositemeta-data)
 
 ### 🚓 Arrests 
 
