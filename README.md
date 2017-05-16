@@ -48,7 +48,7 @@ We used the following open-source tools:
 
 ## Team
 
-Justice Divided is a joint effort of [Illinois Justice Project](http://www.iljp.org/), [Adler University](http://www.adler.edu/), and [DataMade](https://datamade.us), with funding from the [Polk Bros. Foundation](http://www.polkbrosfdn.org/).
+Justice Divided is a joint effort of [Illinois Justice Project](http://www.iljp.org/), [Adler University](http://www.adler.edu/), [Project NIA](http://www.project-nia.org/), and [DataMade](https://datamade.us), with funding from the [Polk Bros. Foundation](http://www.polkbrosfdn.org/).
 
 The development team is:
 
