@@ -51,11 +51,11 @@ make all
 
 Running the provided scripts will generate two sorts of output: several CSVs, located in the `/output` directory, and a Postgres database called `jdiv`, containing those CSVs, plus some aggegregated, composite, and/or metadata tables for your convenience.
 
-**Jump to:** [Arrests](#-arrests) | [Demographics](#-demographics) | [Detention](#-detention) | [Composite/meta data](#-compositemeta-data)
+**Jump to:** [Juvenile arrests](#-juvenile-arrests) | [Demographics](#-demographics) | [Detention](#-detention) | [Composite/meta data](#-compositemeta-data)
 
-### 🚓 Arrests 
+### 🚓 Juvenile arrests 
 
-* #### Arrests by demographic (2013 - 2017)
+* #### Juvenile arrests by demographic (2013 - 2017)
 
   * **Source:** Chicago Police Department ([View raw](https://github.com/datamade/justice-divided/blob/master/data/raw/juvenile-arrests-2013-2017.xlsm))
   * **Obtained by:** DataMade
@@ -64,12 +64,12 @@ Running the provided scripts will generate two sorts of output: several CSVs, lo
   * **Description:** This dataset contains age, sex, race/ethnicity, statute violated, statute description, and charge type (misdemeanor or felony) for all juvenile arrests made by the Chicago Police Department from Jan. 1, 2013 to March 2017.
   * **Derived tables**
   
-    * **arrests_by_race_over_time** - All arrests by year, month, and race (differentiates between black and white Hispanic)
-    * **arrests_by_race_over_time_collapse_hispanic** - All arrests by year, month, and race (combines black and white Hispanic into single Hispanic category)
-    * **marijuana_possession_over_time_by_race** - Misdemeanor marijuana possession arrests by year, month, and race (differentiates between black and white Hispanic)
-    * **marijuana_possession_over_time_collapse_hispanic** - Misdemeanor marijuana possession arrests by year, month, and race (combines black and white Hispanic into single Hispanic category)
+    * **arrests_by_race_over_time** - All juvenile arrests by year, month, and race (differentiates between black and white Hispanic)
+    * **arrests_by_race_over_time_collapse_hispanic** - All juvenile arrests by year, month, and race (combines black and white Hispanic into single Hispanic category)
+    * **marijuana_possession_over_time_by_race** - Misdemeanor marijuana possession juvenile arrests by year, month, and race (differentiates between black and white Hispanic)
+    * **marijuana_possession_over_time_collapse_hispanic** - Misdemeanor marijuana possession juvenile arrests by year, month, and race (combines black and white Hispanic into single Hispanic category)
 
-* #### Arrests by police district (2014)
+* #### Juvenile arrests by police district (2014)
 
   * **Source:** Chicago Police Department ([View raw](https://github.com/datamade/justice-divided/blob/master/data/raw/arrests-14.csv))
   * **Obtained by:** Mariame Kaba / Project NIA
