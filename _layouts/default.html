@@ -188,34 +188,34 @@
         </div><!--/.container-fluid -->
       </nav>
 
+      <script src="{{ site.baseurl }}/lib/bootstrap.min.js"></script>
+      <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?libraries=places&key={{ site.google_api_key }}'></script>
+      <script src="{{ site.baseurl }}/lib/analytics_lib.js"></script>
+    {% if page.custom_js %}
+    {% for js_file in page.custom_js %}
+      <script src='{{ site.baseurl }}/{{ js_file }}.js' type="text/javascript"></script>
+    {% endfor %}
+    {% endif %}
+      
+      <script>
+
+        // progress bar (via https://css-tricks.com/reading-position-indicator/)
+        var winHeight = $(window).height(), 
+        docHeight = $(document).height(),
+        progressBar = $('progress'),
+        max, value;
+
+        max = docHeight - winHeight;
+        progressBar.attr('max', max);
+
+        $(document).on('scroll', function(){
+            value = $(window).scrollTop();
+            progressBar.attr('value', value);
+        });
+
+      </script>
+
   </body>
 
-  <script src="{{ site.baseurl }}/lib/analytics_lib.js"></script>
-  <script src="{{ site.baseurl }}/lib/bootstrap.min.js"></script>
-  <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?libraries=places&key={{ site.google_api_key }}'></script>
-
-{% if page.custom_js %}
-{% for js_file in page.custom_js %}
-  <script src='{{ site.baseurl }}/{{ js_file }}.js' type="text/javascript"></script>
-{% endfor %}
-{% endif %}
-  
-  <script>
-
-    // progress bar (via https://css-tricks.com/reading-position-indicator/)
-    var winHeight = $(window).height(), 
-    docHeight = $(document).height(),
-    progressBar = $('progress'),
-    max, value;
-
-    max = docHeight - winHeight;
-    progressBar.attr('max', max);
-
-    $(document).on('scroll', function(){
-        value = $(window).scrollTop();
-        progressBar.attr('value', value);
-    });
-
-  </script>
 
 </html>
