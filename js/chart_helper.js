@@ -110,7 +110,7 @@ var ChartHelper = {
         parentWidth = parent.innerWidth() - 30;
 
         if ( el == 'arrests_by_race_chart' ) {
-            chartHeight = '350',
+            chartHeight = '385',
               spacingTop = 40,
               legend_options = {
                   enabled: true,

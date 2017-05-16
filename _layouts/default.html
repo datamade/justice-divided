@@ -18,38 +18,36 @@
 
     <!-- Facebook metadata -->
     <meta content="{{ site.title }}" property="og:site_name">
-    {% if page.title %}
-      <meta content="{{ page.title }}" property="og:title">
-    {% else %}
-      <meta content="{{ site.title }}" property="og:title">
-    {% endif %}
-    {% if page.title %}
-      <meta content="article" property="og:type">
-    {% else %}
-      <meta content="website" property="og:type">
-    {% endif %}
+    <meta content="{{ site.title }}" property="og:title">
+    <meta content="website" property="og:type">
+
     {% if page.description %}
       <meta content="{{ page.description }}" property="og:description">
     {% else %}
       <meta content="{{ site.description }}" property="og:description">
     {% endif %}
+
     {% if page.url %}
       <meta content="{{ site.url }}{{ page.url }}" property="og:url">
     {% endif %}
+
     {% if page.date %}
       <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
       <meta content="{{ site.url }}/about-us/" property="article:author">
     {% endif %}
+
     {% if page.image %}
-      <meta content="{{ site.url }}/{{ page.image }}" property="og:image">
+      <meta content="{{ site.url }}/img/{{ page.image }}" property="og:image">
     {% else %}
-      <meta content="{{ site.url }}/images/#" property="og:image">
+      <meta content="{{ site.url }}/img/thumbnail.png" property="og:image">
     {% endif %}
+
     {% if page.categories %}
       {% for category in page.categories limit:1 %}
       <meta content="{{ category }}" property="article:section">
       {% endfor %}
     {% endif %}
+    
     {% if page.tags %}
       {% for tag in page.tags %}
       <meta content="{{ tag }}" property="article:tag">
@@ -74,9 +72,9 @@
       <meta name="twitter:description" content="{{ site.description }}">
     {% endif %}
     {% if page.image %}
-      <meta name="twitter:image:src" content="{{ site.url }}/images/{{ page.image }}">
+      <meta name="twitter:image:src" content="{{ site.url }}/img/{{ page.image }}">
     {% else %}
-      <meta name="twitter:image:src" content="{{ site.url }}/images/#">
+      <meta name="twitter:image:src" content="{{ site.url }}/img/thumbnail.png">
     {% endif %}
 
     <!-- Bootstrap core CSS -->
@@ -156,31 +154,31 @@
             </ul>
             <ul class="nav navbar-nav navbar-right" id="nav-links">              
               <li>
-                <a id="learn" href="{{ site.baseurl }}/"{% if page.title == 'Youth of all races break the law. Youth of color are more likely to be punished.' %} class="current-page"{% endif %}>
+                <a id="learn" href="{{ site.baseurl }}/"{% if page.url == '/' %} class="current-page"{% endif %}>
                   <i class="fa fa-fw fa-balance-scale" aria-hidden="true"></i> 
                   Learn
                 </a>
               </li>
               <li>
-                <a id="act" href="{{ site.baseurl }}/action"{% if page.title == 'Act' %} class="current-page"{% endif %}>
+                <a id="act" href="{{ site.baseurl }}/action"{% if page.url == '/action.html' %} class="current-page"{% endif %}>
                   <i class="fa fa-fw fa-bullhorn" aria-hidden="true"></i>
                   Act
                 </a>
               </li>
               <li>
-                <a id="resources" href="{{ site.baseurl }}/resources"{% if page.title == 'Resources' %} class="current-page"{% endif %}>
+                <a id="resources" href="{{ site.baseurl }}/resources"{% if page.url == '/resources.html' %} class="current-page"{% endif %}>
                   <i class="fa fa-fw fa-chain-broken" aria-hidden="true"></i>
                   Resources
                 </a>
               </li>
               <li>
-                <a id="data" href="{{ site.baseurl }}/download-data"{% if page.title == 'Data' %} class="current-page"{% endif %}>
+                <a id="data" href="{{ site.baseurl }}/download-data"{% if page.url == '/download-data.html' %} class="current-page"{% endif %}>
                   <i class="fa fa-fw fa-bar-chart" aria-hidden="true"></i>
                   Data
                 </a>
               </li>
               <li>
-                <a id="about" href="{{ site.baseurl }}/about"{% if page.title == 'About' %} class="current-page"{% endif %}>
+                <a id="about" href="{{ site.baseurl }}/about"{% if page.url == '/about.html' %} class="current-page"{% endif %}>
                   <i class="fa fa-info-circle" aria-hidden="true"></i>
                   About
                 </a>
