@@ -12,6 +12,6 @@ for row in reader:
         parent_zip = z
     z = parent_zip 
     demo = demo.replace('Asain', 'Asian')
-    if ('Total' in demo or not demo):
+    if ('Total' in demo) or (not demo):
         continue
     writer.writerow([z, demo, *years[1:], total])
