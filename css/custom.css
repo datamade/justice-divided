@@ -55,6 +55,16 @@ a:hover {
   border-bottom: 1px solid #f3f1e5;
 }
 
+small > a,
+small > a:active,
+small > a:visited {
+  border-color: #79797a;
+}
+
+small > a:hover {
+  border-color: #f3f1e5;
+}
+
 img {
   max-width: 100%;
 }
