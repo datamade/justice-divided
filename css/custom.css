@@ -221,6 +221,7 @@ a.btn {
   border-radius: 5px;
   font-size: 90%;
   margin: 0 3px 0 3px;
+  white-space: nowrap;
 }
 
 #instructions {
