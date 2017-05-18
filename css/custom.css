@@ -14,13 +14,13 @@ body {
 }
 
 h1.mobile-head {
-  margin-top: none;
+  margin-top: unset;
   margin-bottom: .75em;
   font-weight: 900;
 }
 
 h2 {
-  margin-top: none;
+  margin-top: 0;
   line-height: 1.25em;
   font-weight: 700;
 }
@@ -189,8 +189,8 @@ h3.prose {
 }
 
 .btn > h3 {
-  margin-top: none;
-  margin-bottom: none;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 a.offsite::after {
