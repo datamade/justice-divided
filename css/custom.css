@@ -14,13 +14,13 @@ body {
 }
 
 h1.mobile-head {
-  margin-top: unset;
+  margin-top: none;
   margin-bottom: .75em;
   font-weight: 900;
 }
 
 h2 {
-  margin-top: unset;
+  margin-top: none;
   line-height: 1.25em;
   font-weight: 700;
 }
@@ -45,7 +45,7 @@ a, a:active, a:visited {
 }
 
 a:focus {
-  color: unset;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -150,16 +150,16 @@ div.jumbotron * #divided-bottom {
 
 #subhed > li > a:hover {
   color: #212121;
-  background-color: unset;
+  background-color: #9e1408;
 }
 
 #subhed > li > a {
-  border-bottom: unset;
+  border-bottom: none;
 }
 
 #subhed > a.social:hover {
-  color: unset;
-  background-color: unset;
+  color: #333;
+  background-color: #9e1408;
   border-bottom: 1px solid #f3f1e5;
 }
 
@@ -168,7 +168,7 @@ div.jumbotron * #divided-bottom {
   font-size: 20px;
   margin-right: 1vw;
   color: #d3d3d3;
-  border-bottom: unset;
+  border-bottom: none;
 }
 
 #nav-links > li > a.current-page {
@@ -176,14 +176,10 @@ div.jumbotron * #divided-bottom {
   font-weight: 700;
 }
 
-#nav-links > li > a:hover {
-  background-color: unset;
-  color: #f3f1e5;
-}
-
+#nav-links > li > a:hover,
 #nav-links > li > a:focus {
-  background-color: unset;
-  color: unset;
+  background-color: #9e1408;
+  color: #f3f1e5;
 }
 
 /* MISC TYPOGRAPHY STYLES */
@@ -193,8 +189,8 @@ h3.prose {
 }
 
 .btn > h3 {
-  margin-top: unset;
-  margin-bottom: unset;
+  margin-top: none;
+  margin-bottom: none;
 }
 
 a.offsite::after {
@@ -204,7 +200,7 @@ a.offsite::after {
 }
 
 a.social {
-  border-bottom: unset;
+  border-bottom: none;
   font-size: 1.5em;
 }
 
@@ -213,7 +209,7 @@ a.social:hover {
 }
 
 a.btn {
-  border-bottom: unset;
+  border-bottom: none;
 }
 
 .gray {
@@ -330,10 +326,6 @@ progress::-moz-progress-bar {
   }
 }
 
-.leaflet-control-attribution a {
-  color: unset;
-}
-
 .info {
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
@@ -403,7 +395,7 @@ i[data-toggle]:hover {
 }
 
 #floating-nav a {
-    border: unset;
+    border: none;
 }
 
 #floating-nav a:hover {

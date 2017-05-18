@@ -212,7 +212,9 @@ var ChartHelper = {
 
     },
 
-    make_detail_chart: function(data, city = false) {
+    make_detail_chart: function(data, city) {
+
+        city = city || false;
 
         categories = ['Population (%)', 'Arrests (%)'];
         
