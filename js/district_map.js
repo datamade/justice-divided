@@ -283,9 +283,23 @@ function resetHighlight(e) {
 var geocoder = new google.maps.Geocoder;
 
 autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"));
+
+// do search on 
+autocomplete.addListener('place_changed', function() {
+  address = $('#address').val();
+  locateAddress(geocoder, address);
+})
+
+$('#address').keypress(function(e) {
+  if ( e.which == 13) {
+    address = $('#address').val();
+    locateAddress(geocoder, address);
+  }
+})
+
 $('#search-district').click(function() {
-  addressInput = $(this).parent().prev();
-  locateAddress(geocoder, addressInput.val());
+  address = $('#address').val();
+  locateAddress(geocoder, address);
 });
 
 function locateAddress(geocoder, address) {
