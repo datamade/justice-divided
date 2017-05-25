@@ -114,25 +114,36 @@
     <a id="top"></a>
 
     <div class="jumbotron">
-      <a href="/">
         <div class="container">
-          <div class="title" id="justice">
-            <h1>Justice</h1>
-          </div>
-          <div class="title" id="divided">
-            <div class="row">
-              <div class="col-sm-12" id="divided-top">
-                <h1>Divided</h1>
+          <a href="/">
+            <div class="col-sm-9">
+              <div class="title" id="justice">
+                <h1>Justice</h1>
+              </div>
+              <div class="title" id="divided">
+                <div class="row">
+                  <div class="col-sm-12" id="divided-top">
+                    <h1>Divided</h1>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12" id="divided-bottom">
+                    <h1>Divided</h1>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-12" id="divided-bottom">
-                <h1>Divided</h1>
-              </div>
+          </a>
+          {% if page.url == '/' %}
+            <div class="col-sm-3 text-right visible-md visible-lg visible-xl ">
+              <br /><br />
+              <a class="btn btn-default btn-xs" href="/img/justice-divided.pdf" target="_blank">
+                <i class="fa fa-fw fa-print" aria-hidden="true"></i>
+                Print this page
+              </a>
             </div>
-          </div>
+          {% endif %}
         </div>
-      </a>
     </div>
 
     {{ content }}
