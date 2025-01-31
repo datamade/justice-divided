@@ -1,5 +1,2 @@
-source "http://rubygems.org"
-
-# web
-gem 'jekyll', '4.1.1'
-gem 'jekyll-redirect-from'
+source 'https://rubygems.org'
+gem 'jekyll', '3.2.1'
